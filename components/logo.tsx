@@ -1,55 +1,42 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * Wordmark logo for IBS Clinic.
+ * IBS Clinic logo. Sourced from `public/logo.png` — the wordmark with the
+ * green leaf icon and charcoal/green type. Re-export this component anywhere
+ * the brand mark is needed; tune `height` per surface (32 in header, 40 in
+ * legal pages, etc.).
  *
- * Inline SVG so it inherits brand colours and stays sharp at any DPR.
- * Swap for a real artwork file when one lands — see public/README.md.
+ * The PNG is intentionally lightweight (~2KB). For high-DPR displays the
+ * intrinsic resolution carries; if a sharper artwork lands, just overwrite
+ * `public/logo.png` (same path) and Vercel will serve it at next deploy.
  */
 export interface LogoProps {
   className?: string;
-  variant?: "default" | "reverse";
+  /** Rendered height in pixels. Width auto-scales to preserve aspect ratio. */
+  height?: number;
+  /** Used as the alt text and aria-label fallback. */
+  title?: string;
 }
 
-export function Logo({ className, variant = "default" }: LogoProps) {
-  const fillStrong = variant === "reverse" ? "#FFFFFF" : "#333333";
-  const fillLight = variant === "reverse" ? "#FFFFFF" : "#555555";
-  const accent = "#81AF12";
+const INTRINSIC_WIDTH = 480;
+const INTRINSIC_HEIGHT = 96;
 
+export function Logo({
+  className,
+  height = 32,
+  title = "IBS Clinic",
+}: LogoProps) {
   return (
-    <span
-      className={cn("inline-flex items-center gap-2 leading-none", className)}
-      aria-label="IBS Clinic"
-    >
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        {/* Soft circular badge */}
-        <circle cx="16" cy="16" r="15" fill={accent} />
-        {/* Stylised gut curve in white */}
-        <path
-          d="M9 11.5 C 13 9, 19 9, 23 11.5 C 21 14, 24 16, 22 18.5 C 19 21, 13 21, 9 18.5 C 11 16, 7 14, 9 11.5 Z"
-          fill="#fff"
-          opacity="0.95"
-        />
-        {/* Inner accent dot */}
-        <circle cx="16" cy="15" r="1.6" fill={accent} />
-      </svg>
-      <span className="flex items-baseline gap-1 font-heading text-lg font-bold tracking-tight">
-        <span style={{ color: fillStrong }}>IBS</span>
-        <span
-          className="text-base font-medium"
-          style={{ color: fillLight }}
-        >
-          clinic
-        </span>
-      </span>
-    </span>
+    <Image
+      src="/logo.png"
+      alt={title}
+      width={INTRINSIC_WIDTH}
+      height={INTRINSIC_HEIGHT}
+      priority
+      sizes={`${height * (INTRINSIC_WIDTH / INTRINSIC_HEIGHT)}px`}
+      className={cn("block h-auto w-auto select-none", className)}
+      style={{ height: `${height}px`, width: "auto" }}
+    />
   );
 }
