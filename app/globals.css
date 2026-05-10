@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-canvas: #f7f1e6;
-    --color-text: #2a2a2a;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -15,7 +10,7 @@
   }
 
   body {
-    @apply bg-linen text-slate font-body antialiased;
+    @apply bg-white text-charcoal font-body antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -23,19 +18,19 @@
   h2,
   h3,
   h4 {
-    @apply font-heading text-sage-dark;
+    @apply font-heading text-charcoal;
   }
 
   a {
-    @apply text-mint underline-offset-2;
+    @apply text-green underline-offset-2;
   }
   a:hover {
     @apply underline;
   }
 
-  /* Form focus ring matches mood board */
+  /* Brand-aligned focus ring */
   :focus-visible {
-    outline: 2px solid #5a8f7b;
+    outline: 2px solid #81af12;
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -47,22 +42,30 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-[12px] bg-rust px-6 py-3 font-semibold text-linen no-underline transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-[12px] bg-green px-6 py-3 font-semibold text-white no-underline transition-all hover:bg-green-dark active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-[12px] border-[1.5px] border-sage px-6 py-3 font-semibold text-sage no-underline transition-all hover:bg-sage/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-[12px] border-[1.5px] border-green bg-white px-6 py-3 font-semibold text-green no-underline transition-all hover:bg-green/5;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-[12px] border border-gray-border bg-white px-5 py-2.5 text-sm font-medium text-charcoal no-underline transition-all hover:border-green hover:text-green;
   }
 
   .input-base {
-    @apply w-full rounded-[12px] border border-border bg-[#FBF6EC] px-4 py-3 text-slate placeholder:text-slate/50 outline-none transition-all focus:border-sage focus:ring-4 focus:ring-sage-light;
+    @apply w-full rounded-[12px] border border-gray-border bg-white px-4 py-3 text-charcoal placeholder:text-charcoal-soft/60 outline-none transition-all focus:border-green focus:ring-4 focus:ring-green/15;
   }
 
   .card {
-    @apply rounded-[16px] border border-border bg-white p-6 shadow-sm;
+    @apply rounded-[16px] border border-gray-border bg-white p-6 shadow-card;
   }
 
   .stat-num {
-    @apply font-heading font-bold text-sage-dark text-[clamp(2.5rem,5vw,4.5rem)] leading-none;
+    @apply font-heading font-bold text-charcoal text-[clamp(2.5rem,5vw,4.5rem)] leading-none;
+  }
+
+  .section-divider {
+    @apply h-px w-full bg-gray-border;
   }
 }

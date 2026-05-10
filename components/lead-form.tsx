@@ -16,10 +16,16 @@ const CALL_TIMES: ReadonlyArray<{ value: LeadInput["callTime"]; label: string }>
 ];
 
 export interface LeadFormProps {
-  variant?: "default" | "compact";
+  variant?: "default" | "compact" | "modal";
+  headingId?: string;
+  onSuccess?: () => void;
 }
 
-export function LeadForm({ variant = "default" }: LeadFormProps) {
+export function LeadForm({
+  variant = "default",
+  headingId,
+  onSuccess,
+}: LeadFormProps) {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
 
@@ -51,6 +57,7 @@ export function LeadForm({ variant = "default" }: LeadFormProps) {
         return;
       }
       pushEvent({ event: "lead_form_submit", form_variant: variant });
+      onSuccess?.();
       router.push("/thanks");
     } catch {
       setSubmitError("Network issue. Please call +91 750 033 4343.");
@@ -64,14 +71,18 @@ export function LeadForm({ variant = "default" }: LeadFormProps) {
       className={cn(
         "card flex flex-col gap-4",
         variant === "compact" && "p-5 gap-3",
+        variant === "modal" && "rounded-[20px] border-0 shadow-none p-6",
       )}
       aria-label="Free IBS evaluation form"
     >
       <div className="space-y-1">
-        <h3 className="font-heading text-h3 text-sage-dark">
+        <h3
+          id={headingId}
+          className="font-heading text-h3 text-charcoal"
+        >
           Get your free 15-minute evaluation
         </h3>
-        <p className="text-sm text-slate/70">
+        <p className="text-sm text-charcoal-soft">
           Confidential. A senior IBS doctor reviews your case before the call.
         </p>
       </div>
@@ -137,14 +148,14 @@ export function LeadForm({ variant = "default" }: LeadFormProps) {
               key={opt.value}
               className={cn(
                 "flex cursor-pointer items-center gap-2 rounded-[12px] border border-border bg-[#FBF6EC] px-3 py-2 text-sm",
-                "has-[:checked]:border-sage has-[:checked]:bg-sage-light",
+                "has-[:checked]:border-green has-[:checked]:bg-green-tint",
               )}
             >
               <input
                 type="radio"
                 value={opt.value}
                 {...register("callTime")}
-                className="accent-sage"
+                className="accent-green"
               />
               {opt.label}
             </label>
@@ -171,7 +182,7 @@ export function LeadForm({ variant = "default" }: LeadFormProps) {
 
       <div className="space-y-1">
         <label htmlFor="concern" className="text-sm font-medium">
-          Your main concern <span className="text-slate/50">(optional)</span>
+          Your main concern <span className="text-charcoal-soft/60">(optional)</span>
         </label>
         <textarea
           id="concern"
@@ -186,7 +197,7 @@ export function LeadForm({ variant = "default" }: LeadFormProps) {
       <label className="flex items-start gap-2 text-sm">
         <input
           type="checkbox"
-          className="mt-1 h-4 w-4 accent-sage"
+          className="mt-1 h-4 w-4 accent-green"
           {...register("consent")}
         />
         <span>
@@ -224,7 +235,7 @@ export function LeadForm({ variant = "default" }: LeadFormProps) {
         </p>
       )}
 
-      <p className="text-xs text-slate/60">
+      <p className="text-xs text-charcoal-soft/80">
         Your details stay with our doctors. We never sell or share data.{" "}
         <a href="/privacy" className="underline">
           Privacy Policy

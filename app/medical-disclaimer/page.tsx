@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 export default function MedicalDisclaimerPage() {
   return (
-    <main className="bg-linen">
+    <main className="bg-white">
       <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
-        <h1 className="text-h2 text-sage-dark">Medical Disclaimer</h1>
+        <h1 className="text-h2 text-charcoal">Medical Disclaimer</h1>
 
         <p className="mt-6">
           The information provided on consultation.ibsclinic.com — including blog posts,
@@ -33,7 +33,7 @@ export default function MedicalDisclaimerPage() {
           </p>
         </div>
 
-        <h2 className="mt-8 font-heading text-h3 text-sage-dark">Telemedicine</h2>
+        <h2 className="mt-8 font-heading text-h3 text-charcoal">Telemedicine</h2>
         <p className="mt-3">
           Online consultations are conducted under the Indian Telemedicine Practice Guidelines
           2020 (issued by the Board of Governors in supersession of the Medical Council of
@@ -41,7 +41,7 @@ export default function MedicalDisclaimerPage() {
           obtained at each call.
         </p>
 
-        <h2 className="mt-8 font-heading text-h3 text-sage-dark">Outcome statements</h2>
+        <h2 className="mt-8 font-heading text-h3 text-charcoal">Outcome statements</h2>
         <p className="mt-3">
           Published outcome statements (80–90% symptom reduction in completers, ~90 days to
           significant improvement, 70%+ patients living symptom-free) are based on IBS Clinic&apos;s
@@ -49,7 +49,7 @@ export default function MedicalDisclaimerPage() {
           adherence, severity, comorbidity, and case-specific factors.
         </p>
 
-        <p className="mt-10 text-sm text-slate/60">Last updated: 2026-05-10</p>
+        <p className="mt-10 text-sm text-charcoal-soft">Last updated: 2026-05-10</p>
       </article>
     </main>
   );

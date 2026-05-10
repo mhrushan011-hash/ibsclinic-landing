@@ -15,37 +15,43 @@ export default function ThanksPage() {
   const adsLabel = process.env.NEXT_PUBLIC_ADS_CONVERSION_LABEL;
 
   return (
-    <main className="min-h-screen bg-linen">
+    <main className="min-h-screen bg-white">
       <div className="container-page mx-auto max-w-3xl py-20 text-center">
-        <h1 className="text-h1 text-sage-dark">
+        <h1 className="text-h1 text-charcoal">
           We&apos;ve got it. A doctor will call you within 30 minutes.
         </h1>
-        <p className="mt-6 text-lead text-slate/85">
+        <p className="mt-6 text-lead text-charcoal-soft">
           Our team is reviewing your details right now. Expect a call from{" "}
-          <b>{PHONE_DISPLAY}</b> — please save the number so we don&apos;t go to voicemail.
+          <span className="font-semibold text-charcoal">{PHONE_DISPLAY}</span> —
+          please save the number so we don&apos;t go to voicemail.
         </p>
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
           <a href={`tel:${PHONE_TEL}`} className="card no-underline text-left">
-            <p className="text-sm text-mint">📞 Prefer to call us first?</p>
-            <p className="mt-1 font-heading text-lg text-sage-dark">{PHONE_DISPLAY}</p>
+            <p className="text-sm font-medium text-green">📞 Prefer to call us first?</p>
+            <p className="mt-1 font-heading text-lg text-charcoal">{PHONE_DISPLAY}</p>
           </a>
-          <a href={WA} target="_blank" rel="noopener" className="card no-underline text-left">
-            <p className="text-sm text-mint">💬 Got a quick question?</p>
-            <p className="mt-1 font-heading text-lg text-sage-dark">WhatsApp us now</p>
+          <a
+            href={WA}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card no-underline text-left"
+          >
+            <p className="text-sm font-medium text-green">💬 Got a quick question?</p>
+            <p className="mt-1 font-heading text-lg text-charcoal">WhatsApp us now</p>
           </a>
           <a
             href="https://calendar.google.com"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="card no-underline text-left"
           >
-            <p className="text-sm text-mint">📅 Add to calendar</p>
-            <p className="mt-1 font-heading text-lg text-sage-dark">15-minute hold</p>
+            <p className="text-sm font-medium text-green">📅 Add to calendar</p>
+            <p className="mt-1 font-heading text-lg text-charcoal">15-minute hold</p>
           </a>
         </div>
 
-        <p className="mt-12 text-sm text-slate/70">
+        <p className="mt-12 text-sm text-charcoal-soft">
           Mon–Sat, 9 AM – 8 PM IST · info@ibsclinic.com
         </p>
       </div>

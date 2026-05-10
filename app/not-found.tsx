@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="min-h-[70vh] bg-linen">
+    <main className="min-h-[70vh] bg-white">
       <div className="container-page mx-auto max-w-prose py-24 text-center">
-        <p className="text-sm text-mint">404</p>
-        <h1 className="mt-3 text-h1 text-sage-dark">This page wandered off.</h1>
-        <p className="mt-5 text-lead text-slate/85">
+        <p className="text-sm font-medium text-green">404</p>
+        <h1 className="mt-3 text-h1 text-charcoal">This page wandered off.</h1>
+        <p className="mt-5 text-lead text-charcoal-soft">
           The link you followed isn&apos;t here — it may have moved or never existed.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">

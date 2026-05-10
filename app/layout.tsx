@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Montserrat, Inter, Oswald } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-const heading = Plus_Jakarta_Sans({
+const heading = Montserrat({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-heading",
-  weight: ["600", "700"],
+  weight: ["500", "600", "700"],
 });
 
 const body = Inter({
@@ -15,6 +15,13 @@ const body = Inter({
   display: "swap",
   variable: "--font-body",
   weight: ["400", "500", "600"],
+});
+
+const display = Oswald({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["500", "600"],
 });
 
 const SITE_URL =
@@ -77,7 +84,10 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_CONTAINER_ID;
 
   return (
-    <html lang="en" className={`${heading.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      className={`${heading.variable} ${body.variable} ${display.variable}`}
+    >
       <body>
         {/* GTM init — runs early so the dataLayer is ready before form events fire. */}
         {gtmId ? (
