@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-canvas: #f7f1e6;
+    --color-text: #2a2a2a;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-linen text-slate font-body antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading text-sage-dark;
+  }
+
+  a {
+    @apply text-mint underline-offset-2;
+  }
+  a:hover {
+    @apply underline;
+  }
+
+  /* Form focus ring matches mood board */
+  :focus-visible {
+    outline: 2px solid #5a8f7b;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[12px] bg-rust px-6 py-3 font-semibold text-linen no-underline transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-[12px] border-[1.5px] border-sage px-6 py-3 font-semibold text-sage no-underline transition-all hover:bg-sage/10;
+  }
+
+  .input-base {
+    @apply w-full rounded-[12px] border border-border bg-[#FBF6EC] px-4 py-3 text-slate placeholder:text-slate/50 outline-none transition-all focus:border-sage focus:ring-4 focus:ring-sage-light;
+  }
+
+  .card {
+    @apply rounded-[16px] border border-border bg-white p-6 shadow-sm;
+  }
+
+  .stat-num {
+    @apply font-heading font-bold text-sage-dark text-[clamp(2.5rem,5vw,4.5rem)] leading-none;
+  }
+}
