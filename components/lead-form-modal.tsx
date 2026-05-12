@@ -57,7 +57,7 @@ export function LeadFormModal({ open, onClose }: LeadFormModalProps) {
     >
       <div
         ref={dialogRef}
-        className="relative w-full max-w-md rounded-t-[24px] bg-white p-1 shadow-modal animate-scale-in sm:rounded-[20px]"
+        className="relative w-full max-w-md rounded-t-[24px] bg-white p-1 shadow-modal animate-scale-in sm:rounded-[20px] max-h-[90vh] overflow-y-auto"
       >
         <button
           type="button"

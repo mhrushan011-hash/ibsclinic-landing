@@ -71,7 +71,7 @@ export function LeadForm({
       className={cn(
         "card flex flex-col gap-4",
         variant === "compact" && "p-5 gap-3",
-        variant === "modal" && "rounded-[20px] border-0 shadow-none p-6",
+        variant === "modal" && "rounded-[20px] border-0 shadow-none p-6 gap-3",
       )}
       aria-label="Free IBS evaluation form"
     >
@@ -140,14 +140,14 @@ export function LeadForm({
         {errors.city && <p className="text-sm text-danger">{errors.city.message}</p>}
       </div>
 
-      <fieldset className="space-y-2">
+      <fieldset className="space-y-1">
         <legend className="text-sm font-medium">When can we call you?</legend>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-4 gap-1.5">
           {CALL_TIMES.map((opt) => (
             <label
               key={opt.value}
               className={cn(
-                "flex cursor-pointer items-center gap-2 rounded-[12px] border border-border bg-[#FBF6EC] px-3 py-2 text-sm",
+                "flex cursor-pointer items-center gap-1.5 rounded-[10px] border border-border bg-[#FBF6EC] px-2 py-1.5 text-xs",
                 "has-[:checked]:border-green has-[:checked]:bg-green-tint",
               )}
             >

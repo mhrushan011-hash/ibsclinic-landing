@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Script from "next/script";
+import Image from "next/image";
+import Link from "next/link";
 import { Header } from "@/components/header";
 import { FloatingCta } from "@/components/floating-cta";
-import { HeroIllustration } from "@/components/hero-illustration";
 import { LeadFormModal } from "@/components/lead-form-modal";
 import { pushEvent } from "@/lib/analytics";
+import { cn } from "@/lib/utils";
 
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
@@ -46,6 +48,87 @@ function cellMark(m: Mark): string {
   return "❌";
 }
 
+const COMPARE_COLUMNS: ReadonlyArray<{
+  id: keyof Omit<(typeof COMPARE_ROWS)[number], "label">;
+  title: string;
+  image: string;
+  featured: boolean;
+}> = [
+  { id: "gastro", title: "Generic Gastro", image: "/compare/generic-gastro.png", featured: false },
+  { id: "ayurveda", title: "Generic Ayurveda", image: "/compare/generic-ayurveda.png", featured: false },
+  { id: "us", title: "IBS Clinic", image: "/compare/ibs-clinic.png", featured: true },
+];
+
+const PRODUCTS: ReadonlyArray<{
+  slug: string;
+  type: string;
+  headline: string;
+  symptoms: ReadonlyArray<string>;
+  combo: string;
+  price: string;
+}> = [
+  {
+    slug: "ibs-m",
+    type: "IBS-M",
+    headline: "Alternating constipation & diarrhea",
+    symptoms: [
+      "Swinging between loose stools and no stools",
+      "Abdominal bloating throughout the day",
+      "Unpredictable bowel patterns",
+    ],
+    combo: "IBS Diglac + IBS Diapro",
+    price: "₹2,260",
+  },
+  {
+    slug: "ibs-c",
+    type: "IBS-C",
+    headline: "Chronic constipation & gas",
+    symptoms: [
+      "Straining for days with no relief",
+      "Painful gas, bloating, and acidity",
+      "Incomplete evacuation feeling",
+    ],
+    combo: "IBS Diglac + IBS Diglac Plus",
+    price: "₹2,260",
+  },
+  {
+    slug: "ibs-d-chronic",
+    type: "Chronic IBS-D",
+    headline: "Frequent loose & mushy stools",
+    symptoms: [
+      "Loose or mushy stools multiple times daily",
+      "Stomach discomfort and urgency",
+      "Prolonged gut inflammation",
+    ],
+    combo: "IBS Diglac + IBS Diapro",
+    price: "₹2,260",
+  },
+  {
+    slug: "ibs-d",
+    type: "IBS-D",
+    headline: "Mild diarrhea & bacterial imbalance",
+    symptoms: [
+      "Frequent loose stools and dysentery episodes",
+      "Gas, bloating, and stomach pain",
+      "Gut bacterial imbalance",
+    ],
+    combo: "IBS Diarrheal Plus + IBS Diapro",
+    price: "₹2,260",
+  },
+  {
+    slug: "ibs-diapro-diglac-plus",
+    type: "IBS-C + Gastrocolic",
+    headline: "Urgency after meals & SIBO",
+    symptoms: [
+      "Frequent urge to go after eating but can't fully evacuate",
+      "Small intestinal bacterial overgrowth (SIBO)",
+      "Flatulence, indigestion, and stomach pain",
+    ],
+    combo: "IBS Diapro + IBS Diglac Plus",
+    price: "₹2,260",
+  },
+];
+
 const SYMPTOMS: ReadonlyArray<string> = [
   "Bloating that worsens through the day",
   "Cramping after meals",
@@ -84,26 +167,30 @@ const STEPS: ReadonlyArray<{ n: number; h: string; p: string }> = [
   },
 ];
 
-const DOCTORS: ReadonlyArray<{ name: string; creds: string; bio: string }> = [
+const DOCTORS: ReadonlyArray<{ name: string; creds: string; bio: string; image: string }> = [
   {
     name: "Dr. Kamal K Khajuria",
     creds: "Founder, ND (Naturopathy)",
     bio: "Founded IBS Clinic 20+ years ago. Has personally guided treatment for thousands of IBS patients across India and Bangladesh.",
+    image: "/doctors/dr-kamal.webp",
   },
   {
     name: "Dr. Keshav Raj",
     creds: "BAMS, MD (Ayurveda)",
     bio: "Senior Ayurvedic specialist. Focuses on dosha-tailored protocols for IBS-D and IBS-M presentations.",
+    image: "/doctors/dr-keshav.webp",
   },
   {
     name: "Dr. Rajeev Gaur",
     creds: "BAMS",
     bio: "Ayurvedic Physician. Specialises in long-form patient case-history work and plan personalisation.",
+    image: "/doctors/dr-rajeev.webp",
   },
   {
     name: "Dr. Nishikant Dwivedi",
     creds: "BAMS, Ayurvedacharya",
     bio: "Ayurvedic Physician with deep grounding in classical formulations and Panchakarma protocols.",
+    image: "/doctors/dr-nishikant.webp",
   },
 ];
 
@@ -245,7 +332,14 @@ export default function Page() {
 
             <div className="md:col-span-5">
               <div className="overflow-hidden rounded-[24px] border border-gray-border bg-green-tint">
-                <HeroIllustration />
+                <Image
+                  src="/hero.png"
+                  alt="Dr. Kamal K Khajuria — Founder, IBS Clinic"
+                  width={600}
+                  height={400}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -369,6 +463,51 @@ export default function Page() {
           </div>
         </section>
 
+        {/* PRODUCTS */}
+        <section className="bg-white">
+          <div className="container-page border-t border-gray-border py-16 md:py-20">
+            <div className="mb-10 max-w-prose">
+              <h2 className="text-h2">Find your IBS combo — matched to your subtype</h2>
+              <p className="mt-3 text-charcoal-soft">
+                Every IBS type responds differently. Our specialist-formulated powder combos target your specific symptoms.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {PRODUCTS.map((p) => (
+                <div key={p.slug} className="card flex flex-col">
+                  <span className="mb-3 inline-block w-fit rounded-full bg-green px-3 py-1 text-xs font-semibold text-white">
+                    {p.type}
+                  </span>
+                  <h3 className="font-heading text-lg text-charcoal">{p.headline}</h3>
+                  <ul className="mt-3 grow space-y-1.5 text-sm text-charcoal-soft">
+                    {p.symptoms.map((s) => (
+                      <li key={s} className="flex items-start gap-2">
+                        <span className="mt-0.5 text-green" aria-hidden="true">•</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 border-t border-gray-border pt-4">
+                    <p className="text-sm font-medium text-charcoal">{p.combo}</p>
+                    <p className="mt-0.5 text-sm text-charcoal-soft">{p.price} · Consultation included</p>
+                  </div>
+                  <Link
+                    href={`/products/${p.slug}`}
+                    className="btn-secondary mt-4 text-center text-sm"
+                  >
+                    Learn more →
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <Link href="/products" className="btn-primary inline-block">
+                View all product combos
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* WHY SPECIALIST */}
         <section className="bg-green-tint">
           <div className="container-page py-16 md:py-20">
@@ -379,29 +518,44 @@ export default function Page() {
                 We&apos;ve spent 20+ years compressing that journey into a single specialist team.
               </p>
             </div>
-            <div className="overflow-x-auto rounded-[16px] border border-gray-border bg-white">
-              <table className="w-full min-w-[560px] text-sm">
-                <thead className="bg-charcoal text-white">
-                  <tr>
-                    <th className="p-4 text-left font-medium"></th>
-                    <th className="p-4 font-medium">Generic gastro</th>
-                    <th className="p-4 font-medium">Generic Ayurveda</th>
-                    <th className="bg-green p-4 font-semibold">IBS Clinic</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARE_ROWS.map((row) => (
-                    <tr key={row.label} className="border-t border-gray-border">
-                      <td className="p-4 text-charcoal">{row.label}</td>
-                      <td className="p-4 text-center">{cellMark(row.gastro)}</td>
-                      <td className="p-4 text-center">{cellMark(row.ayurveda)}</td>
-                      <td className="bg-green-tint/60 p-4 text-center font-semibold text-charcoal">
-                        {cellMark(row.us)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid gap-6 md:grid-cols-3">
+              {COMPARE_COLUMNS.map((col) => (
+                <div
+                  key={col.id}
+                  className={cn(
+                    "rounded-[16px] border bg-white p-6",
+                    col.featured
+                      ? "border-green ring-2 ring-green"
+                      : "border-gray-border",
+                  )}
+                >
+                  <div className="mb-5 flex flex-col items-center gap-3 text-center">
+                    <Image
+                      src={col.image}
+                      alt={col.title}
+                      width={80}
+                      height={80}
+                      className="h-20 w-20 rounded-full object-cover"
+                    />
+                    <h3 className="font-heading text-lg font-semibold text-charcoal">
+                      {col.title}
+                    </h3>
+                    {col.featured && (
+                      <span className="rounded-full bg-green px-3 py-1 text-xs font-semibold text-white">
+                        Your best choice
+                      </span>
+                    )}
+                  </div>
+                  <ul className="space-y-3 text-sm">
+                    {COMPARE_ROWS.map((row) => (
+                      <li key={row.label} className="flex items-start gap-2">
+                        <span className="mt-0.5 shrink-0">{cellMark(row[col.id])}</span>
+                        <span className="text-charcoal-soft">{row.label}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -418,22 +572,23 @@ export default function Page() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {DOCTORS.map((d) => (
                 <article key={d.name} className="card">
-                  <div
-                    className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green font-heading text-2xl font-bold text-white"
-                    aria-hidden="true"
-                  >
-                    {d.name
-                      .split(" ")
-                      .filter((p) => !p.startsWith("Dr"))
-                      .map((p) => p[0])
-                      .slice(0, 2)
-                      .join("")}
-                  </div>
+                  <Image
+                    src={d.image}
+                    alt={d.name}
+                    width={80}
+                    height={80}
+                    className="mb-4 h-20 w-20 rounded-full object-cover"
+                  />
                   <h3 className="font-heading text-lg text-charcoal">{d.name}</h3>
                   <p className="text-sm font-medium text-green">{d.creds}</p>
                   <p className="mt-3 text-sm text-charcoal-soft">{d.bio}</p>
                 </article>
               ))}
+            </div>
+            <div className="mt-8">
+              <Link href="/doctors" className="btn-secondary inline-block">
+                Meet the full team →
+              </Link>
             </div>
           </div>
         </section>
@@ -611,7 +766,7 @@ export default function Page() {
             </div>
           </div>
           <div className="border-t border-white/10">
-            <div className="container-page py-4 text-xs opacity-70">
+            <div className="container-page py-4 text-xs opacity-70 text-center">
               © {new Date().getFullYear()} IBS Clinic. All rights reserved. Information on this
               site is for educational purposes and does not replace professional medical advice.
             </div>
