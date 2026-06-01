@@ -35,30 +35,106 @@
  *   old deployment.
  */
 
+/**
+ * Patient intake handler (separate sheet — recommended setup):
+ *
+ * Option A — separate spreadsheet (cleanest):
+ *   1. Create a new sheet "IBS Clinic — Patient Intake" with this header row:
+ *      timestamp | fullName | email | mobile | landline | address | city |
+ *      state | zip | country | gender | age | problemDetails | problemStart |
+ *      commonProblems | treatedBefore | pastInvestigations | consent
+ *   2. Add a separate Apps Script with the same doPost body (without the
+ *      type check below), deploy as a Web App, set
+ *      GOOGLE_SHEETS_PATIENT_WEBHOOK_URL in Vercel.
+ *
+ * Option B — same spreadsheet, two tabs:
+ *   1. Add a second tab titled exactly "Patient Intake" with the header row above.
+ *   2. Keep the first tab "Leads" with the existing 8 columns.
+ *   3. This doPost will route based on payload.type.
+ */
 function doPost(e) {
   try {
     const payload = JSON.parse(e.postData.contents || "{}");
 
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-    sheet.appendRow([
-      payload.timestamp || new Date().toISOString(),
-      payload.fullName || "",
-      payload.phone || "",
-      payload.city || "",
-      payload.callTime || "",
-      payload.specificTime || "",
-      payload.concern || "",
-      payload.consent || "",
-    ]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: true }))
-      .setMimeType(ContentService.MimeType.JSON);
+    if (payload.type === "patient_intake") {
+      return appendPatientIntake_(payload);
+    }
+    return appendLead_(payload);
   } catch (err) {
     return ContentService
       .createTextOutput(JSON.stringify({ ok: false, error: String(err) }))
       .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+function appendLead_(payload) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName("Leads") || ss.getSheets()[0];
+  sheet.appendRow([
+    payload.timestamp || new Date().toISOString(),
+    payload.fullName || "",
+    payload.phone || "",
+    payload.city || "",
+    payload.callTime || "",
+    payload.specificTime || "",
+    payload.concern || "",
+    payload.consent || "",
+  ]);
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true, kind: "lead" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function appendPatientIntake_(payload) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet =
+    ss.getSheetByName("Patient Intake") ||
+    ss.insertSheet("Patient Intake");
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow([
+      "timestamp",
+      "fullName",
+      "email",
+      "mobile",
+      "landline",
+      "address",
+      "city",
+      "state",
+      "zip",
+      "country",
+      "gender",
+      "age",
+      "problemDetails",
+      "problemStart",
+      "commonProblems",
+      "treatedBefore",
+      "pastInvestigations",
+      "consent",
+    ]);
+  }
+  sheet.appendRow([
+    payload.timestamp || new Date().toISOString(),
+    payload.fullName || "",
+    payload.email || "",
+    payload.mobile || "",
+    payload.landline || "",
+    payload.address || "",
+    payload.city || "",
+    payload.state || "",
+    payload.zip || "",
+    payload.country || "",
+    payload.gender || "",
+    payload.age || "",
+    payload.problemDetails || "",
+    payload.problemStart || "",
+    payload.commonProblems || "",
+    payload.treatedBefore || "",
+    payload.pastInvestigations || "",
+    payload.consent || "",
+  ]);
+  return ContentService
+    .createTextOutput(JSON.stringify({ ok: true, kind: "patient_intake" }))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 // Optional GET for health-check (returns 200 so you can ping it).

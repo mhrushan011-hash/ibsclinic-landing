@@ -31,13 +31,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "IBS Treatment Specialist Clinic — Free Evaluation in 60s",
   description:
-    "Specialist IBS care for 20+ years. 80–90% symptom reduction in ~90 days through personalised Ayurveda, diet, and modern testing. Book a free evaluation.",
+    "Specialist IBS care for 18+ years. 80–90% symptom reduction in ~90 days through personalised Ayurveda, diet, and modern testing. Book a free evaluation.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Stop fearing food. Start trusting your gut. — IBS Clinic",
     description:
-      "India's leading specialist IBS clinic. 4.7★, lakhs of patients treated, 8 cities. Book your free evaluation.",
+      "India's leading specialist IBS clinic. 4.7★ Google, Thousands of patients treated, 8 cities. Book your free evaluation.",
     url: SITE_URL,
     siteName: "IBS Clinic",
     locale: "en_IN",

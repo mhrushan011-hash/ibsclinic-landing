@@ -1,16 +1,30 @@
 import type { MetadataRoute } from "next";
+import { CITY_SLUGS } from "@/lib/cities";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultation.ibsclinic.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return [
+
+  const corePages: MetadataRoute.Sitemap = [
     {
       url: `${SITE_URL}/`,
       lastModified,
       changeFrequency: "weekly",
       priority: 1.0,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/contact`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
     {
       url: `${SITE_URL}/doctors`,
@@ -67,10 +81,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
+      url: `${SITE_URL}/return-policy`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: `${SITE_URL}/medical-disclaimer`,
       lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
   ];
+
+  const cityPages: MetadataRoute.Sitemap = CITY_SLUGS.map((slug) => ({
+    url: `${SITE_URL}/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...corePages, ...cityPages];
 }

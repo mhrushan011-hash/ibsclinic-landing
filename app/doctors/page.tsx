@@ -6,7 +6,7 @@ import { SimpleHeader } from "@/components/simple-header";
 export const metadata: Metadata = {
   title: "Our Doctors | IBS Clinic — Specialist IBS Care",
   description:
-    "Meet the specialist doctors at IBS Clinic. 20+ years of IBS-specific care combining Naturopathy, Ayurveda, and modern testing.",
+    "Meet the specialist doctors at IBS Clinic. 18+ years of IBS-specific care combining Naturopathy, Ayurveda, and modern testing.",
 };
 
 const DOCTORS = [
@@ -14,7 +14,7 @@ const DOCTORS = [
     name: "Dr. Kamal K Khajuria",
     creds: "Founder, ND (Naturopathy)",
     image: "/doctors/dr-kamal.webp",
-    bio: "Dr. Kamal founded IBS Clinic over 20 years ago after experiencing IBS himself. His personal journey gave him a unique perspective on patient-centred care — understanding not just the clinical picture but the anxiety, diet restrictions, and daily disruption that comes with IBS. He has personally guided treatment for thousands of patients across India and Bangladesh, developing the integrated Naturopathy + Ayurveda protocols the clinic is known for today.",
+    bio: "Dr. Kamal founded IBS Clinic over 18 years ago after experiencing IBS himself. His personal journey gave him a unique perspective on patient-centred care — understanding not just the clinical picture but the anxiety, diet restrictions, and daily disruption that comes with IBS. He has personally guided treatment for thousands of patients across India and Bangladesh, developing the integrated Naturopathy + Ayurveda protocols the clinic is known for today.",
     speciality: "Naturopathy · IBS protocol design · Patient history",
   },
   {
@@ -57,14 +57,14 @@ export default function DoctorsPage() {
           <p className="mt-5 max-w-prose text-lead text-charcoal-soft">
             Every patient at IBS Clinic is seen by doctors who treat{" "}
             <strong className="text-charcoal">only IBS</strong> — not general gastric
-            complaints, not wellness. 20+ years of IBS-specific experience, end to end.
+            complaints, not wellness. 18+ years of IBS-specific experience, end to end.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 text-sm text-charcoal-soft">
-            <span>★ 4.7 on Google</span>
+            <span>4.7★ Google</span>
             <span>·</span>
-            <span>20+ years combined IBS specialty</span>
+            <span>18+ years combined IBS specialty</span>
             <span>·</span>
-            <span>Telehealth across India</span>
+            <span>Telehealth pan-India</span>
           </div>
         </div>
       </section>

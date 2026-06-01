@@ -7,6 +7,9 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { FloatingCta } from "@/components/floating-cta";
 import { LeadFormModal } from "@/components/lead-form-modal";
+import { SymptomsCarousel } from "@/components/symptoms-carousel";
+import { Roadmap } from "@/components/roadmap";
+import { SiteFooter } from "@/components/site-footer";
 import { pushEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
@@ -14,16 +17,17 @@ const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
 const WA = "https://wa.me/917500334343";
 
-const CITIES = [
-  "Mumbai",
-  "Delhi",
-  "Bangalore",
-  "Hyderabad",
-  "Pune",
-  "Kolkata",
-  "Chennai",
-  "Ahmedabad",
-  "Kerala",
+const CITIES: ReadonlyArray<{ name: string; href: string | null }> = [
+  // Mumbai = HQ; no dedicated city landing page yet, render as label only.
+  { name: "Mumbai", href: null },
+  { name: "Delhi", href: "/ibs-treatment-in-delhi" },
+  { name: "Bangalore", href: "/ibs-treatment-in-bangalore" },
+  { name: "Hyderabad", href: "/ibs-treatment-in-hyderabad" },
+  { name: "Pune", href: "/ibs-treatment-in-pune" },
+  { name: "Kolkata", href: "/ibs-treatment-in-kolkata" },
+  { name: "Chennai", href: "/ibs-treatment-in-chennai" },
+  { name: "Ahmedabad", href: "/ibs-treatment-in-ahmedabad" },
+  { name: "Kerala", href: "/ibs-treatment-in-kerala" },
 ];
 
 type Mark = true | false | "partial";
@@ -38,7 +42,7 @@ const COMPARE_ROWS: ReadonlyArray<{
   { label: "Diet personalised to subtype", gastro: false, ayurveda: "partial", us: true },
   { label: "Ayurvedic + modern testing combined", gastro: false, ayurveda: false, us: true },
   { label: "Tracked outcomes (90-day)", gastro: false, ayurveda: false, us: true },
-  { label: "Telehealth across India", gastro: "partial", ayurveda: "partial", us: true },
+  { label: "Telehealth pan-India", gastro: "partial", ayurveda: "partial", us: true },
   { label: "Specialist team", gastro: false, ayurveda: false, us: true },
 ];
 
@@ -59,14 +63,17 @@ const COMPARE_COLUMNS: ReadonlyArray<{
   { id: "us", title: "IBS Clinic", image: "/compare/ibs-clinic.png", featured: true },
 ];
 
-const PRODUCTS: ReadonlyArray<{
+interface Product {
   slug: string;
   type: string;
   headline: string;
   symptoms: ReadonlyArray<string>;
   combo: string;
   price: string;
-}> = [
+  image: string;
+}
+
+const PRODUCTS: ReadonlyArray<Product> = [
   {
     slug: "ibs-m",
     type: "IBS-M",
@@ -78,6 +85,7 @@ const PRODUCTS: ReadonlyArray<{
     ],
     combo: "IBS Diglac + IBS Diapro",
     price: "₹2,260",
+    image: "/products/ibs-m.jpg",
   },
   {
     slug: "ibs-c",
@@ -90,6 +98,7 @@ const PRODUCTS: ReadonlyArray<{
     ],
     combo: "IBS Diglac + IBS Diglac Plus",
     price: "₹2,260",
+    image: "/products/ibs-c.jpg",
   },
   {
     slug: "ibs-d-chronic",
@@ -102,6 +111,7 @@ const PRODUCTS: ReadonlyArray<{
     ],
     combo: "IBS Diglac + IBS Diapro",
     price: "₹2,260",
+    image: "/products/ibs-d-chronic.jpg",
   },
   {
     slug: "ibs-d",
@@ -114,6 +124,7 @@ const PRODUCTS: ReadonlyArray<{
     ],
     combo: "IBS Diarrheal Plus + IBS Diapro",
     price: "₹2,260",
+    image: "/products/ibs-d.jpg",
   },
   {
     slug: "ibs-diapro-diglac-plus",
@@ -126,7 +137,18 @@ const PRODUCTS: ReadonlyArray<{
     ],
     combo: "IBS Diapro + IBS Diglac Plus",
     price: "₹2,260",
+    image: "/products/ibs-diapro-diglac-plus.jpg",
   },
+];
+
+const OUTCOMES: ReadonlyArray<string> = [
+  "Better bowel satisfaction & lighter feeling after motion",
+  "Reduced gas, bloating, abdominal heaviness & pressure",
+  "Less repeated urge and incomplete evacuation feeling",
+  "More comfortable, smoother & predictable mornings",
+  "Reduced irritation, discomfort & bowel-related anxiety",
+  "Improved tolerance to daily routine, travel & eating patterns",
+  "Better overall digestive comfort and quality of life",
 ];
 
 const SYMPTOMS: ReadonlyArray<string> = [
@@ -171,7 +193,7 @@ const DOCTORS: ReadonlyArray<{ name: string; creds: string; bio: string; image: 
   {
     name: "Dr. Kamal K Khajuria",
     creds: "Founder, ND (Naturopathy)",
-    bio: "Founded IBS Clinic 20+ years ago. Has personally guided treatment for thousands of IBS patients across India and Bangladesh.",
+    bio: "Founded IBS Clinic 18+ years ago. Has personally guided treatment for thousands of IBS patients across India and Bangladesh.",
     image: "/doctors/dr-kamal.webp",
   },
   {
@@ -287,7 +309,7 @@ export default function Page() {
           <div className="container-page grid gap-12 py-12 md:grid-cols-12 md:py-20 lg:py-24">
             <div className="md:col-span-7">
               <p className="mb-4 inline-flex flex-wrap items-center gap-2 text-sm font-medium text-green">
-                Specialist IBS Clinic · 20+ years · 4.7★ Google · 8 cities
+                Specialist IBS Clinic · 18+ years · 4.7★ Google · 8 cities
               </p>
               <h1 className="text-h1 text-charcoal">
                 Stop fearing food.{" "}
@@ -320,17 +342,17 @@ export default function Page() {
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-charcoal-soft">
-                <span>★ 4.7 on Google</span>
+                <span>4.7★ Google</span>
                 <span aria-hidden="true">·</span>
-                <span>Lakhs of patients</span>
+                <span>Thousands of patients</span>
                 <span aria-hidden="true">·</span>
-                <span>20+ years</span>
+                <span>18+ years</span>
                 <span aria-hidden="true">·</span>
                 <span>Telehealth pan-India</span>
               </div>
             </div>
 
-            <div className="md:col-span-5">
+            <div className="md:col-span-5 md:self-center">
               <div className="overflow-hidden rounded-[24px] border border-gray-border bg-green-tint">
                 <Image
                   src="/hero.png"
@@ -350,19 +372,37 @@ export default function Page() {
           aria-label="Cities served"
           className="border-y border-gray-border bg-white"
         >
-          <div className="container-page flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-5 text-sm text-charcoal-soft">
-            <span className="font-semibold text-charcoal">
+          <div className="container-page flex flex-wrap items-center justify-center gap-x-2 gap-y-2 py-5 text-sm text-charcoal-soft">
+            <span className="mr-2 font-semibold text-charcoal">
               Trusted across India:
             </span>
-            {CITIES.map((c) => (
-              <span key={c} className="inline-flex items-center gap-1.5">
+            {CITIES.map((c) =>
+              c.href ? (
+                <Link
+                  key={c.name}
+                  href={c.href}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-gray-border bg-white px-3 py-1 text-charcoal-soft no-underline transition-colors hover:border-green hover:bg-green-tint hover:text-green"
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-green"
+                    aria-hidden="true"
+                  />
+                  {c.name}
+                </Link>
+              ) : (
                 <span
-                  className="h-1.5 w-1.5 rounded-full bg-green"
-                  aria-hidden="true"
-                />
-                {c}
-              </span>
-            ))}
+                  key={c.name}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-gray-border bg-white px-3 py-1"
+                  title="Head office"
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-green"
+                    aria-hidden="true"
+                  />
+                  {c.name}
+                </span>
+              ),
+            )}
           </div>
         </section>
 
@@ -375,16 +415,7 @@ export default function Page() {
                 If three or more describe your daily life, an evaluation will help — and it&apos;s free.
               </p>
             </div>
-            <ul className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-              {SYMPTOMS.map((s) => (
-                <li
-                  key={s}
-                  className="rounded-[16px] border border-gray-border bg-white p-4 text-sm text-charcoal"
-                >
-                  {s}
-                </li>
-              ))}
-            </ul>
+            <SymptomsCarousel symptoms={SYMPTOMS} />
             <div className="mt-10">
               <button
                 type="button"
@@ -397,33 +428,61 @@ export default function Page() {
           </div>
         </section>
 
-        {/* 90-DAY PROMISE */}
+        {/* 90-DAY OUTCOMES */}
         <section className="bg-white">
-          <div className="container-page py-16 md:py-20">
-            <h2 className="text-h2">What changes in 90 days</h2>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <div className="card">
-                <p className="stat-num text-green">80–90%</p>
-                <p className="mt-3 text-charcoal-soft">
-                  Symptom reduction in patients who complete the programme.
-                </p>
-              </div>
-              <div className="card">
-                <p className="stat-num text-green">~90 days</p>
-                <p className="mt-3 text-charcoal-soft">
-                  Average time to significant improvement.
-                </p>
-              </div>
-              <div className="card">
-                <p className="stat-num text-green">70%+</p>
-                <p className="mt-3 text-charcoal-soft">
-                  Of our patients live symptom-free long-term.
-                </p>
+          <div className="container-page grid gap-12 py-16 md:grid-cols-12 md:py-20">
+            <div className="md:col-span-7">
+              <h2 className="text-h2">What changes in 90 days of IBS treatment?</h2>
+              <p className="mt-5 text-charcoal-soft">
+                Many patients struggling with IBS, gas, bloating, constipation,
+                diarrhea, mixed IBS, acidity, and incomplete evacuation report
+                gradual improvement in their digestive comfort and daily routine
+                within 90 days of treatment.
+              </p>
+              <p className="mt-6 font-heading text-lg text-charcoal">
+                Patients commonly report:
+              </p>
+              <ul className="mt-4 space-y-3">
+                {OUTCOMES.map((o) => (
+                  <li key={o} className="flex items-start gap-3 text-charcoal">
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green text-white"
+                    >
+                      <svg
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-3.5 w-3.5"
+                      >
+                        <path d="M4 10l4 4 8-8" />
+                      </svg>
+                    </span>
+                    <span>{o}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 text-charcoal-soft">
+                At IBS Clinic, our approach focuses on understanding individual
+                symptom patterns, improving digestive balance, providing diet &amp;
+                lifestyle guidance, and offering continuous support for long-term
+                digestive comfort and bowel stability.
+              </p>
+            </div>
+            <div className="md:col-span-5 md:self-center">
+              <div className="overflow-hidden rounded-[24px] border border-gray-border bg-green-tint">
+                <Image
+                  src="/quiet-transformation.png"
+                  alt="A day of quiet transformation — IBS patient outcomes after 90 days"
+                  width={600}
+                  height={600}
+                  className="h-auto w-full object-cover"
+                />
               </div>
             </div>
-            <p className="mt-4 text-xs text-charcoal-soft/80">
-              Source: internal IBS Clinic patient outcomes, 2003–2025.
-            </p>
           </div>
         </section>
 
@@ -438,19 +497,7 @@ export default function Page() {
                 No guesswork. No rotating doctors. One specialist team, end to end.
               </p>
             </div>
-            <ol className="grid gap-6 md:grid-cols-2">
-              {STEPS.map((s) => (
-                <li key={s.n} className="card flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green font-heading text-base font-bold text-white">
-                    {s.n}
-                  </span>
-                  <div>
-                    <h3 className="font-heading text-lg text-charcoal">{s.h}</h3>
-                    <p className="mt-2 text-charcoal-soft">{s.p}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+            <Roadmap steps={STEPS} />
             <div className="mt-10">
               <button
                 type="button"
@@ -475,6 +522,15 @@ export default function Page() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {PRODUCTS.map((p) => (
                 <div key={p.slug} className="card flex flex-col">
+                  <div className="-mx-6 -mt-6 mb-4 overflow-hidden rounded-t-[16px] bg-green-tint">
+                    <Image
+                      src={p.image}
+                      alt={`${p.combo} — ${p.type} powder combo`}
+                      width={480}
+                      height={360}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
                   <span className="mb-3 inline-block w-fit rounded-full bg-green px-3 py-1 text-xs font-semibold text-white">
                     {p.type}
                   </span>
@@ -515,7 +571,7 @@ export default function Page() {
               <h2 className="text-h2">Why a specialist beats a generalist for IBS</h2>
               <p className="mt-3 text-charcoal-soft">
                 Most IBS patients see 3–5 doctors before anyone gives them a coherent plan.
-                We&apos;ve spent 20+ years compressing that journey into a single specialist team.
+                We&apos;ve spent 18+ years compressing that journey into a single specialist team.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -566,7 +622,7 @@ export default function Page() {
             <div className="mb-10 max-w-prose">
               <h2 className="text-h2">Meet the doctors leading your case</h2>
               <p className="mt-3 text-charcoal-soft">
-                Reviewed by senior physicians with 20+ years combined IBS specialty experience.
+                Reviewed by senior physicians with 18+ years combined IBS specialty experience.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -707,71 +763,12 @@ export default function Page() {
         {/* TRUST STRIP */}
         <section className="bg-charcoal text-white">
           <div className="container-page py-6 text-center text-sm">
-            Lakhs of patients · 20+ years · 4.7★ on Google · Specialist for IBS &amp;
-            chronic gut disorders · Mumbai HQ + telehealth across India
+            Thousands of patients · 18+ years · 4.7★ Google · Specialist for IBS &amp;
+            chronic gut disorders · Mumbai HQ + telehealth pan-India
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="bg-charcoal text-white">
-          <div className="container-page grid gap-8 py-12 md:grid-cols-4">
-            <div>
-              <h3 className="font-heading text-lg">IBS Clinic</h3>
-              <p className="mt-2 text-sm opacity-80">
-                India&apos;s leading specialist IBS clinic.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm opacity-60">Contact</p>
-              <ul className="mt-2 space-y-1 text-sm">
-                <li>
-                  <a href={`tel:${PHONE_TEL}`} className="text-white">
-                    {PHONE_DISPLAY}
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:info@ibsclinic.com" className="text-white">
-                    info@ibsclinic.com
-                  </a>
-                </li>
-                <li className="opacity-80">Mon–Sat, 9 AM – 8 PM IST</li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-sm opacity-60">Address</p>
-              <p className="mt-2 text-sm opacity-90">
-                Shop No. 2, HDIL Residency Park-1, Wing A1, Opp. Star Bazaar, Narangi Bypass,
-                Virar (West), Mumbai 401303
-              </p>
-            </div>
-            <div>
-              <p className="text-sm opacity-60">Legal</p>
-              <ul className="mt-2 space-y-1 text-sm">
-                <li>
-                  <a href="/privacy" className="text-white">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="/terms" className="text-white">
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="/medical-disclaimer" className="text-white">
-                    Medical Disclaimer
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10">
-            <div className="container-page py-4 text-xs opacity-70 text-center">
-              © {new Date().getFullYear()} IBS Clinic. All rights reserved. Information on this
-              site is for educational purposes and does not replace professional medical advice.
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </main>
 
       <FloatingCta onBookClick={() => openModal("sticky")} />

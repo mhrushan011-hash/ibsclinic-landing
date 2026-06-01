@@ -1,6 +1,8 @@
 import { Resend } from "resend";
 import type { LeadInput } from "./schema";
 import { callTimeLabels } from "./schema";
+import type { PatientIntakeInput } from "./patient-schema";
+import { genderLabels } from "./patient-schema";
 
 let _client: Resend | null = null;
 function client() {
@@ -71,6 +73,63 @@ export async function sendLeadAutoresponder(lead: LeadInput, toEmail?: string) {
     from: FROM,
     to: [toEmail],
     subject: "We got your evaluation request — IBS Clinic",
+    html,
+  });
+}
+
+function row(label: string, value: string) {
+  return `<tr><td style="color:#5A8F7B;width:160px;vertical-align:top"><b>${escapeHtml(label)}</b></td><td>${escapeHtml(value)}</td></tr>`;
+}
+
+export async function sendPatientIntakeNotification(intake: PatientIntakeInput) {
+  const subject = `New patient intake — ${intake.fullName}, ${intake.city}, ${intake.mobile}`;
+  const mobileClean = intake.mobile.replace(/[^\d+]/g, "");
+  const waLink = `https://wa.me/${mobileClean.replace(/^\+/, "")}`;
+  const commonProblems = intake.commonProblems?.length
+    ? intake.commonProblems.join(", ")
+    : "—";
+  const html = `
+<!doctype html><html><body style="font-family:Inter,system-ui,sans-serif;color:#2A2A2A;background:#F7F1E6;padding:24px">
+  <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #E4DFD3;border-radius:16px;padding:24px">
+    <h1 style="margin:0 0 8px;color:#2F4F3F;font-size:22px">New patient intake</h1>
+    <p style="margin:0 0 16px;color:#666;font-size:13px">Submitted from the patient consultation form.</p>
+
+    <h2 style="margin:16px 0 8px;color:#2F4F3F;font-size:16px">Personal</h2>
+    <table cellpadding="6" cellspacing="0" style="width:100%;border-collapse:collapse">
+      ${row("Name", intake.fullName)}
+      ${row("Gender", genderLabels[intake.gender])}
+      ${row("Age", String(intake.age))}
+      ${row("Email", intake.email)}
+    </table>
+
+    <h2 style="margin:20px 0 8px;color:#2F4F3F;font-size:16px">Contact</h2>
+    <table cellpadding="6" cellspacing="0" style="width:100%;border-collapse:collapse">
+      <tr><td style="color:#5A8F7B;width:160px;vertical-align:top"><b>Mobile</b></td><td><a href="tel:${escapeHtml(mobileClean)}">${escapeHtml(intake.mobile)}</a> · <a href="${waLink}">WhatsApp</a></td></tr>
+      ${intake.landline ? row("Landline", intake.landline) : ""}
+      ${intake.address ? row("Address", intake.address) : ""}
+      ${row("City", intake.city)}
+      ${intake.state ? row("State", intake.state) : ""}
+      ${intake.zip ? row("Zip", intake.zip) : ""}
+      ${intake.country ? row("Country", intake.country) : ""}
+    </table>
+
+    <h2 style="margin:20px 0 8px;color:#2F4F3F;font-size:16px">Medical history</h2>
+    <table cellpadding="6" cellspacing="0" style="width:100%;border-collapse:collapse">
+      ${row("Problem details", intake.problemDetails)}
+      ${intake.problemStart ? row("Started", intake.problemStart) : ""}
+      ${row("Common problems", commonProblems)}
+      ${intake.treatedBefore ? row("Treated before", intake.treatedBefore) : ""}
+      ${intake.pastInvestigations ? row("Past investigations", intake.pastInvestigations) : ""}
+    </table>
+
+    <p style="margin-top:24px;color:#666;font-size:13px">Reply within 30 min · Mon–Sat 9 AM – 8 PM IST</p>
+  </div>
+</body></html>`;
+  return client().emails.send({
+    from: FROM,
+    to: [CLINIC_EMAIL],
+    replyTo: intake.email,
+    subject,
     html,
   });
 }

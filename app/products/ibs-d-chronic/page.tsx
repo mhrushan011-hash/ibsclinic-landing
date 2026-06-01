@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 
@@ -44,24 +45,38 @@ export default function IbsDChronicPage() {
 
       {/* HERO */}
       <section className="bg-green-tint">
-        <div className="container-page py-16 md:py-20">
-          <span className="mb-4 inline-block rounded-full bg-green px-3 py-1 text-xs font-semibold text-white">
-            Chronic IBS-D
-          </span>
-          <h1 className="text-h1 text-charcoal">
-            Frequent loose & mushy stools
-          </h1>
-          <p className="mt-5 max-w-prose text-lead text-charcoal-soft">
-            For patients with long-term IBS-D causing daily disruption. This specialist combo
-            targets the gut damage, bacterial imbalance, and urgency behind chronic diarrhea.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <p className="font-heading text-2xl font-bold text-charcoal">₹2,260</p>
-            <p className="text-sm text-charcoal-soft">Consultation + diet plan + support included</p>
+        <div className="container-page grid gap-10 py-16 md:grid-cols-12 md:py-20">
+          <div className="md:col-span-7">
+            <span className="mb-4 inline-block rounded-full bg-green px-3 py-1 text-xs font-semibold text-white">
+              Chronic IBS-D
+            </span>
+            <h1 className="text-h1 text-charcoal">
+              Frequent loose & mushy stools
+            </h1>
+            <p className="mt-5 max-w-prose text-lead text-charcoal-soft">
+              For patients with long-term IBS-D causing daily disruption. This specialist combo
+              targets the gut damage, bacterial imbalance, and urgency behind chronic diarrhea.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <p className="font-heading text-2xl font-bold text-charcoal">₹2,260</p>
+              <p className="text-sm text-charcoal-soft">Consultation + diet plan + support included</p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/" className="btn-primary">Request a Call Back</Link>
+              <a href="tel:+917500334343" className="btn-secondary">Call to Order</a>
+            </div>
           </div>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/" className="btn-primary">Request a Call Back</Link>
-            <a href="tel:+917500334343" className="btn-secondary">Call to Order</a>
+          <div className="md:col-span-5 md:self-center">
+            <div className="overflow-hidden rounded-[24px] border border-gray-border bg-white">
+              <Image
+                src="/products/ibs-d-chronic.jpg"
+                alt="IBS Diarr-Heal Plus and IBS Diarr-Heal powders — Chronic IBS-D combo"
+                width={600}
+                height={450}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
