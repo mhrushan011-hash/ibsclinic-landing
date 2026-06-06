@@ -28,6 +28,11 @@
     @apply underline;
   }
 
+  /* Devanagari content — render Hindi/Hinglish in a script-aware font. */
+  [lang="hi"] {
+    @apply font-devanagari;
+  }
+
   /* Brand-aligned focus ring */
   :focus-visible {
     outline: 2px solid #81af12;

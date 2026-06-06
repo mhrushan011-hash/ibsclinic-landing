@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter, Oswald } from "next/font/google";
+import { Montserrat, Inter, Oswald, Noto_Sans_Devanagari } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -22,6 +22,14 @@ const display = Oswald({
   display: "swap",
   variable: "--font-display",
   weight: ["500", "600"],
+});
+
+// Devanagari — used for the Hindi/Hinglish content (e.g. /incomplete-evacuation).
+const devanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari", "latin"],
+  display: "swap",
+  variable: "--font-devanagari",
+  weight: ["400", "500", "600", "700"],
 });
 
 const SITE_URL =
@@ -86,7 +94,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${heading.variable} ${body.variable} ${display.variable}`}
+      className={`${heading.variable} ${body.variable} ${display.variable} ${devanagari.variable}`}
     >
       <body>
         {/* GTM init — runs early so the dataLayer is ready before form events fire. */}

@@ -166,6 +166,17 @@ const SYMPTOMS: ReadonlyArray<string> = [
   "Sleep disturbed by gut issues",
 ];
 
+// Routine-based "self-check" — the relatable, everyday-language signs of the
+// incomplete-evacuation pattern. Funnels to the dedicated /incomplete-evacuation page.
+const SELF_CHECK: ReadonlyArray<string> = [
+  "Need tea to clear your bowel?",
+  "2–3 trips before leaving home?",
+  "Soft stool but still incomplete?",
+  "Gas even after motion?",
+  "Repeated urge after meals?",
+  "Feel something's still left?",
+];
+
 const STEPS: ReadonlyArray<{ n: number; h: string; p: string }> = [
   {
     n: 1,
@@ -175,17 +186,17 @@ const STEPS: ReadonlyArray<{ n: number; h: string; p: string }> = [
   {
     n: 2,
     h: "Plan tailored to your IBS type",
-    p: "IBS-D, IBS-C, IBS-M — each gets a different plan. Ayurvedic medicine, a personalised diet (often low-FODMAP-aligned), targeted lifestyle changes.",
+    p: "IBS-D, IBS-C, IBS-M — each gets a different plan. Ayurvedic medicine, a personalised diet, targeted lifestyle changes.",
   },
   {
     n: 3,
     h: "Holistic care, week by week",
-    p: "Nutrition support, supplements where needed, mind-body coaching for stress and sleep, plus yoga and pranayama your body can actually do.",
+    p: "Nutrition support, supplements where needed, and mind-body coaching for stress and sleep.",
   },
   {
     n: 4,
-    h: "90-day track + lifelong support",
-    p: "Weekly check-ins, plan adjustments, measurable outcomes. After 90 days, most patients are eating, working, and travelling without fear.",
+    h: "90-day track + continuous support",
+    p: "Weekly follow-ups and personalised plan adjustments tailored to your symptom pattern. Over 90 days, many patients report gradual improvement in bloating, bowel satisfaction, repeated urge, and confidence in daily routine, work and travel.",
   },
 ];
 
@@ -423,6 +434,52 @@ export default function Page() {
                 className="btn-primary"
               >
                 See how we&apos;d treat you — Book a free evaluation →
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* SELF-CHECK — incomplete-evacuation hook */}
+        <section className="bg-gray-light">
+          <div className="container-page py-16 md:py-20">
+            <div className="mb-10 max-w-prose">
+              <h2 className="text-h2">
+                You pass stool daily… but still don&apos;t feel fully clear?
+              </h2>
+              <p className="mt-3 text-charcoal-soft">
+                It&apos;s one of the most missed IBS patterns. If any of these are
+                part of your daily routine, it&apos;s worth a closer look.
+              </p>
+            </div>
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {SELF_CHECK.map((item) => (
+                <li key={item} className="card flex items-start gap-3">
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-tint text-green"
+                  >
+                    ?
+                  </span>
+                  <span className="font-medium text-charcoal">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 rounded-[16px] border border-green/30 bg-green-tint p-5 text-charcoal">
+              <p className="font-heading text-lg">
+                Majority of patients report major improvement in gas, bloating,
+                bowel satisfaction, and quality of life within 90 days.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/incomplete-evacuation" className="btn-primary">
+                See the full hidden-symptom checklist →
+              </Link>
+              <button
+                type="button"
+                onClick={() => openModal("self_check")}
+                className="btn-secondary"
+              >
+                Book a free evaluation
               </button>
             </div>
           </div>

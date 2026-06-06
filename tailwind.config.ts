@@ -60,6 +60,14 @@ const config: Config = {
           "system-ui",
           "sans-serif",
         ],
+        devanagari: [
+          "var(--font-devanagari)",
+          "Noto Sans Devanagari",
+          "var(--font-body)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       borderRadius: {
         sm: "8px",

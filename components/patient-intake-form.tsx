@@ -8,6 +8,7 @@ import {
   COMMON_PROBLEMS,
   genderLabels,
   patientIntakeSchema,
+  SITE_REFERENCE,
   type PatientIntakeInput,
 } from "@/lib/patient-schema";
 import { pushEvent } from "@/lib/analytics";
@@ -88,6 +89,8 @@ export function PatientIntakeForm({
       commonProblems: (data.commonProblems ?? []).join(", "),
       treatedBefore: data.treatedBefore ?? "",
       pastInvestigations: data.pastInvestigations ?? "",
+      otherInfo: data.otherInfo ?? "",
+      siteReference: data.siteReference ?? "",
       consent: "yes",
       _subject: `New patient intake — ${data.fullName}, ${data.city}, ${data.mobile}`,
       _template: "table",
@@ -373,6 +376,39 @@ export function PatientIntakeForm({
             className="input-base resize-y"
             {...register("pastInvestigations")}
           />
+        </Field>
+        <Field
+          id="otherInfo"
+          label="Other information (optional)"
+          error={errors.otherInfo?.message}
+        >
+          <textarea
+            id="otherInfo"
+            rows={3}
+            maxLength={2000}
+            placeholder="Anything else you'd like the doctor to know."
+            className="input-base resize-y"
+            {...register("otherInfo")}
+          />
+        </Field>
+        <Field
+          id="siteReference"
+          label="How did you find us? (optional)"
+          error={errors.siteReference?.message}
+        >
+          <select
+            id="siteReference"
+            className="input-base"
+            defaultValue=""
+            {...register("siteReference")}
+          >
+            <option value="">Select…</option>
+            {SITE_REFERENCE.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
         </Field>
       </fieldset>
 

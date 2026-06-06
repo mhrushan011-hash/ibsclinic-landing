@@ -18,6 +18,17 @@ export const COMMON_PROBLEMS = [
 
 export type CommonProblem = (typeof COMMON_PROBLEMS)[number];
 
+export const SITE_REFERENCE = [
+  "Google",
+  "Referral",
+  "Newspaper",
+  "Social Media",
+  "Friend or Family",
+  "Other",
+] as const;
+
+export type SiteReference = (typeof SITE_REFERENCE)[number];
+
 export const patientIntakeSchema = z.object({
   fullName: z
     .string()
@@ -65,6 +76,12 @@ export const patientIntakeSchema = z.object({
     .max(2000, "Keep it under 2000 characters.")
     .optional()
     .or(z.literal("")),
+  otherInfo: z
+    .string()
+    .max(2000, "Keep it under 2000 characters.")
+    .optional()
+    .or(z.literal("")),
+  siteReference: z.enum(SITE_REFERENCE).optional().or(z.literal("")),
   consent: z.literal(true, {
     errorMap: () => ({ message: "We need your consent to contact you." }),
   }),
