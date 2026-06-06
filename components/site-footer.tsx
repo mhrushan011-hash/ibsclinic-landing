@@ -5,9 +5,14 @@ const PHONE_TEL = "+917500334343";
 
 const SITE_LINKS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
+  { href: "/why-choose-us", label: "Why Choose Us" },
+  { href: "/science", label: "The Science" },
   { href: "/doctors", label: "Doctors" },
   { href: "/products", label: "Products" },
+  { href: "/our-success-stories", label: "Success Stories" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/book-an-appointment", label: "Book an Appointment" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const LEGAL_LINKS: ReadonlyArray<{ href: string; label: string }> = [

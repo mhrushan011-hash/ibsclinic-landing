@@ -12,6 +12,7 @@ const NAV_LINKS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "/about", label: "About" },
   { href: "/doctors", label: "Doctors" },
   { href: "/products", label: "Products" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -58,7 +59,10 @@ export function SimpleHeader() {
           >
             {PHONE_DISPLAY}
           </a>
-          <Link href="/" className="btn-primary hidden text-sm sm:inline-flex">
+          <Link
+            href="/book-an-appointment"
+            className="btn-primary hidden text-sm sm:inline-flex"
+          >
             Book Free Evaluation
           </Link>
           <button
@@ -106,7 +110,7 @@ export function SimpleHeader() {
               📞 {PHONE_DISPLAY}
             </a>
             <Link
-              href="/"
+              href="/book-an-appointment"
               onClick={() => setOpen(false)}
               className="btn-primary mt-2 w-full justify-center text-center"
             >
