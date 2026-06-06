@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CITY_SLUGS } from "@/lib/cities";
+import { BLOG_SLUGS } from "@/lib/blog";
+import { AUTHOR_SLUGS } from "@/lib/doctors";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultation.ibsclinic.com";
@@ -99,6 +101,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${SITE_URL}/best-ibs-doctor-in-india`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/blogs`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified,
       changeFrequency: "yearly",
@@ -131,5 +145,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...corePages, ...cityPages];
+  const blogPages: MetadataRoute.Sitemap = BLOG_SLUGS.map((slug) => ({
+    url: `${SITE_URL}/blogs/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const authorPages: MetadataRoute.Sitemap = AUTHOR_SLUGS.map((slug) => ({
+    url: `${SITE_URL}/author/${slug}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.5,
+  }));
+
+  return [...corePages, ...cityPages, ...blogPages, ...authorPages];
 }

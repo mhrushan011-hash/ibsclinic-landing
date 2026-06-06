@@ -2,7 +2,7 @@
   "name": "ibsclinic-landing",
   "version": "0.1.0",
   "private": true,
-  "description": "IBS Clinic — paid-traffic landing page (book.ibsclinic.com → consultation.ibsclinic.com). Next.js 16 + Tailwind + Resend on Vercel.",
+  "description": "IBS Clinic — paid-traffic landing page (book.ibsclinic.com → consultation.ibsclinic.com). Next.js 16 + Tailwind on Vercel. Forms via formsubmit.co (email) + Google Apps Script (Sheet).",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -12,13 +12,15 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@tailwindcss/typography": "^0.5.19",
     "clsx": "^2.1.1",
     "libphonenumber-js": "^1.11.14",
     "next": "^16.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.0",
-    "resend": "^4.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "tailwind-merge": "^2.5.5",
     "zod": "^3.24.1"
   },

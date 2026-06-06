@@ -31,8 +31,8 @@ export default function PrivacyPage() {
 
         <h2 className="mt-8 font-heading text-h3 text-charcoal">Who sees your data</h2>
         <p className="mt-3">
-          The IBS Clinic medical team and named admins. Processors used: Resend (email),
-          Vercel (hosting), Google Sheets (backup log), Google Workspace (clinic email).
+          The IBS Clinic medical team and named admins. Processors used: formsubmit.co (email alerts),
+          Google Sheets / Google Apps Script (lead log), Vercel (hosting), Google Workspace (clinic email).
         </p>
 
         <h2 className="mt-8 font-heading text-h3 text-charcoal">How long we keep it</h2>

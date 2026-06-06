@@ -1,18 +1,14 @@
 # IBS Clinic — Landing Page
 
-Paid-traffic landing page for IBS Clinic, hosted at `consultation.ibsclinic.com`. Next.js 16 (App Router) + Tailwind + Resend on Vercel. WordPress (`ibsclinic.com`) stays untouched — this app lives on a subdomain.
+Paid-traffic landing page for IBS Clinic, hosted at `consultation.ibsclinic.com`. Next.js 16 (App Router) + Tailwind on Vercel. WordPress (`ibsclinic.com`) stays untouched — this app lives on a subdomain.
 
 ## What this app does
 
 - Renders a fast, conversion-optimised single-page LP for cold Google Ads traffic.
-- Captures leads via a validated React Hook Form + Zod form.
-- Server route `/api/lead`:
-  - Validates server-side (same Zod schema).
-  - Honeypots bot submissions.
-  - Rate-limits per IP.
-  - Sends a clinic notification email via Resend.
-  - Appends the lead to a Google Sheet (backup) via Apps Script webhook.
-  - Returns `{ ok: true }`; client redirects to `/thanks`.
+- Captures leads via validated React Hook Form + Zod forms that **POST straight from the browser** — no server route. This keeps the exact same flow working after the WordPress/Hostinger migration.
+  - **Short `LeadForm`** (site-wide): dual-sink → **formsubmit.co** (clinic alert email) **+** **Apps Script webhook** (Google Sheet row, CSV-exportable). The Sheet write is fire-and-forget, so a Sheet hiccup never blocks the lead.
+  - **Long `PatientIntakeForm`** (`/contact` only): **email only** via formsubmit.co (no Sheet).
+  - Both honeypot bot submissions, validate with Zod client-side, and redirect to `/thanks` on success.
 - `/thanks` fires Google Ads conversion (when configured) and offers call/WhatsApp/calendar tiles.
 
 ## Local development
@@ -20,7 +16,7 @@ Paid-traffic landing page for IBS Clinic, hosted at `consultation.ibsclinic.com`
 ```sh
 npm install
 cp .env.local.example .env.local
-# fill in real values for RESEND_API_KEY, GOOGLE_SHEETS_WEBHOOK_URL, etc.
+# fill in NEXT_PUBLIC_FORMSUBMIT_ENDPOINT and NEXT_PUBLIC_LEAD_SHEET_WEBHOOK_URL
 npm run dev
 ```
 
@@ -32,10 +28,8 @@ See `.env.local.example` for the full list. Critical ones:
 
 | Var | Required? | Notes |
 |---|---|---|
-| `RESEND_API_KEY` | yes | New key — never reuse a leaked one |
-| `RESEND_FROM` | yes | `IBS Clinic <consultation@mail.ibsclinic.com>` once domain is verified |
-| `CLINIC_NOTIFY_EMAIL` | yes | `info@ibsclinic.com` |
-| `GOOGLE_SHEETS_WEBHOOK_URL` | recommended | Apps Script Web App URL |
+| `NEXT_PUBLIC_FORMSUBMIT_ENDPOINT` | yes | formsubmit.co id — hashed token (hides email) or `info@ibsclinic.com`. Both forms |
+| `NEXT_PUBLIC_LEAD_SHEET_WEBHOOK_URL` | recommended | Apps Script Web App `/exec` URL — short LeadForm → Sheet |
 | `NEXT_PUBLIC_GTM_CONTAINER_ID` | for paid traffic | GTM container |
 | `NEXT_PUBLIC_GA4_ID` | for paid traffic | GA4 measurement ID |
 | `NEXT_PUBLIC_ADS_CONVERSION_ID` | for paid traffic | Google Ads conversion ID |
@@ -55,17 +49,15 @@ git commit -m "feat: initial landing page scaffold"
 gh repo create ibsclinic-landing --public --source=. --push
 ```
 
-### 2. Resend domain
+### 2. formsubmit.co activation
 
-- Resend dashboard → **Domains** → Add domain → `mail.ibsclinic.com`.
-- Resend gives you 3 DNS records (SPF, DKIM, MX).
-- In **Hostinger hPanel → Domains → DNS Zone Editor**, add those records.
-- Verify in Resend (5–60 min).
-- Generate a NEW API key.
+- Set `NEXT_PUBLIC_FORMSUBMIT_ENDPOINT=info@ibsclinic.com` (or a hashed token to hide the email).
+- The **first** real submission triggers a one-time confirmation email to that address — click the link once to enable delivery. Until clicked, no alert emails arrive.
+- Optional hardening: after activation, switch the endpoint to the hashed token formsubmit shows you. Flip `_captcha` to `"true"` in the form payloads (or add Turnstile) only if spam appears.
 
 ### 3. Google Sheet
 
-Follow the setup notes at the top of `scripts/google-sheets-apps-script.js`. Get the Web App URL.
+Follow the setup notes at the top of `../tools/lead-capture/leads-to-sheet.gs` (deploy as a Web App). Copy the `/exec` URL into `NEXT_PUBLIC_LEAD_SHEET_WEBHOOK_URL`. Only the short LeadForm writes here.
 
 ### 4. Vercel
 
@@ -96,8 +88,8 @@ Follow the setup notes at the top of `scripts/google-sheets-apps-script.js`. Get
 
 - Set Google Ads Final URL to `https://consultation.ibsclinic.com/`.
 - Run a real test lead. Confirm:
-  - Email lands in `info@ibsclinic.com`
-  - Row appears in the Google Sheet
+  - Alert email lands in `info@ibsclinic.com` (short form and long form both email)
+  - Row appears in the Google Sheet (short form only — the long intake form is email-only)
   - GA4 conversion event fires
 - Start the campaign.
 
@@ -105,12 +97,14 @@ Follow the setup notes at the top of `scripts/google-sheets-apps-script.js`. Get
 
 ```
 Google Ads → consultation.ibsclinic.com (Vercel / Next.js)
-              ├─ /         (the LP)
-              ├─ /api/lead (POST: validate → email → sheets → 200)
+              ├─ /         (the LP — LeadForm site-wide)
+              ├─ /contact  (PatientIntakeForm)
               └─ /thanks   (conversion fire)
-                    │
-                    ├─ Resend → info@ibsclinic.com (clinic)
-                    └─ Apps Script → Google Sheet (backup)
+
+  LeadForm (browser) ─┬─► formsubmit.co ───► info@ibsclinic.com (alert email)
+                      └─► Apps Script ─────► Google Sheet (CSV, fire-and-forget)
+
+  PatientIntakeForm (browser) ──► formsubmit.co ──► info@ibsclinic.com (email only)
 ```
 
 ## Performance targets (Indian 4G mobile)
@@ -146,11 +140,11 @@ Any copy change must pass the editor skill's 6-phase review.
 
 ## Security notes (read this)
 
-- **Secrets only in Vercel env vars and `.env.local`**. Never in source. The `.gitignore` excludes `.env*.local`.
-- **No PII in logs**. The route handler uses `console.error` only for failure paths and never logs the form payload.
-- **Rate-limited** per IP (5 req / 15 min). Replace the in-memory limiter with Vercel KV before high-traffic launch.
-- **Honeypot** field invisible to humans, mandatory empty. Bots that fill it get a silent 200.
-- **Resend API key from `prompt.txt` was rotated** — never re-use exposed keys.
+- **No server secrets.** Forms post from the browser to formsubmit.co + a write-only Apps Script webhook. The `NEXT_PUBLIC_*` endpoints are intentionally public; use a hashed formsubmit token so the clinic email never appears in the bundle.
+- **Honeypot** (`website_url` field + formsubmit `_honey`) invisible to humans, mandatory empty. Bots that fill it get a silent redirect and no email/row.
+- **Client-side Zod validation** blocks malformed submissions before they leave the browser.
+- **Anti-spam escalation** (only if abuse appears): flip `_captcha` to `"true"` in the form payloads, or wire up Cloudflare Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`).
+- **The Apps Script webhook is append-only** — it cannot read or expose existing rows.
 
 ## File map
 
@@ -171,26 +165,28 @@ landing-page/
 │   ├── thanks/page.tsx                  ← post-submit
 │   ├── privacy/page.tsx                 ← DPDP-compliant draft
 │   ├── terms/page.tsx
-│   ├── medical-disclaimer/page.tsx
-│   └── api/lead/route.ts                ← form handler
+│   └── medical-disclaimer/page.tsx
 ├── components/
-│   ├── lead-form.tsx                    ← RHF + Zod, client component
+│   ├── lead-form.tsx                    ← short form, RHF + Zod → formsubmit + Sheet
+│   ├── patient-intake-form.tsx          ← long form, RHF + Zod → formsubmit only
+│   ├── lead-form-modal.tsx              ← modal wrapper for LeadForm
 │   └── floating-cta.tsx                 ← mobile sticky bar
 ├── lib/
-│   ├── schema.ts                        ← Zod (single source of truth)
-│   ├── resend.ts                        ← email client + templates
-│   ├── sheets.ts                        ← Apps Script POST
-│   └── utils.ts                         ← cn() + rate limit
-├── scripts/
-│   └── google-sheets-apps-script.js     ← paste into Apps Script
+│   ├── schema.ts                        ← LeadForm Zod (single source of truth)
+│   ├── patient-schema.ts                ← PatientIntakeForm Zod
+│   ├── forms-config.ts                  ← formsubmit + Sheet endpoints (NEXT_PUBLIC_*)
+│   ├── analytics.ts                     ← GTM pushEvent
+│   └── utils.ts                         ← cn() only
 └── public/
     └── README.md                        ← what assets to drop in
 ```
 
+The deployable Apps Script lives at `../tools/lead-capture/leads-to-sheet.gs`.
+
 ## Next iterations (after v1 launches)
 
 - Replace placeholder hero + doctor portraits with real photography.
-- Move rate-limiter to Vercel KV.
-- Add Cloudflare Turnstile if spam climbs.
+- Switch the formsubmit endpoint to a hashed token (hide the clinic email).
+- Add Cloudflare Turnstile (or flip `_captcha`) if spam climbs.
 - Add A/B variant of H1 + CTA via Vercel Edge Config (when traffic justifies).
 - Build out paid blog cluster pages following the writer skill's content templates.

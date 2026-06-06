@@ -4,9 +4,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { leadSchema, type LeadInput } from "@/lib/schema";
+import { leadSchema, callTimeLabels, type LeadInput } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 import { pushEvent } from "@/lib/analytics";
+import {
+  FORMSUBMIT_AJAX_ENDPOINT,
+  LEAD_SHEET_WEBHOOK_URL,
+} from "@/lib/forms-config";
 
 const CALL_TIMES: ReadonlyArray<{ value: LeadInput["callTime"]; label: string }> = [
   { value: "today", label: "Today" },
@@ -43,16 +47,56 @@ export function LeadForm({
 
   const onSubmit = async (data: LeadInput) => {
     setSubmitError(null);
+
+    // Honeypot tripped — silently redirect so the bot sees a normal success.
+    if (data.website_url) {
+      onSuccess?.();
+      router.push("/thanks");
+      return;
+    }
+
+    // One payload, sent to both sinks. formsubmit.co reads the `_`-prefixed keys
+    // and ignores the rest; the Apps Script reads its header keys and ignores
+    // the `_`-prefixed control fields.
+    const payload = {
+      fullName: data.fullName,
+      phone: data.phone,
+      city: data.city,
+      callTime: callTimeLabels[data.callTime],
+      specificTime: data.specificTime ?? "",
+      concern: data.concern ?? "",
+      consent: "yes",
+      source: "lead_form",
+      _subject: `New IBS lead — ${data.fullName}, ${data.city}, ${callTimeLabels[data.callTime]}`,
+      _template: "table",
+      _captcha: "false",
+      _honey: data.website_url ?? "",
+    };
+
     try {
-      const res = await fetch("/api/lead", {
+      // Sheet sink — fire-and-forget; a slow or failing Sheet must never block
+      // the lead. no-cors means we can't read the reply, but the row still lands.
+      if (LEAD_SHEET_WEBHOOK_URL) {
+        fetch(LEAD_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }).catch(() => {});
+      }
+
+      // Email sink — formsubmit.co AJAX. This is the load-bearing path.
+      const res = await fetch(FORMSUBMIT_AJAX_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => ({}))) as { error?: string };
         setSubmitError(
-          body.error ?? "Couldn't send right now. Please call +91 750 033 4343.",
+          "Couldn't send right now. Please call +91 750 033 4343.",
         );
         return;
       }

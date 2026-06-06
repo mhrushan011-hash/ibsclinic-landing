@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["react-hook-form", "zod", "libphonenumber-js"],
   },
+  async redirects() {
+    return [
+      { source: "/blog", destination: "/blogs", permanent: true },
+      { source: "/blog/:path*", destination: "/blogs/:path*", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

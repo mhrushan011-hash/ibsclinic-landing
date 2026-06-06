@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {
   COMMON_PROBLEMS,
+  genderLabels,
   patientIntakeSchema,
   type PatientIntakeInput,
 } from "@/lib/patient-schema";
 import { pushEvent } from "@/lib/analytics";
+import { FORMSUBMIT_AJAX_ENDPOINT } from "@/lib/forms-config";
 
 export interface PatientIntakeFormProps {
   defaultCity?: string;
@@ -40,17 +42,50 @@ export function PatientIntakeForm({
 
   const onSubmit = async (data: PatientIntakeInput) => {
     setSubmitError(null);
+
+    // Honeypot tripped — silently redirect so the bot sees a normal success.
+    if (data.website_url) {
+      router.push("/thanks");
+      return;
+    }
+
+    // Email-only: the long intake form does NOT write to the Sheet.
+    const payload = {
+      fullName: data.fullName,
+      email: data.email,
+      gender: genderLabels[data.gender],
+      age: String(data.age),
+      mobile: data.mobile,
+      landline: data.landline ?? "",
+      address: data.address ?? "",
+      city: data.city,
+      state: data.state ?? "",
+      zip: data.zip ?? "",
+      country: data.country ?? "",
+      problemDetails: data.problemDetails,
+      problemStart: data.problemStart ?? "",
+      commonProblems: (data.commonProblems ?? []).join(", "),
+      treatedBefore: data.treatedBefore ?? "",
+      pastInvestigations: data.pastInvestigations ?? "",
+      consent: "yes",
+      _subject: `New patient intake — ${data.fullName}, ${data.city}, ${data.mobile}`,
+      _template: "table",
+      _captcha: "false",
+      _honey: data.website_url ?? "",
+    };
+
     try {
-      const res = await fetch("/api/patient-intake", {
+      const res = await fetch(FORMSUBMIT_AJAX_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => ({}))) as { error?: string };
         setSubmitError(
-          body.error ??
-            "Couldn't send right now. Please call +91 750 033 4343.",
+          "Couldn't send right now. Please call +91 750 033 4343.",
         );
         return;
       }
