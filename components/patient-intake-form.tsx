@@ -11,7 +11,10 @@ import {
   type PatientIntakeInput,
 } from "@/lib/patient-schema";
 import { pushEvent } from "@/lib/analytics";
-import { FORMSUBMIT_AJAX_ENDPOINT } from "@/lib/forms-config";
+import {
+  FORMSUBMIT_AJAX_ENDPOINT,
+  LEAD_SHEET_WEBHOOK_URL,
+} from "@/lib/forms-config";
 
 export interface PatientIntakeFormProps {
   defaultCity?: string;
@@ -49,7 +52,25 @@ export function PatientIntakeForm({
       return;
     }
 
-    // Email-only: the long intake form does NOT write to the Sheet.
+    // Fire-and-forget: save common fields to the Sheet (same tab as short form).
+    if (LEAD_SHEET_WEBHOOK_URL) {
+      fetch(LEAD_SHEET_WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: data.fullName,
+          phone: data.mobile,
+          city: data.city,
+          callTime: "",
+          specificTime: "",
+          concern: "",
+          consent: "yes",
+          source: "patient_intake",
+        }),
+      }).catch(() => {});
+    }
+
     const payload = {
       fullName: data.fullName,
       email: data.email,
