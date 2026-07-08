@@ -3,165 +3,71 @@ import { CITY_SLUGS } from "@/lib/cities";
 import { BLOG_SLUGS } from "@/lib/blog";
 import { AUTHOR_SLUGS } from "@/lib/doctors";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultation.ibsclinic.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
+
+type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
+
+/** Absolute URL with exactly one trailing slash, matching `trailingSlash: true`. */
+function abs(path: string): string {
+  const clean = path.replace(/^\/+|\/+$/g, "");
+  return clean ? `${SITE_URL}/${clean}/` : `${SITE_URL}/`;
+}
+
+interface PageEntry {
+  path: string;
+  changeFrequency: ChangeFrequency;
+  priority: number;
+}
+
+const CORE_PAGES: ReadonlyArray<PageEntry> = [
+  { path: "", changeFrequency: "weekly", priority: 1.0 },
+  { path: "about", changeFrequency: "monthly", priority: 0.7 },
+  { path: "contact", changeFrequency: "monthly", priority: 0.7 },
+  { path: "doctors", changeFrequency: "monthly", priority: 0.8 },
+  // Products are intentionally excluded — the store is not live yet (every
+  // /products* URL 301s to home; see next.config.ts). Re-add when it returns.
+  { path: "book-an-appointment", changeFrequency: "weekly", priority: 0.9 },
+  { path: "why-choose-us", changeFrequency: "monthly", priority: 0.7 },
+  { path: "science", changeFrequency: "monthly", priority: 0.7 },
+  { path: "our-success-stories", changeFrequency: "monthly", priority: 0.7 },
+  { path: "faq", changeFrequency: "monthly", priority: 0.7 },
+  { path: "best-ibs-doctor-in-india", changeFrequency: "monthly", priority: 0.8 },
+  { path: "incomplete-evacuation", changeFrequency: "monthly", priority: 0.8 },
+  { path: "blogs", changeFrequency: "weekly", priority: 0.7 },
+  { path: "privacy", changeFrequency: "yearly", priority: 0.3 },
+  { path: "terms", changeFrequency: "yearly", priority: 0.3 },
+  { path: "return-policy", changeFrequency: "yearly", priority: 0.3 },
+  { path: "medical-disclaimer", changeFrequency: "yearly", priority: 0.3 },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  const corePages: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${SITE_URL}/about`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/contact`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/doctors`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/products`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/products/ibs-m`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/products/ibs-c`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/products/ibs-d-chronic`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/products/ibs-d`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/products/ibs-diapro-diglac-plus`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/book-an-appointment`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}/why-choose-us`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/science`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/our-success-stories`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/faq`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/best-ibs-doctor-in-india`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/incomplete-evacuation`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/blogs`,
-      lastModified,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/privacy`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/terms`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/return-policy`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/medical-disclaimer`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ];
+  const corePages: MetadataRoute.Sitemap = CORE_PAGES.map((entry) => ({
+    url: abs(entry.path),
+    lastModified,
+    changeFrequency: entry.changeFrequency,
+    priority: entry.priority,
+  }));
 
   const cityPages: MetadataRoute.Sitemap = CITY_SLUGS.map((slug) => ({
-    url: `${SITE_URL}/${slug}`,
+    url: abs(slug),
     lastModified,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
   const blogPages: MetadataRoute.Sitemap = BLOG_SLUGS.map((slug) => ({
-    url: `${SITE_URL}/blogs/${slug}`,
+    url: abs(`blogs/${slug}`),
     lastModified,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const authorPages: MetadataRoute.Sitemap = AUTHOR_SLUGS.map((slug) => ({
-    url: `${SITE_URL}/author/${slug}`,
+    url: abs(`author/${slug}`),
     lastModified,
-    changeFrequency: "monthly" as const,
+    changeFrequency: "monthly",
     priority: 0.5,
   }));
 

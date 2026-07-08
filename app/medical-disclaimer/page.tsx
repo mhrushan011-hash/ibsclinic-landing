@@ -12,7 +12,7 @@ export default function MedicalDisclaimerPage() {
         <h1 className="text-h2 text-charcoal">Medical Disclaimer</h1>
 
         <p className="mt-6">
-          The information provided on consultation.ibsclinic.com — including blog posts,
+          The information provided on ibsclinic.com — including blog posts,
           symptoms lists, treatment descriptions, and FAQs — is for educational purposes only.
           It is not a substitute for personal medical advice from a qualified clinician.
         </p>

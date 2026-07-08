@@ -15,8 +15,7 @@ import {
 } from "@/lib/blog";
 import { getDoctor } from "@/lib/doctors";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultation.ibsclinic.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
 

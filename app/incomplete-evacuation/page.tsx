@@ -4,8 +4,7 @@ import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "@/components/lead-form";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultation.ibsclinic.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
 
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
@@ -369,12 +368,8 @@ export default function IncompleteEvacuationPage() {
                 At IBS Clinic, we focus on improving
               </h2>
               <p className="mt-3 text-charcoal-soft">
-                Plans are matched to your subtype — from the{" "}
-                <Link href="/products/ibs-c">IBS-C combo</Link> to the{" "}
-                <Link href="/products/ibs-diapro-diglac-plus">
-                  urgency-after-meals (gastrocolic) combo
-                </Link>
-                .
+                Plans are matched to your subtype — from the IBS-C combo to the
+                urgency-after-meals (gastrocolic) combo.
               </p>
             </div>
             <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

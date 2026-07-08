@@ -63,83 +63,9 @@ const COMPARE_COLUMNS: ReadonlyArray<{
   { id: "us", title: "IBS Clinic", image: "/compare/ibs-clinic.png", featured: true },
 ];
 
-interface Product {
-  slug: string;
-  type: string;
-  headline: string;
-  symptoms: ReadonlyArray<string>;
-  combo: string;
-  price: string;
-  image: string;
-}
-
-const PRODUCTS: ReadonlyArray<Product> = [
-  {
-    slug: "ibs-m",
-    type: "IBS-M",
-    headline: "Alternating constipation & diarrhea",
-    symptoms: [
-      "Swinging between loose stools and no stools",
-      "Abdominal bloating throughout the day",
-      "Unpredictable bowel patterns",
-    ],
-    combo: "IBS Diglac + IBS Diapro",
-    price: "₹2,260",
-    image: "/products/ibs-m.jpg",
-  },
-  {
-    slug: "ibs-c",
-    type: "IBS-C",
-    headline: "Chronic constipation & gas",
-    symptoms: [
-      "Straining for days with no relief",
-      "Painful gas, bloating, and acidity",
-      "Incomplete evacuation feeling",
-    ],
-    combo: "IBS Diglac + IBS Diglac Plus",
-    price: "₹2,260",
-    image: "/products/ibs-c.jpg",
-  },
-  {
-    slug: "ibs-d-chronic",
-    type: "Chronic IBS-D",
-    headline: "Frequent loose & mushy stools",
-    symptoms: [
-      "Loose or mushy stools multiple times daily",
-      "Stomach discomfort and urgency",
-      "Prolonged gut inflammation",
-    ],
-    combo: "IBS Diglac + IBS Diapro",
-    price: "₹2,260",
-    image: "/products/ibs-d-chronic.jpg",
-  },
-  {
-    slug: "ibs-d",
-    type: "IBS-D",
-    headline: "Mild diarrhea & bacterial imbalance",
-    symptoms: [
-      "Frequent loose stools and dysentery episodes",
-      "Gas, bloating, and stomach pain",
-      "Gut bacterial imbalance",
-    ],
-    combo: "IBS Diarrheal Plus + IBS Diapro",
-    price: "₹2,260",
-    image: "/products/ibs-d.jpg",
-  },
-  {
-    slug: "ibs-diapro-diglac-plus",
-    type: "IBS-C + Gastrocolic",
-    headline: "Urgency after meals & SIBO",
-    symptoms: [
-      "Frequent urge to go after eating but can't fully evacuate",
-      "Small intestinal bacterial overgrowth (SIBO)",
-      "Flatulence, indigestion, and stomach pain",
-    ],
-    combo: "IBS Diapro + IBS Diglac Plus",
-    price: "₹2,260",
-    image: "/products/ibs-diapro-diglac-plus.jpg",
-  },
-];
+// The products showcase is intentionally omitted from the homepage while the
+// store is offline (lead-gen only). The /products pages still exist in the repo
+// but are hidden and 301 to home — re-add this section when the store returns.
 
 const OUTCOMES: ReadonlyArray<string> = [
   "Better bowel satisfaction & lighter feeling after motion",
@@ -567,59 +493,8 @@ export default function Page() {
           </div>
         </section>
 
-        {/* PRODUCTS */}
-        <section className="bg-white">
-          <div className="container-page border-t border-gray-border py-16 md:py-20">
-            <div className="mb-10 max-w-prose">
-              <h2 className="text-h2">Find your IBS combo — matched to your subtype</h2>
-              <p className="mt-3 text-charcoal-soft">
-                Every IBS type responds differently. Our specialist-formulated powder combos target your specific symptoms.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {PRODUCTS.map((p) => (
-                <div key={p.slug} className="card flex flex-col">
-                  <div className="-mx-6 -mt-6 mb-4 overflow-hidden rounded-t-[16px] bg-green-tint">
-                    <Image
-                      src={p.image}
-                      alt={`${p.combo} — ${p.type} powder combo`}
-                      width={480}
-                      height={360}
-                      className="aspect-[4/3] w-full object-cover"
-                    />
-                  </div>
-                  <span className="mb-3 inline-block w-fit rounded-full bg-green px-3 py-1 text-xs font-semibold text-white">
-                    {p.type}
-                  </span>
-                  <h3 className="font-heading text-lg text-charcoal">{p.headline}</h3>
-                  <ul className="mt-3 grow space-y-1.5 text-sm text-charcoal-soft">
-                    {p.symptoms.map((s) => (
-                      <li key={s} className="flex items-start gap-2">
-                        <span className="mt-0.5 text-green" aria-hidden="true">•</span>
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-4 border-t border-gray-border pt-4">
-                    <p className="text-sm font-medium text-charcoal">{p.combo}</p>
-                    <p className="mt-0.5 text-sm text-charcoal-soft">{p.price} · Consultation included</p>
-                  </div>
-                  <Link
-                    href={`/products/${p.slug}`}
-                    className="btn-secondary mt-4 text-center text-sm"
-                  >
-                    Learn more →
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <Link href="/products" className="btn-primary inline-block">
-                View all product combos
-              </Link>
-            </div>
-          </div>
-        </section>
+        {/* PRODUCTS section removed while the store is offline (lead-gen only).
+            Restore from git history when the WooCommerce store returns. */}
 
         {/* WHY SPECIALIST */}
         <section className="bg-green-tint">

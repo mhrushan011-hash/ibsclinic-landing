@@ -32,8 +32,7 @@ const devanagari = Noto_Sans_Devanagari({
   weight: ["400", "500", "600", "700"],
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://consultation.ibsclinic.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

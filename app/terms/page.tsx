@@ -27,7 +27,7 @@ export default function TermsPage() {
             1. Acceptance of terms
           </h2>
           <p className="mt-3">
-            By accessing or using consultation.ibsclinic.com (the
+            By accessing or using ibsclinic.com (the
             &ldquo;Service&rdquo;) you agree to be bound by these Terms of
             Service. If you do not agree, please do not use the Service.
           </p>
