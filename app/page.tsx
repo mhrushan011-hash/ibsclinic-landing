@@ -10,6 +10,7 @@ import { LeadFormModal } from "@/components/lead-form-modal";
 import { SymptomsCarousel } from "@/components/symptoms-carousel";
 import { Roadmap } from "@/components/roadmap";
 import { SiteFooter } from "@/components/site-footer";
+import { DoctorCards } from "@/components/doctor-cards";
 import { pushEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
@@ -123,33 +124,6 @@ const STEPS: ReadonlyArray<{ n: number; h: string; p: string }> = [
     n: 4,
     h: "90-day track + continuous support",
     p: "Weekly follow-ups and personalised plan adjustments tailored to your symptom pattern. Over 90 days, many patients report gradual improvement in bloating, bowel satisfaction, repeated urge, and confidence in daily routine, work and travel.",
-  },
-];
-
-const DOCTORS: ReadonlyArray<{ name: string; creds: string; bio: string; image: string }> = [
-  {
-    name: "Dr. Kamal K Khajuria",
-    creds: "Founder, ND (Naturopathy)",
-    bio: "Founded IBS Clinic 18+ years ago. Has personally guided treatment for thousands of IBS patients across India and Bangladesh.",
-    image: "/doctors/dr-kamal.webp",
-  },
-  {
-    name: "Dr. Keshav Raj",
-    creds: "BAMS, MD (Ayurveda)",
-    bio: "Senior Ayurvedic specialist. Focuses on dosha-tailored protocols for IBS-D and IBS-M presentations.",
-    image: "/doctors/dr-keshav.webp",
-  },
-  {
-    name: "Dr. Rajeev Gaur",
-    creds: "BAMS",
-    bio: "Ayurvedic Physician. Specialises in long-form patient case-history work and plan personalisation.",
-    image: "/doctors/dr-rajeev.webp",
-  },
-  {
-    name: "Dr. Nishikant Dwivedi",
-    creds: "BAMS, Ayurvedacharya",
-    bio: "Ayurvedic Physician with deep grounding in classical formulations and Panchakarma protocols.",
-    image: "/doctors/dr-nishikant.webp",
   },
 ];
 
@@ -557,22 +531,7 @@ export default function Page() {
                 Reviewed by senior physicians with 18+ years combined IBS specialty experience.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {DOCTORS.map((d) => (
-                <article key={d.name} className="card">
-                  <Image
-                    src={d.image}
-                    alt={d.name}
-                    width={80}
-                    height={80}
-                    className="mb-4 h-20 w-20 rounded-full object-cover"
-                  />
-                  <h3 className="font-heading text-lg text-charcoal">{d.name}</h3>
-                  <p className="text-sm font-medium text-green">{d.creds}</p>
-                  <p className="mt-3 text-sm text-charcoal-soft">{d.bio}</p>
-                </article>
-              ))}
-            </div>
+            <DoctorCards />
             <div className="mt-8">
               <Link href="/doctors" className="btn-secondary inline-block">
                 Meet the full team →

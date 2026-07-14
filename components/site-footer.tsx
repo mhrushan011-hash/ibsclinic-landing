@@ -9,6 +9,7 @@ const SITE_LINKS: ReadonlyArray<{ href: string; label: string }> = [
   { href: "/science", label: "The Science" },
   { href: "/doctors", label: "Doctors" },
   { href: "/best-ibs-doctor-in-india", label: "Best IBS Doctor in India" },
+  { href: "/products", label: "Treatment Combos" },
   { href: "/blogs", label: "Blog" },
   { href: "/our-success-stories", label: "Success Stories" },
   { href: "/faq", label: "FAQ" },

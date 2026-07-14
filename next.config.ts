@@ -42,58 +42,57 @@ const nextConfig: NextConfig = {
         destination: "/incomplete-evacuation",
         permanent: true,
       },
-      // Old condition page that used to map to a product; products are not
-      // live (see below), so send it to the home page.
+      // PRODUCTS ARE LIVE (combo pages only — lead-gen, no cart yet; the
+      // WooCommerce checkout returns later). The /products/** pages render
+      // normally, so there is NO blanket /products redirect. The legacy
+      // WordPress/WooCommerce product URLs below 301 to their matching new
+      // combo page (or the /products hub) so SEO equity carries over. There are
+      // no single-powder pages — those slugs point at the combos hub.
+
+      // Old condition page that used to map to a product.
       {
         source: "/chronic-ibs-d-frequent-loose-and-mushy-stools",
-        destination: "/",
+        destination: "/products/ibs-d-chronic",
         permanent: true,
       },
 
-      // PRODUCTS ARE NOT LIVE (lead-gen only; the WooCommerce store returns
-      // later). The /products pages still exist in the repo but are hidden from
-      // the website: every product, powder, combo and WooCommerce URL — old or
-      // new — 301s to the home page. Do not remove the /products/** page code.
-      { source: "/products", destination: "/", permanent: true },
-      { source: "/products/:path*", destination: "/", permanent: true },
-
-      // Legacy root long-slug product pages
+      // Legacy root long-slug product pages -> matching combo
       {
         source:
           "/ibs-m-ibs-diglac-and-ibs-diapro-powders-for-alternative-constipation-and-diarrhea",
-        destination: "/",
+        destination: "/products/ibs-m",
         permanent: true,
       },
       {
         source:
           "/ibs-c-ibs-diglac-and-ibs-diglac-plus-powders-for-chronic-ibs-constipation",
-        destination: "/",
+        destination: "/products/ibs-c",
         permanent: true,
       },
       {
         source: "/ibs-d-ibs-diarrheal-plus-and-diapro-powders",
-        destination: "/",
+        destination: "/products/ibs-d",
         permanent: true,
       },
       {
         source: "/ibs-diapro-and-ibs-diglac-plus-powder",
-        destination: "/",
+        destination: "/products/ibs-diapro-diglac-plus",
         permanent: true,
       },
-      { source: "/combo", destination: "/", permanent: true },
+      { source: "/combo", destination: "/products", permanent: true },
 
-      // Individual-powder pages
-      { source: "/diapro-ibs-powder", destination: "/", permanent: true },
-      { source: "/diarrheal-plus-powder", destination: "/", permanent: true },
-      { source: "/ibs-diarrheal-powder", destination: "/", permanent: true },
-      { source: "/ibs-diglac-powder", destination: "/", permanent: true },
-      { source: "/ibs-diglac-plus-powder", destination: "/", permanent: true },
-      { source: "/product-tag/:slug*", destination: "/", permanent: true },
+      // Individual-powder pages (no single-powder pages exist) -> combos hub
+      { source: "/diapro-ibs-powder", destination: "/products", permanent: true },
+      { source: "/diarrheal-plus-powder", destination: "/products", permanent: true },
+      { source: "/ibs-diarrheal-powder", destination: "/products", permanent: true },
+      { source: "/ibs-diglac-powder", destination: "/products", permanent: true },
+      { source: "/ibs-diglac-plus-powder", destination: "/products", permanent: true },
+      { source: "/product-tag/:slug*", destination: "/products", permanent: true },
 
-      // WooCommerce system pages
+      // WooCommerce system pages — store checkout still offline
+      { source: "/shop", destination: "/products", permanent: true },
       { source: "/cart", destination: "/", permanent: true },
       { source: "/checkout", destination: "/", permanent: true },
-      { source: "/shop", destination: "/", permanent: true },
       { source: "/my-account", destination: "/", permanent: true },
       { source: "/my-account/:path*", destination: "/", permanent: true },
 

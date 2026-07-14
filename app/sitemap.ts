@@ -24,8 +24,7 @@ const CORE_PAGES: ReadonlyArray<PageEntry> = [
   { path: "about", changeFrequency: "monthly", priority: 0.7 },
   { path: "contact", changeFrequency: "monthly", priority: 0.7 },
   { path: "doctors", changeFrequency: "monthly", priority: 0.8 },
-  // Products are intentionally excluded — the store is not live yet (every
-  // /products* URL 301s to home; see next.config.ts). Re-add when it returns.
+  { path: "products", changeFrequency: "monthly", priority: 0.8 },
   { path: "book-an-appointment", changeFrequency: "weekly", priority: 0.9 },
   { path: "why-choose-us", changeFrequency: "monthly", priority: 0.7 },
   { path: "science", changeFrequency: "monthly", priority: 0.7 },
@@ -38,6 +37,15 @@ const CORE_PAGES: ReadonlyArray<PageEntry> = [
   { path: "terms", changeFrequency: "yearly", priority: 0.3 },
   { path: "return-policy", changeFrequency: "yearly", priority: 0.3 },
   { path: "medical-disclaimer", changeFrequency: "yearly", priority: 0.3 },
+];
+
+/** Combo product detail pages under /products (the listing is in CORE_PAGES). */
+const PRODUCT_SLUGS: ReadonlyArray<string> = [
+  "ibs-m",
+  "ibs-c",
+  "ibs-d-chronic",
+  "ibs-d",
+  "ibs-diapro-diglac-plus",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -57,6 +65,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const productPages: MetadataRoute.Sitemap = PRODUCT_SLUGS.map((slug) => ({
+    url: abs(`products/${slug}`),
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = BLOG_SLUGS.map((slug) => ({
     url: abs(`blogs/${slug}`),
     lastModified,
@@ -71,5 +86,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }));
 
-  return [...corePages, ...cityPages, ...blogPages, ...authorPages];
+  return [...corePages, ...productPages, ...cityPages, ...blogPages, ...authorPages];
 }

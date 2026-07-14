@@ -2,43 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
+import { DOCTOR_LIST } from "@/lib/doctors";
 
 export const metadata: Metadata = {
   title: "Our Doctors | IBS Clinic — Specialist IBS Care",
   description:
     "Meet the specialist doctors at IBS Clinic. 18+ years of IBS-specific care combining Naturopathy, Ayurveda, and modern testing.",
 };
-
-const DOCTORS = [
-  {
-    name: "Dr. Kamal K Khajuria",
-    creds: "Founder, ND (Naturopathy)",
-    image: "/doctors/dr-kamal.webp",
-    bio: "Dr. Kamal founded IBS Clinic over 18 years ago after experiencing IBS himself. His personal journey gave him a unique perspective on patient-centred care — understanding not just the clinical picture but the anxiety, diet restrictions, and daily disruption that comes with IBS. He has personally guided treatment for thousands of patients across India and Bangladesh, developing the integrated Naturopathy + Ayurveda protocols the clinic is known for today.",
-    speciality: "Naturopathy · IBS protocol design · Patient history",
-  },
-  {
-    name: "Dr. Keshav Raj",
-    creds: "BAMS, MD (Ayurveda)",
-    image: "/doctors/dr-keshav.webp",
-    bio: "Dr. Keshav is a senior Ayurvedic specialist with an MD in Ayurveda and deep clinical experience in IBS-D and IBS-M presentations. He focuses on dosha-tailored protocols — matching the correct Ayurvedic formulation to the patient's constitutional type and IBS subtype. He oversees the integration of modern gut testing with traditional Ayurvedic diagnostics.",
-    speciality: "Ayurveda · IBS-D · IBS-M · Dosha assessment",
-  },
-  {
-    name: "Dr. Rajeev Gaur",
-    creds: "BAMS",
-    image: "/doctors/dr-rajeev.webp",
-    bio: "Dr. Rajeev is an Ayurvedic Physician who specialises in long-form patient case-history work. He is known for thorough one-on-one consultations that uncover triggers, dietary patterns, and lifestyle factors most doctors miss. His detailed case-building directly informs each personalised treatment plan.",
-    speciality: "Ayurveda · Patient case history · Plan personalisation",
-  },
-  {
-    name: "Dr. Nishikant Dwivedi",
-    creds: "BAMS, Ayurvedacharya",
-    image: "/doctors/dr-nishikant.webp",
-    bio: "Dr. Nishikant holds the title of Ayurvedacharya and brings deep grounding in classical Ayurvedic formulations and Panchakarma protocols. He contributes to the clinic's formulation work — ensuring that every herbal combination used in treatment is backed by classical texts and validated through clinical outcomes.",
-    speciality: "Classical Ayurveda · Panchakarma · Formulations",
-  },
-];
 
 export default function DoctorsPage() {
   return (
@@ -73,7 +43,7 @@ export default function DoctorsPage() {
       <section className="bg-white">
         <div className="container-page py-16 md:py-20">
           <div className="grid gap-12">
-            {DOCTORS.map((d) => (
+            {DOCTOR_LIST.map((d) => (
               <article
                 key={d.name}
                 className="grid gap-8 md:grid-cols-[200px_1fr]"

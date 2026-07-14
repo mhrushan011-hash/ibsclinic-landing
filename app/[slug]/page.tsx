@@ -5,6 +5,7 @@ import Image from "next/image";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "@/components/lead-form";
+import { DoctorCards } from "@/components/doctor-cards";
 import { CITY_DATA, CITY_SLUGS } from "@/lib/cities";
 
 export const dynamicParams = false;
@@ -82,50 +83,6 @@ const TREATMENT_STEPS: ReadonlyArray<string> = [
   "Gut–brain axis therapy",
   "Progress monitoring & plan adjustment",
   "Long-term maintenance & prevention",
-];
-
-interface DoctorCard {
-  name: string;
-  title: string;
-  exp: string;
-  creds: string;
-  bio: string;
-  photo: string;
-}
-
-const DOCTORS: ReadonlyArray<DoctorCard> = [
-  {
-    name: "Dr. Kamal K Khajuria",
-    title: "Founder of IBS Clinic",
-    exp: "18+ years",
-    creds: "MBBS, MD (Gastroenterology), DNB",
-    bio: "Director & Head of Gastroenterology, expert in IBS and functional bowel disorders.",
-    photo: "/doctors/dr-kamal.webp",
-  },
-  {
-    name: "Dr. Keshav Raj",
-    title: "IBS Specialist",
-    exp: "12+ years",
-    creds: "BAMS, MD (Ayu)",
-    bio: "Specialist in dietary management of IBS and gut-health optimisation.",
-    photo: "/doctors/dr-keshav.webp",
-  },
-  {
-    name: "Dr. Rajeev Gaur",
-    title: "IBS Doctor",
-    exp: "15+ years",
-    creds: "BAMS — Ayurvedic Physician",
-    bio: "Expert in gut–brain axis disorders and metabolic health management.",
-    photo: "/doctors/dr-rajeev.webp",
-  },
-  {
-    name: "Dr. Nishikant Dwivedi",
-    title: "Senior IBS Specialist",
-    exp: "30+ years",
-    creds: "B.A.M.S — Ayurvedacharya",
-    bio: "Specialist in stress management and the psychological aspects of IBS.",
-    photo: "/doctors/dr-nishikant.webp",
-  },
 ];
 
 interface Testimonial {
@@ -391,29 +348,9 @@ export default async function CityPage({ params }: PageProps) {
             Our team brings together expertise in gastroenterology, nutrition,
             psychology, and integrative medicine to provide holistic IBS care.
           </p>
-          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {DOCTORS.map((d) => (
-              <li key={d.name} className="card">
-                <div className="relative h-40 w-full overflow-hidden rounded-[12px] bg-[#FBF6EC]">
-                  <Image
-                    src={d.photo}
-                    alt={d.name}
-                    fill
-                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 90vw"
-                    className="object-cover"
-                  />
-                </div>
-                <p className="mt-4 font-heading text-lg text-charcoal">
-                  {d.name}
-                </p>
-                <p className="mt-1 text-sm text-green">{d.title}</p>
-                <p className="mt-1 text-xs text-charcoal-soft">
-                  {d.exp} · {d.creds}
-                </p>
-                <p className="mt-2 text-sm text-charcoal-soft">{d.bio}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-8">
+            <DoctorCards />
+          </div>
           <p className="mt-8">
             <Link href="/doctors" className="btn-secondary inline-block">
               Meet the full team →
