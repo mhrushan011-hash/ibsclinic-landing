@@ -9,6 +9,7 @@ import { post as post_ibs_ayurvedic_treatment } from "./posts/ibs-ayurvedic-trea
 import { post as post_ibs_home_remedies } from "./posts/ibs-home-remedies";
 import { post as post_ibs_diet_plan } from "./posts/ibs-diet-plan";
 import { post as post_worst_foods_for_ibs } from "./posts/worst-foods-for-ibs";
+import { post as post_process_of_digestion } from "./posts/process-of-digestion";
 
 export type { BlogPost, BlogFaq } from "./types";
 
@@ -23,6 +24,7 @@ const ALL_POSTS: ReadonlyArray<BlogPost> = [
   post_ibs_home_remedies,
   post_ibs_diet_plan,
   post_worst_foods_for_ibs,
+  post_process_of_digestion,
 ];
 
 export const BLOG_POSTS: Readonly<Record<string, BlogPost>> = Object.fromEntries(
