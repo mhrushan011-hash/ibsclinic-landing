@@ -49,7 +49,7 @@ export const post: BlogPost = {
 
 One of the most common digestive complaints is the feeling of [incomplete bowel evacuation](/incomplete-evacuation/)—the sensation that the bowel has not emptied completely after passing a bowel movement. This symptom can occur in many digestive conditions and functional bowel disorders, even when routine investigations are normal. It may lead to repeated toilet visits, excessive straining, abdominal pressure, gas, bloating, and the persistent feeling that some stool is still left behind.
 
-![The process of digestion step by step — the digestive journey of food from the brain and mouth through the esophagus, stomach, small intestine, large intestine, sigmoid colon and rectum to the anus](/blog/digestive-journey.png "Figure 1. The Digestive Journey")
+![The process of digestion step by step — the digestive journey of food from the brain and mouth through the esophagus, stomach, small intestine, large intestine, sigmoid colon and rectum to the anus](/figures/digestive-journey.png "Figure 1. The Digestive Journey")
 
 ## Step 1: The Brain – Where Digestion Begins
 

@@ -12,9 +12,13 @@ interface FigureDimensions {
  * real numbers lets next/image reserve the correct box, so an infographic never
  * shifts the layout while it loads. Add an entry whenever a new figure lands in
  * /public — the fallback below only keeps things from breaking.
+ *
+ * Figures live in `public/figures/`, NOT `public/blog/`: next.config.ts carries
+ * a legacy `/blog/:path*` → `/blogs/:path*` redirect, so anything served from
+ * `/blog/` 308s away and 404s.
  */
 const FIGURE_DIMENSIONS: Readonly<Record<string, FigureDimensions>> = {
-  "/blog/digestive-journey.png": { width: 1536, height: 1024 },
+  "/figures/digestive-journey.png": { width: 1536, height: 1024 },
 };
 
 const FALLBACK_DIMENSIONS: FigureDimensions = { width: 1200, height: 800 };
