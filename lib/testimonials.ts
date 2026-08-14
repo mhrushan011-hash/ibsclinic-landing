@@ -30,7 +30,7 @@ export const TESTIMONIALS: ReadonlyArray<Testimonial> = [
   },
   {
     quote:
-      "I was losing weight rapidly and couldn't digest even rice. Dr Kamal listened to my full history and gave me a plan. I'm well now.",
+      "I was losing weight rapidly and couldn't digest even rice. Kamal listened to my full history and gave me a plan. I'm well now.",
     name: "Ashish",
     meta: "Bihar · 2 years of IBS",
   },

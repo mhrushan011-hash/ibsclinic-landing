@@ -47,7 +47,7 @@ const STORIES: ReadonlyArray<Story> = [
   },
   {
     quote:
-      "I was suffering from IBS for the last 2 years. I was not able to digest anything, not even rice, and I was losing weight rapidly. Then I got to know about IBS Clinic. Dr Kamal listened to all my problems and gave me the medicine — and finally I got cured from this chronic IBS.",
+      "I was suffering from IBS for the last 2 years. I was not able to digest anything, not even rice, and I was losing weight rapidly. Then I got to know about IBS Clinic. Kamal listened to all my problems and gave me the medicine — and finally I got cured from this chronic IBS.",
     name: "Ashish Kumar",
     meta: "Bihar · 2 years of IBS",
   },

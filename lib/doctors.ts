@@ -25,13 +25,13 @@ export interface Doctor {
 export const DOCTORS: Readonly<Record<string, Doctor>> = {
   kamal: {
     slug: "kamal",
-    name: "Dr. Kamal K Khajuria",
+    name: "Kamal K Khajuria",
     creds: "Founder, ND (Naturopathy)",
     exp: "18+ years",
     speciality: "Naturopathy · IBS protocol design · Patient history",
     cardBio:
       "Founded IBS Clinic 18+ years ago. Has personally guided treatment for thousands of IBS patients across India and Bangladesh.",
-    bio: "Dr. Kamal founded IBS Clinic over 18 years ago after experiencing IBS himself. His personal journey gave him a unique perspective on patient-centred care — understanding not just the clinical picture but the anxiety, diet restrictions, and daily disruption that come with IBS. He has personally guided treatment for thousands of patients across India and Bangladesh, developing the integrated Naturopathy and Ayurveda protocols the clinic is known for today.",
+    bio: "Kamal K Khajuria founded IBS Clinic over 18 years ago after experiencing IBS himself. His personal journey gave him a unique perspective on patient-centred care — understanding not just the clinical picture but the anxiety, diet restrictions, and daily disruption that come with IBS. He has personally guided treatment for thousands of patients across India and Bangladesh, developing the integrated Naturopathy and Ayurveda protocols the clinic is known for today.",
     image: "/doctors/dr-kamal.webp",
     isAuthor: true,
   },

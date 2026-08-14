@@ -6,7 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 export const metadata: Metadata = {
   title: "About IBS Clinic — Healing Hands with Holistic Science",
   description:
-    "IBS Clinic is the world's first online specialist clinic for Irritable Bowel Syndrome and functional gut disorders. Led by Dr. Kamal K Khajuria with 18+ years of clinical experience.",
+    "IBS Clinic is the world's first online specialist clinic for Irritable Bowel Syndrome and functional gut disorders. Led by Kamal K Khajuria with 18+ years of clinical experience.",
   alternates: { canonical: "/about" },
 };
 
@@ -114,7 +114,7 @@ export default function AboutPage() {
                   Founder & Director
                 </p>
                 <h2 className="mt-2 font-heading text-h3 text-charcoal">
-                  Dr. Kamal K Khajuria (ND)
+                  Kamal K Khajuria (ND)
                 </h2>
                 <p className="mt-2 text-sm text-charcoal-soft">
                   Twice Gold Medalist, Yoga Federation of India · 18+ years of

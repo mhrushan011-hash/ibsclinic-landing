@@ -94,12 +94,12 @@ const TESTIMONIALS: ReadonlyArray<Testimonial> = [
   {
     name: "Akshobhya Magotra",
     quote:
-      "I received a personalised plan from Dr. Kamal. My bloating and discomfort reduced within days. After three months, my energy and symptoms improved greatly.",
+      "I received a personalised plan from Kamal. My bloating and discomfort reduced within days. After three months, my energy and symptoms improved greatly.",
   },
   {
     name: "Ashish Kumar",
     quote:
-      "I was suffering from IBS for 2 years and lost confidence. After consulting Dr. Kamal, I got a new life. Patience, proper diet, and medicine truly worked.",
+      "I was suffering from IBS for 2 years and lost confidence. After consulting Kamal, I got a new life. Patience, proper diet, and medicine truly worked.",
   },
   {
     name: "Sanskar Gupta",
@@ -109,12 +109,12 @@ const TESTIMONIALS: ReadonlyArray<Testimonial> = [
   {
     name: "Abhishek Mishra",
     quote:
-      "I had IBS since 2021. With Dr. Kamal's guidance and 7 months of treatment, I am now 80% cured and can eat normally.",
+      "I had IBS since 2021. With Kamal's guidance and 7 months of treatment, I am now 80% cured and can eat normally.",
   },
   {
     name: "Mahesh Ghughtyal",
     quote:
-      "I lost 22 Kg due to IBS in 2014. After consulting Dr. Kamal, within 2 months I returned to normal. Many of my family members also benefited.",
+      "I lost 22 Kg due to IBS in 2014. After consulting Kamal, within 2 months I returned to normal. Many of my family members also benefited.",
   },
 ];
 
@@ -229,7 +229,7 @@ export default async function CityPage({ params }: PageProps) {
               <div className="overflow-hidden rounded-[24px] border border-gray-border bg-white">
                 <Image
                   src="/hero.png"
-                  alt={`${city.name} IBS specialist — Dr. Kamal K Khajuria`}
+                  alt={`${city.name} IBS specialist — Kamal K Khajuria`}
                   width={600}
                   height={400}
                   priority

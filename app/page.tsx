@@ -148,7 +148,7 @@ const TESTIMONIALS: ReadonlyArray<{ quote: string; name: string; meta: string }>
   },
   {
     quote:
-      "I was losing weight rapidly and couldn't digest even rice. Dr Kamal listened to my full history and gave me a plan. I'm well now.",
+      "I was losing weight rapidly and couldn't digest even rice. Kamal listened to my full history and gave me a plan. I'm well now.",
     name: "Ashish",
     meta: "Bihar · 2 years of IBS",
   },
@@ -267,7 +267,7 @@ export default function Page() {
               <div className="overflow-hidden rounded-[24px] border border-gray-border bg-green-tint">
                 <Image
                   src="/hero.png"
-                  alt="Dr. Kamal K Khajuria — Founder, IBS Clinic"
+                  alt="Kamal K Khajuria — Founder, IBS Clinic"
                   width={600}
                   height={400}
                   className="h-auto w-full object-cover"

@@ -11,7 +11,7 @@ Drop image and other static assets here. They are served from the site root.
 | `/public/favicon.ico` | Browser tab icon | 32×32. |
 | `/public/icons/apple-touch-icon.png` | iOS home-screen | 180×180. |
 | `/public/hero/consult.jpg` | Hero photo | Real consult shot per moodboard photography brief. AVIF + WebP variants ideal. |
-| `/public/doctors/kamal.jpg` | Dr. Kamal K Khajuria portrait | 800×800. Daylight, sage backdrop. |
+| `/public/doctors/kamal.jpg` | Kamal K Khajuria portrait | 800×800. Daylight, sage backdrop. |
 | `/public/doctors/keshav.jpg` | Dr. Keshav Raj portrait | Same. |
 | `/public/doctors/rajeev.jpg` | Dr. Rajeev Gaur portrait | Same. |
 | `/public/doctors/nishikant.jpg` | Dr. Nishikant Dwivedi portrait | Same. |
