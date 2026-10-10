@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { CITY_SLUGS } from "@/lib/cities";
 import { BLOG_SLUGS } from "@/lib/blog";
 import { AUTHOR_SLUGS } from "@/lib/doctors";
+import { GUT_TOPICS } from "@/lib/gut-topics";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
 
@@ -32,6 +33,9 @@ const CORE_PAGES: ReadonlyArray<PageEntry> = [
   { path: "faq", changeFrequency: "monthly", priority: 0.7 },
   { path: "best-ibs-doctor-in-india", changeFrequency: "monthly", priority: 0.8 },
   { path: "incomplete-evacuation", changeFrequency: "monthly", priority: 0.8 },
+  ...GUT_TOPICS.filter((t) => t.slug !== "incomplete-evacuation").map(
+    (t): PageEntry => ({ path: t.slug, changeFrequency: "monthly", priority: 0.8 }),
+  ),
   { path: "blogs", changeFrequency: "weekly", priority: 0.7 },
   { path: "privacy", changeFrequency: "yearly", priority: 0.3 },
   { path: "terms", changeFrequency: "yearly", priority: 0.3 },

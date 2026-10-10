@@ -3,6 +3,17 @@ import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "@/components/lead-form";
+import { GutSteps } from "@/components/gut-steps";
+import { GutTopicsGrid } from "@/components/gut-topics-grid";
+import type { Step } from "@/lib/gut-pages/types";
+
+const TRAP_STEPS: ReadonlyArray<Step> = [
+  { title: "Soft, normal stool reaches the exit", body: "You feel the urge and sit down." },
+  { title: "The exit muscles do not relax", body: "They stay tight, so the path is partly closed." },
+  { title: "You push, and it comes in pieces", body: "You pass a little and the urge fades." },
+  { title: "The rest stays behind", body: "Leftover stool can bring gas, heaviness and the feeling that something is left." },
+  { title: "Gas builds through the day", body: "Many people feel most swollen in the evening. See [why the belly bloats](/gas-and-bloating/)." },
+];
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
 
@@ -331,6 +342,32 @@ export default function IncompleteEvacuationPage() {
           </div>
         </section>
 
+        {/* 5b — THE NORMAL STOOL TRAP (pattern explainer, links to the gut guides) */}
+        <section className="bg-gray-light">
+          <div className="container-page grid gap-12 py-16 md:grid-cols-12 md:py-20">
+            <div className="md:col-span-5">
+              <h2 className="font-heading text-h2 text-charcoal">
+                Why normal stool can still feel unfinished
+              </h2>
+              <p className="mt-4 text-charcoal-soft">
+                Doctors often look at the stool and, if it is soft, move on. But
+                the stool is only half the story. How the exit muscles work
+                matters too. In our clinic&apos;s experience this pattern is common,
+                though only a proper check can tell if it is yours.
+              </p>
+              <p className="mt-4 text-charcoal-soft">
+                Read how it works in our guide to the{" "}
+                <Link href="/pelvic-floor-dysfunction/">pelvic floor</Link>, and
+                learn a calmer way to sit with our{" "}
+                <Link href="/toilet-posture-for-constipation/">toilet posture guide</Link>.
+              </p>
+            </div>
+            <div className="md:col-span-7">
+              <GutSteps steps={TRAP_STEPS} loop="Next morning, it starts again." />
+            </div>
+          </div>
+        </section>
+
         {/* 6 — REAL-LIFE HINDI/HINGLISH BLOCK */}
         <section lang="hi" className="bg-white">
           <div className="container-page py-16 md:py-20">
@@ -456,6 +493,18 @@ export default function IncompleteEvacuationPage() {
                   </p>
                 </details>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 10 — RELATED GUIDES */}
+        <section className="bg-green-tint">
+          <div className="container-page py-16 md:py-20">
+            <h2 className="font-heading text-h2 text-charcoal">
+              Related gut guides
+            </h2>
+            <div className="mt-8">
+              <GutTopicsGrid exclude={["incomplete-evacuation"]} />
             </div>
           </div>
         </section>

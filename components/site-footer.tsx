@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GUT_TOPICS } from "@/lib/gut-topics";
 
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
@@ -84,6 +85,16 @@ export function SiteFooter() {
               <li key={l.href}>
                 <Link href={l.href} className="text-white">
                   {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm opacity-60">Gut health guides</p>
+          <ul className="mt-2 space-y-1 text-sm">
+            {GUT_TOPICS.map((t) => (
+              <li key={t.href}>
+                <Link href={t.href} className="text-white">
+                  {t.title}
                 </Link>
               </li>
             ))}

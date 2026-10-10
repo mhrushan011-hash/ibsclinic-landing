@@ -156,5 +156,7 @@ At IBS Clinic, we believe that understanding how your digestive system works is 
 
 Rather than focusing only on individual symptoms such as constipation, diarrhea, gas, bloating, acidity, or incomplete bowel evacuation, we evaluate your overall digestive pattern to identify the factors contributing to your symptoms and develop a [personalized treatment plan](/book-an-appointment/) aimed at addressing the underlying digestive dysfunction.
 
-Healthy digestion is not just about what you eat—it is about how your brain, digestive organs, muscles, nerves, enzymes, hormones, and gut bacteria work together to keep food moving, nutrients absorbed, and waste eliminated efficiently.`,
+Healthy digestion is not just about what you eat—it is about how your brain, digestive organs, muscles, nerves, enzymes, hormones, and gut bacteria work together to keep food moving, nutrients absorbed, and waste eliminated efficiently.
+
+**Related reading:** Read why [normal stool can still feel unfinished](/pelvic-floor-dysfunction/) and why you may need to go [right after meals](/gas-and-bloating/).`,
 };

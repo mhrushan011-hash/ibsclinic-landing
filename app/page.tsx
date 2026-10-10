@@ -11,8 +11,18 @@ import { SymptomsCarousel } from "@/components/symptoms-carousel";
 import { Roadmap } from "@/components/roadmap";
 import { SiteFooter } from "@/components/site-footer";
 import { DoctorCards } from "@/components/doctor-cards";
+import { GutSteps } from "@/components/gut-steps";
+import { GutTopicsGrid } from "@/components/gut-topics-grid";
 import { pushEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import type { Step } from "@/lib/gut-pages/types";
+
+const NORMAL_STOOL_STEPS: ReadonlyArray<Step> = [
+  { title: "Soft stool reaches the exit", body: "Nothing about the stool itself looks wrong." },
+  { title: "The exit muscles stay tight", body: "They should relax, but they do not." },
+  { title: "You push and it comes in pieces", body: "A little comes out, then the urge fades." },
+  { title: "The rest stays behind", body: "It can lead to gas, a heavy belly and another trip soon." },
+];
 
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
@@ -382,6 +392,52 @@ export default function Page() {
                 Book a free evaluation
               </button>
             </div>
+          </div>
+        </section>
+
+        {/* NORMAL STOOL TRAP — explains the pattern, links the gut guides */}
+        <section className="bg-white">
+          <div className="container-page grid items-center gap-12 py-16 md:grid-cols-12 md:py-20">
+            <div className="md:col-span-6">
+              <h2 className="text-h2">Normal stool, but you still feel unfinished?</h2>
+              <p className="mt-4 max-w-prose text-charcoal-soft">
+                Some people pass soft, normal stool every day and still feel
+                something is left behind. Gas, bloating and a second or third
+                trip to the toilet follow. In our clinic&apos;s experience, the
+                cause is often not the stool itself. It can be how the gut and
+                the exit muscles work together.
+              </p>
+              <p lang="hi" className="mt-3 text-lead text-charcoal">
+                Motion roz hota hai, par pet saaf nahi hota.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/pelvic-floor-dysfunction/" className="btn-primary">
+                  Understand the pattern
+                </Link>
+                <Link href="/incomplete-evacuation/" className="btn-secondary">
+                  Check your symptoms
+                </Link>
+              </div>
+            </div>
+            <div className="md:col-span-6">
+              <GutSteps
+                steps={NORMAL_STOOL_STEPS}
+                loop="Tomorrow, it repeats."
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* GUT GUIDES — internal links to the 7 gut-mechanics pages */}
+        <section className="bg-green-tint">
+          <div className="container-page py-16 md:py-20">
+            <div className="mb-10 max-w-prose">
+              <h2 className="text-h2">Seven gut problems, explained in plain words</h2>
+              <p className="mt-3 text-charcoal-soft">
+                Short guides from our team. Start with the one that sounds like you.
+              </p>
+            </div>
+            <GutTopicsGrid />
           </div>
         </section>
 

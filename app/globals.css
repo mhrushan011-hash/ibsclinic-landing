@@ -73,4 +73,122 @@
   .section-divider {
     @apply h-px w-full bg-gray-border;
   }
+
+  /* ---- Gut-mechanics pages ---- */
+
+  .image-slot {
+    @apply relative m-0 flex w-full items-center justify-center overflow-hidden rounded-[16px] border border-dashed border-green/40 bg-gradient-to-br from-green-tint to-white p-6 text-center;
+  }
+  .image-slot__caption {
+    @apply max-w-xs text-sm text-charcoal-soft;
+  }
+
+  .gut-summary {
+    @apply max-w-3xl rounded-[16px] border border-green/40 bg-white p-6 shadow-card md:p-8;
+  }
+
+  .gut-steps {
+    @apply relative m-0 list-none p-0;
+  }
+  .gut-steps__item {
+    @apply relative flex gap-4 pb-8;
+  }
+  .gut-steps__item::before {
+    content: "";
+    @apply absolute bottom-0 left-5 top-11 -ml-px w-0.5 bg-green/40;
+  }
+  .gut-steps__num {
+    @apply relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green font-heading text-lg font-bold text-charcoal;
+  }
+  .gut-steps__title {
+    @apply pt-1.5 font-heading text-lg font-semibold text-charcoal;
+  }
+  .gut-steps__body {
+    @apply mt-1 text-charcoal-soft;
+  }
+  .gut-steps__repeat {
+    @apply ml-14 rounded-[12px] border border-green/40 bg-white px-4 py-3 font-heading font-semibold text-charcoal;
+  }
+  .gut-steps:not(.gut-steps--loop) .gut-steps__item:last-child {
+    @apply pb-0;
+  }
+  .gut-steps:not(.gut-steps--loop) .gut-steps__item:last-child::before {
+    display: none;
+  }
+
+  .gut-versus {
+    @apply rounded-[16px] border border-gray-border bg-white p-6;
+  }
+  .gut-versus--alt {
+    @apply border-green/40 bg-green-tint;
+  }
+  .gut-versus__item {
+    @apply relative pl-5 before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-green;
+  }
+
+  .gut-note {
+    @apply max-w-3xl rounded-[16px] border p-6;
+  }
+  .gut-note--info {
+    @apply border-green/40 bg-green-tint;
+  }
+  .gut-note--care {
+    @apply border-caution/60 bg-[#FBF3E0];
+  }
+  .gut-note__title {
+    @apply font-heading text-lg font-semibold text-charcoal;
+  }
+  .gut-note__body {
+    @apply mt-2 text-charcoal-soft;
+  }
+
+  .gut-card {
+    @apply flex h-full flex-col gap-2 rounded-[16px] border border-gray-border bg-white p-5 no-underline;
+    transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .gut-card:active {
+    transform: scale(0.98);
+  }
+  .gut-card__title {
+    @apply font-heading text-lg font-semibold text-charcoal;
+  }
+  .gut-card__blurb {
+    @apply text-charcoal-soft;
+  }
+  .gut-card__go {
+    @apply mt-auto pt-2 text-sm font-semibold text-charcoal;
+  }
+  /* Body links on the gut pages: darker green than the brand lime so they pass AA on white and tint. */
+  .gut-main a:not([class]) {
+    color: #4f6e0b;
+    text-decoration: underline;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .gut-card:hover {
+      @apply border-green;
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Steps fade up as they scroll into view. Browsers without scroll-driven animation show them as-is. */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .gut-steps__item {
+        animation: gut-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 45%;
+      }
+    }
+  }
+}
+
+@keyframes gut-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
