@@ -79,6 +79,9 @@
   .image-slot {
     @apply relative m-0 flex w-full items-center justify-center overflow-hidden rounded-[16px] border border-dashed border-green/40 bg-gradient-to-br from-green-tint to-white p-6 text-center;
   }
+  .image-slot--filled {
+    @apply border-0 bg-none p-0;
+  }
   .image-slot__caption {
     @apply max-w-xs text-sm text-charcoal-soft;
   }

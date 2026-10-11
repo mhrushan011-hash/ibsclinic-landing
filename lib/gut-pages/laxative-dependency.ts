@@ -11,6 +11,7 @@ export const LAXATIVE_DEPENDENCY: GutPageData = {
   hinglish: "Churna ke bina motion nahi hota?",
   hero: {
     file: "laxative-hero.webp",
+    src: "/gut-health/laxative-hero.webp",
     alt: "A bedside table with a glass of water and a small bowl of churna powder in soft evening light",
     aspect: "4 / 3",
     prompt:

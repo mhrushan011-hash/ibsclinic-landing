@@ -11,6 +11,7 @@ export const PELVIC_FLOOR: GutPageData = {
   hinglish: "Motion roz hota hai, par pet saaf nahi hota?",
   hero: {
     file: "pelvic-floor-hero.webp",
+    src: "/gut-health/pelvic-floor-hero.webp",
     alt: "A calm illustration of the lower belly showing the muscles that control the bowel exit",
     aspect: "4 / 3",
     prompt:
@@ -34,6 +35,7 @@ export const PELVIC_FLOOR: GutPageData = {
       ],
       image: {
         file: "pelvic-floor-sling.webp",
+        src: "/gut-health/pelvic-floor-sling.webp",
         alt: "Simple diagram of the bowel exit with the pelvic muscle sling relaxed and tight",
         aspect: "3 / 2",
         prompt:

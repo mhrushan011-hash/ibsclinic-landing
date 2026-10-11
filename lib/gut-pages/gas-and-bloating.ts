@@ -11,6 +11,7 @@ export const GAS_AND_BLOATING: GutPageData = {
   hinglish: "Shaam tak pet phool jata hai, gas banti rehti hai?",
   hero: {
     file: "bloating-hero.webp",
+    src: "/gut-health/bloating-hero.webp",
     alt: "A person sitting at a desk in the evening, hand resting on a comfortably full belly, looking tired but calm",
     aspect: "4 / 3",
     prompt:

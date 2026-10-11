@@ -69,12 +69,12 @@ for (const f of FILES) {
 
 const prompts = `---
 type: image-brief
-status: waiting for images
+status: all 9 images added and wired (2026-10-11)
 tags: [images]
 ---
 # Image prompts for the new gut pages
 
-Drop the finished images in \`Q2/#stagingsite/public/gut-health/\` using exactly these file names (WebP, under 150 KB each, 1600 px wide for 4:3 and 3:2). Next session, each file gets wired into its \`ImageSlot\` by setting \`src\` in \`lib/gut-pages/<page>.ts\`.
+The finished images live in \`Q2/#stagingsite/public/gut-health/\` under exactly these file names (WebP, under 150 KB each, 1600 px wide). Each is wired into its \`ImageSlot\` through \`src\` in \`lib/gut-pages/<page>.ts\`. To swap an image, replace the file with the same name. The prompts below are kept so images can be regenerated in the same style.
 
 **Rules for every image:** no text or labels inside the picture, no brand names, nothing graphic or embarrassing, Indian adults, calm and non-judgmental. Brand palette: Fresh Growth green \`#81AF12\`, Clinic Charcoal \`#333333\`, off-white. Alt text below is already in the page.
 

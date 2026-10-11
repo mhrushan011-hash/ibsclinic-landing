@@ -11,7 +11,8 @@ export const IBS_DIET: GutPageData = {
   hinglish: "Pet mein gas ke liye kya khayein, kya nahi?",
   hero: {
     file: "ibs-diet-hero.webp",
-    alt: "A simple Indian thali with cooked vegetables, rice, dal and curd, a glass of warm water beside it",
+    src: "/gut-health/ibs-diet-hero.webp",
+    alt: "A simple Indian thali with cooked vegetables, dal, rice, curd, a roti and a little salad, with a steel glass of water beside it",
     aspect: "4 / 3",
     prompt:
       "Warm, natural-light food photograph of a simple home-style Indian thali: cooked seasonal vegetables, rice, small portion of dal, a bowl of curd, one roti, and a steel glass of warm water. Clean wooden table, soft daylight, no text, no logos. Fresh and calm, not styled like an ad.",
@@ -35,6 +36,7 @@ export const IBS_DIET: GutPageData = {
       ],
       image: {
         file: "ibs-diet-fibre-types.webp",
+        src: "/gut-health/ibs-diet-fibre-types.webp",
         alt: "Illustration comparing soluble fibre foods and insoluble fibre foods on a simple chart",
         aspect: "3 / 2",
         prompt:

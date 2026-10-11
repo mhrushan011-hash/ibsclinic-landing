@@ -11,6 +11,7 @@ export const METABOLIC_HEALTH: GutPageData = {
   hinglish: "Thyroid ya PCOS ke saath kabz aur gas kyun badh jati hai?",
   hero: {
     file: "metabolic-hero.webp",
+    src: "/gut-health/metabolic-hero.webp",
     alt: "A woman reviewing a diet chart with a dietitian, a glass of warm water on the table",
     aspect: "4 / 3",
     prompt:

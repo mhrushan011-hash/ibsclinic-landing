@@ -11,6 +11,7 @@ export const TOILET_POSTURE: GutPageData = {
   hinglish: "Indian toilet ho ya western, baithne ka tarika matter karta hai.",
   hero: {
     file: "posture-hero.webp",
+    src: "/gut-health/posture-hero.webp",
     alt: "Side view of a person squatting on an Indian toilet with heels raised on a firm slipper, relaxed and leaning slightly forward",
     aspect: "4 / 3",
     prompt:
@@ -34,7 +35,8 @@ export const TOILET_POSTURE: GutPageData = {
       ],
       image: {
         file: "posture-angle-compare.webp",
-        alt: "Two side-by-side diagrams comparing the bowel bend when sitting upright and when squatting",
+        src: "/gut-health/posture-angle-compare.webp",
+        alt: "Side-by-side line drawings of a person sitting upright on a Western toilet and a person squatting, with a green line tracing the lower back",
         aspect: "3 / 2",
         prompt:
           "Clean two-panel educational diagram, side view silhouette. Left: sitting upright on a Western toilet with the lower bowel path bent. Right: squatting with knees above hips and the path straighter. Fresh green (#81AF12) highlight on the bowel path, charcoal (#333333) outlines, off-white background. No text, not graphic.",
