@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     "Specialist IBS care for 18+ years. 80–90% symptom reduction in ~90 days through personalised Ayurveda, diet, and modern testing. Book a free evaluation.",
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
+  verification: { google: "qMgbN1D7MVcrcsWGOrHPAqVW9u13ZYYsyU9tkCZ1j_Y" },
   openGraph: {
     title: "Stop fearing food. Start trusting your gut. — IBS Clinic",
     description:
