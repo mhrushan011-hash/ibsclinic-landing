@@ -1,5 +1,36 @@
 import type { NextConfig } from "next";
 
+/**
+ * Old WordPress blog image URLs (still indexed in Google Images) -> the restored,
+ * optimised copies in /public/figures. Each entry also matches WordPress's
+ * resized variants, e.g. `name-1024x683.png`. Images that had errors and are
+ * being redrawn (worst-foods-for-ibs, ibd-vs-ibs, the what-is-ibs flowchart)
+ * are added here once their replacements ship.
+ */
+const LEGACY_IMAGES: ReadonlyArray<[month: string, name: string, ext: string, dest: string]> = [
+  ["2025/09", "ChatGPT-Image-Sep-10-2025-03_43_07-PM", "png", "/figures/types-of-ibs/types-of-ibs-c-d-m-u.webp"],
+  ["2025/09", "ChatGPT-Image-Sep-10-2025-03_38_32-PM", "png", "/figures/types-of-ibs/ibs-medications-by-type.webp"],
+  ["2025/09", "ChatGPT-Image-Sep-12-2025-01_56_41-PM", "png", "/figures/ibs-diet-plan/ibs-diet-plan-safe-foods-foods-to-avoid.webp"],
+  ["2025/09", "ChatGPT-Image-Sep-3-2025-07_29_41-PM", "png", "/figures/ibs-treatment-guide/ibs-treatment-guide.webp"],
+  ["2025/09", "ChatGPT-Image-Sep-9-2025-11_23_33-PM", "png", "/figures/what-is-ibs/what-is-ibs.webp"],
+  ["2025/09", "ChatGPT-Image-Sep-9-2025-11_31_52-PM", "png", "/figures/what-is-ibs/ibs-symptoms-by-subtype.webp"],
+  ["2025/09", "IBS-Symptoms-and-Discomfort", "jpg", "/figures/ibs-symptoms/ibs-symptoms.webp"],
+  ["2025/10", "Gemini_Generated_Image_p7ncn3p7ncn3p7nc", "png", "/figures/ibs-home-remedies/ibs-home-remedies.webp"],
+  ["2025/10", "Gemini_Generated_Image_8y7hng8y7hng8y7h", "png", "/figures/ibs-home-remedies/home-remedies-for-ibs-pain.webp"],
+  ["2025/10", "Gemini_Generated_Image_s1vi6rs1vi6rs1vi", "png", "/figures/ibs-home-remedies/ibs-friendly-diet-and-remedies.webp"],
+  ["2025/10", "Gemini_Generated_Image_rdrzikrdrzikrdrz", "png", "/figures/ibs-home-remedies/yoga-for-ibs-stress-relief.webp"],
+  ["2025/11", "Gemini_Generated_Image_8tyfwh8tyfwh8tyf", "jpg", "/figures/medicine-for-ibs/medicine-for-ibs-guide.webp"],
+  ["2025/11", "Gemini_Generated_Image_e9a8xoe9a8xoe9a8", "jpg", "/figures/medicine-for-ibs/herbal-ayurvedic-medicine-for-ibs.webp"],
+  ["2025/11", "ayurvedic-treatment-for-ibs", "jpg", "/figures/ibs-ayurvedic-treatment/ayurvedic-treatment-for-ibs.webp"],
+];
+
+const legacyImageRedirects = LEGACY_IMAGES.map(([month, name, ext, destination]) => ({
+  // `:file(...)` is a regex param: the base name, an optional -WxH suffix, the extension.
+  source: `/wp-content/uploads/${month}/:file(${name}(?:-\\d+x\\d+)?\\.${ext})`,
+  destination,
+  permanent: true,
+}));
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -126,6 +157,9 @@ const nextConfig: NextConfig = {
       // Noindex taxonomy junk -> blog hub
       { source: "/tag/:slug*", destination: "/blogs/", permanent: true },
       { source: "/uncategorized", destination: "/blogs/", permanent: true },
+
+      // Legacy WordPress image URLs -> restored figures
+      ...legacyImageRedirects,
     ];
   },
   async headers() {

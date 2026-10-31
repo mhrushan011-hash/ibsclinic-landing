@@ -19,6 +19,13 @@ interface FigureDimensions {
  */
 const FIGURE_DIMENSIONS: Readonly<Record<string, FigureDimensions>> = {
   "/figures/digestive-journey.png": { width: 1536, height: 1024 },
+  // Restored from WordPress (Q4 2026 recovery) — optimised to WebP, 1200px long edge.
+  "/figures/types-of-ibs/ibs-medications-by-type.webp": { width: 1200, height: 800 },
+  "/figures/what-is-ibs/ibs-symptoms-by-subtype.webp": { width: 1200, height: 800 },
+  "/figures/ibs-home-remedies/home-remedies-for-ibs-pain.webp": { width: 1200, height: 1200 },
+  "/figures/ibs-home-remedies/ibs-friendly-diet-and-remedies.webp": { width: 1200, height: 1200 },
+  "/figures/ibs-home-remedies/yoga-for-ibs-stress-relief.webp": { width: 1200, height: 1200 },
+  "/figures/medicine-for-ibs/herbal-ayurvedic-medicine-for-ibs.webp": { width: 1200, height: 686 },
 };
 
 const FALLBACK_DIMENSIONS: FigureDimensions = { width: 1200, height: 800 };
@@ -34,16 +41,18 @@ const MARKDOWN_COMPONENTS: Components = {
     if (typeof src !== "string" || src.length === 0) return null;
 
     const { width, height } = FIGURE_DIMENSIONS[src] ?? FALLBACK_DIMENSIONS;
+    // Square/portrait figures would fill the whole column height; cap them.
+    const isTall = height >= width;
 
     return (
-      <span className="not-prose my-8 block">
+      <span className={`article-figure not-prose my-8 block${isTall ? " article-figure--tall mx-auto max-w-[480px]" : ""}`}>
         <Image
           src={src}
           alt={alt ?? ""}
           width={width}
           height={height}
-          sizes="(max-width: 768px) 100vw, 720px"
-          className="h-auto w-full rounded-[16px] border border-gray-border"
+          sizes={isTall ? "(max-width: 768px) 100vw, 480px" : "(max-width: 768px) 100vw, 720px"}
+          className="article-figure__img h-auto w-full rounded-[16px] border border-gray-border"
         />
         {title ? (
           <span className="mt-3 block text-center text-sm text-charcoal-soft">

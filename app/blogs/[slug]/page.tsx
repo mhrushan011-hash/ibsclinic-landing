@@ -38,11 +38,24 @@ export async function generateMetadata({
   return {
     title: post.metaTitle,
     description: post.metaDescription,
-    alternates: { canonical: `/blogs/${post.slug}` },
+    alternates: { canonical: `/blogs/${post.slug}/` },
     openGraph: {
       title: post.metaTitle,
       description: post.metaDescription,
       type: "article",
+      url: `/blogs/${post.slug}/`,
+      publishedTime: post.datePublished,
+      modifiedTime: post.dateModified ?? post.datePublished,
+      images: post.heroImage
+        ? [
+            {
+              url: post.heroImage.src,
+              width: post.heroImage.width,
+              height: post.heroImage.height,
+              alt: post.heroImage.alt,
+            },
+          ]
+        : undefined,
     },
   };
 }
@@ -53,21 +66,39 @@ export default async function BlogPostPage({ params }: PageProps) {
   if (!post) notFound();
 
   const author = getDoctor(post.authorSlug);
+  const reviewer = post.reviewerSlug ? getDoctor(post.reviewerSlug) : undefined;
   const related = getRelatedPosts(post.slug, 3);
+  const dateModified = post.dateModified ?? post.datePublished;
+  const wasUpdated = dateModified !== post.datePublished;
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.metaDescription,
-    author: author ? { "@type": "Person", name: author.name } : undefined,
+    image: post.heroImage
+      ? {
+          "@type": "ImageObject",
+          url: `${SITE_URL}${post.heroImage.src}`,
+          width: post.heroImage.width,
+          height: post.heroImage.height,
+        }
+      : undefined,
+    author: author
+      ? {
+          "@type": "Person",
+          name: author.name,
+          jobTitle: author.creds,
+          url: `${SITE_URL}/author/${author.slug}/`,
+        }
+      : undefined,
     publisher: {
       "@type": "Organization",
       name: "IBS Clinic",
       logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
     },
     datePublished: post.datePublished,
-    dateModified: post.dateModified ?? post.datePublished,
+    dateModified,
     mainEntityOfPage: `${SITE_URL}/blogs/${post.slug}/`,
   };
 
@@ -124,16 +155,44 @@ export default async function BlogPostPage({ params }: PageProps) {
                 "IBS Clinic"
               )}
               {" · "}
-              {formatDate(post.datePublished)}
+              <time dateTime={post.datePublished}>{formatDate(post.datePublished)}</time>
+              {wasUpdated ? (
+                <>
+                  {" · Updated "}
+                  <time dateTime={dateModified}>{formatDate(dateModified)}</time>
+                </>
+              ) : null}
               {" · "}
               {readingTimeMins(post)} min read
             </p>
+            {reviewer ? (
+              <p className="blog-hero__reviewer mt-2 text-sm text-charcoal-soft">
+                Medically reviewed by{" "}
+                <Link href="/doctors/" className="font-medium">
+                  {reviewer.name}
+                </Link>
+                , {reviewer.creds}
+              </p>
+            ) : null}
           </div>
         </section>
 
         {/* BODY */}
         <article className="container-page py-12 md:py-16">
           <div className="mx-auto max-w-prose">
+            {post.heroImage ? (
+              <Image
+                src={post.heroImage.src}
+                alt={post.heroImage.alt}
+                width={post.heroImage.width}
+                height={post.heroImage.height}
+                priority
+                sizes="(max-width: 768px) 100vw, 720px"
+                className={`blog-hero__image mb-10 h-auto rounded-[16px] border border-gray-border ${
+                  post.heroImage.height >= post.heroImage.width ? "mx-auto w-full max-w-[480px]" : "w-full"
+                }`}
+              />
+            ) : null}
             <ArticleBody markdown={post.bodyMarkdown} />
 
             {/* FAQ */}
