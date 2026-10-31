@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
     datePublished: post.datePublished,
     dateModified: post.dateModified ?? post.datePublished,
-    mainEntityOfPage: `${SITE_URL}/blogs/${post.slug}`,
+    mainEntityOfPage: `${SITE_URL}/blogs/${post.slug}/`,
   };
 
   const faqSchema =

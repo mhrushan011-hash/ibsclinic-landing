@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Chronic IBS-D Treatment: IBS Diglac + IBS Diapro | IBS Clinic",
   description:
     "Specialist powder combo for chronic IBS-D — frequent loose and mushy stools. Restores gut health, eliminates toxins, and reduces urgency. Includes consultation.",
+  alternates: { canonical: "/products/ibs-d-chronic/" },
 };
 
 const STEPS = [

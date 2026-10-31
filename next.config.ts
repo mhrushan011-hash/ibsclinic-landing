@@ -16,30 +16,56 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["react-hook-form", "zod", "libphonenumber-js"],
   },
-  // 301 map from the legacy WordPress/WooCommerce URLs to their new homes.
-  // Sources are matched ignoring the trailing slash; `trailingSlash: true`
-  // adds the slash back to the emitted destination. Keep in sync with the
-  // migration runbook (`Runbook_ Move ibsclinic.md`). Any unmapped legacy
-  // product URL falls through to the catch-all `/[slug]` 404 — add it here
+  // Permanent (308) map from the legacy WordPress/WooCommerce URLs to their new
+  // homes. Sources are matched ignoring the trailing slash, but Next emits the
+  // destination EXACTLY as written — so every destination below MUST end in a
+  // slash, otherwise crawlers take a second 308 hop to add it. Keep in sync
+  // with the migration runbook (`Runbook_ Move ibsclinic.md`). Any unmapped
+  // legacy URL falls through to the catch-all `/[slug]` 404 — add it here
   // rather than leaving a dead link.
   async redirects() {
     return [
       // Blog archive (pre-existing)
-      { source: "/blog", destination: "/blogs", permanent: true },
-      { source: "/blog/:path*", destination: "/blogs/:path*", permanent: true },
+      { source: "/blog", destination: "/blogs/", permanent: true },
+      { source: "/blog/:path*", destination: "/blogs/:path*/", permanent: true },
+
+      // Rank Math redirects that existed on WordPress and were not carried
+      // over in the July 2026 migration (old root-level blog slugs).
+      { source: "/types-of-ibs", destination: "/blogs/types-of-ibs/", permanent: true },
+      { source: "/what-is-ibs", destination: "/blogs/what-is-ibs/", permanent: true },
+      { source: "/ibs-treatment-guide", destination: "/blogs/ibs-treatment-guide/", permanent: true },
+      { source: "/worst-foods-for-ibs", destination: "/blogs/worst-foods-for-ibs/", permanent: true },
+      { source: "/ibs-home-remedies", destination: "/blogs/ibs-home-remedies/", permanent: true },
+      { source: "/ibd-vs-ibs", destination: "/blogs/ibd-vs-ibs/", permanent: true },
+      { source: "/ibs-diet-plan", destination: "/blogs/ibs-diet-plan/", permanent: true },
+      { source: "/ibs/worst-foods-for-ibs", destination: "/blogs/worst-foods-for-ibs/", permanent: true },
+      { source: "/ibs/ibs-symptoms", destination: "/blogs/ibs-symptoms/", permanent: true },
+      // `/ibs/` was a 404 (and the 404 page is noindex) -> GSC "Excluded by noindex".
+      { source: "/ibs", destination: "/blogs/what-is-ibs/", permanent: true },
+      // Old dated WordPress permalinks (/2025/09/01/...) -> blog hub
+      { source: "/2025/:path*", destination: "/blogs/", permanent: true },
 
       // City page whose slug changed (Chennai lost the "in-")
       {
         source: "/ibs-treatment-chennai",
-        destination: "/ibs-treatment-in-chennai",
+        destination: "/ibs-treatment-in-chennai/",
         permanent: true,
       },
+      { source: "/ibs-treatment-in-delhi-2", destination: "/ibs-treatment-in-delhi/", permanent: true },
+
+      // Old WordPress test / empty pages still crawled by Google (404 before).
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/landing-page", destination: "/", permanent: true },
+      { source: "/form-v1", destination: "/contact/", permanent: true },
+      { source: "/product-desgin", destination: "/products/", permanent: true },
 
       // Info / condition pages
-      { source: "/about-us-2", destination: "/about", permanent: true },
+      { source: "/about-us-2", destination: "/about/", permanent: true },
+      // TEMPORARY: the gastrocolic page is being restored as its own live page
+      // (Q4 recovery, Sprint 4). Remove this redirect when that page ships.
       {
         source: "/gastrocolic-reflex-dysfunction",
-        destination: "/incomplete-evacuation",
+        destination: "/incomplete-evacuation/",
         permanent: true,
       },
       // PRODUCTS ARE LIVE (combo pages only — lead-gen, no cart yet; the
@@ -52,7 +78,7 @@ const nextConfig: NextConfig = {
       // Old condition page that used to map to a product.
       {
         source: "/chronic-ibs-d-frequent-loose-and-mushy-stools",
-        destination: "/products/ibs-d-chronic",
+        destination: "/products/ibs-d-chronic/",
         permanent: true,
       },
 
@@ -60,45 +86,46 @@ const nextConfig: NextConfig = {
       {
         source:
           "/ibs-m-ibs-diglac-and-ibs-diapro-powders-for-alternative-constipation-and-diarrhea",
-        destination: "/products/ibs-m",
+        destination: "/products/ibs-m/",
         permanent: true,
       },
       {
         source:
           "/ibs-c-ibs-diglac-and-ibs-diglac-plus-powders-for-chronic-ibs-constipation",
-        destination: "/products/ibs-c",
+        destination: "/products/ibs-c/",
         permanent: true,
       },
       {
         source: "/ibs-d-ibs-diarrheal-plus-and-diapro-powders",
-        destination: "/products/ibs-d",
+        destination: "/products/ibs-d/",
         permanent: true,
       },
       {
         source: "/ibs-diapro-and-ibs-diglac-plus-powder",
-        destination: "/products/ibs-diapro-diglac-plus",
+        destination: "/products/ibs-diapro-diglac-plus/",
         permanent: true,
       },
-      { source: "/combo", destination: "/products", permanent: true },
+      { source: "/combo", destination: "/products/", permanent: true },
 
       // Individual-powder pages (no single-powder pages exist) -> combos hub
-      { source: "/diapro-ibs-powder", destination: "/products", permanent: true },
-      { source: "/diarrheal-plus-powder", destination: "/products", permanent: true },
-      { source: "/ibs-diarrheal-powder", destination: "/products", permanent: true },
-      { source: "/ibs-diglac-powder", destination: "/products", permanent: true },
-      { source: "/ibs-diglac-plus-powder", destination: "/products", permanent: true },
-      { source: "/product-tag/:slug*", destination: "/products", permanent: true },
+      { source: "/diapro-ibs-powder", destination: "/products/", permanent: true },
+      { source: "/diarrheal-plus-powder", destination: "/products/", permanent: true },
+      { source: "/ibs-diarrheal-powder", destination: "/products/", permanent: true },
+      { source: "/ibs-diglac-powder", destination: "/products/", permanent: true },
+      { source: "/ibs-diglac-plus-powder", destination: "/products/", permanent: true },
+      { source: "/product-tag/:slug*", destination: "/products/", permanent: true },
 
       // WooCommerce system pages — store checkout still offline
-      { source: "/shop", destination: "/products", permanent: true },
+      { source: "/shop", destination: "/products/", permanent: true },
+      { source: "/shop/:path*", destination: "/products/", permanent: true },
       { source: "/cart", destination: "/", permanent: true },
       { source: "/checkout", destination: "/", permanent: true },
       { source: "/my-account", destination: "/", permanent: true },
       { source: "/my-account/:path*", destination: "/", permanent: true },
 
       // Noindex taxonomy junk -> blog hub
-      { source: "/tag/:slug*", destination: "/blogs", permanent: true },
-      { source: "/uncategorized", destination: "/blogs", permanent: true },
+      { source: "/tag/:slug*", destination: "/blogs/", permanent: true },
+      { source: "/uncategorized", destination: "/blogs/", permanent: true },
     ];
   },
   async headers() {

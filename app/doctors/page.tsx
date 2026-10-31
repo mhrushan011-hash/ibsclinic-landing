@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Our Doctors | IBS Clinic — Specialist IBS Care",
   description:
     "Meet the specialist doctors at IBS Clinic. 18+ years of IBS-specific care combining Naturopathy, Ayurveda, and modern testing.",
+  alternates: { canonical: "/doctors/" },
 };
 
 export default function DoctorsPage() {

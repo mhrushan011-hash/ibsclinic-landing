@@ -163,7 +163,7 @@ export default function IncompleteEvacuationPage() {
     "@type": "MedicalWebPage",
     name: "Incomplete Evacuation in IBS — Why You Don't Feel Fully Clear",
     description: metadata.description,
-    url: `${SITE_URL}/incomplete-evacuation`,
+    url: `${SITE_URL}/incomplete-evacuation/`,
     inLanguage: ["en-IN", "hi-IN"],
     about: {
       "@type": "MedicalCondition",

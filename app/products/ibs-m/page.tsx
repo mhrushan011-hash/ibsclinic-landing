@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "IBS-M Treatment: IBS Diglac + IBS Diapro | IBS Clinic",
   description:
     "Specialist powder combo for IBS-M — alternating constipation and diarrhea. Restores gut motility, reduces bloating, and promotes healthy microbiota. Includes consultation.",
+  alternates: { canonical: "/products/ibs-m/" },
 };
 
 const STEPS = [

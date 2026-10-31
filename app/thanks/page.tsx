@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "We've got it — IBS Clinic",
+  alternates: { canonical: "/thanks/" },
   robots: { index: false, follow: false },
 };
 

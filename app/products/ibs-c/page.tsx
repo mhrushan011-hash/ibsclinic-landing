@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "IBS-C Treatment: IBS Diglac + IBS Diglac Plus | IBS Clinic",
   description:
     "Specialist powder combo for chronic IBS constipation. Regulates bowel movements, relieves gas and acidity, and restores digestive health. Includes consultation.",
+  alternates: { canonical: "/products/ibs-c/" },
 };
 
 const STEPS = [

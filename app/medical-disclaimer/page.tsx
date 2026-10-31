@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Medical Disclaimer — IBS Clinic",
+  description:
+    "The information on ibsclinic.com is for general education and does not replace a consultation with a qualified doctor. Read our full medical disclaimer.",
+  alternates: { canonical: "/medical-disclaimer/" },
   robots: { index: true, follow: false },
 };
 

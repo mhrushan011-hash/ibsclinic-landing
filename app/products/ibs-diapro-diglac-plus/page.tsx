@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "IBS-C Gastrocolic Treatment: IBS Diapro + IBS Diglac Plus | IBS Clinic",
   description:
     "Specialist powder combo for IBS-C with gastrocolic reflex — post-meal urgency, SIBO, and incomplete evacuation. Includes consultation and diet plan.",
+  alternates: { canonical: "/products/ibs-diapro-diglac-plus/" },
 };
 
 const STEPS = [

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "IBS-D Treatment: IBS Diarrheal Plus + IBS Diapro | IBS Clinic",
   description:
     "Specialist powder combo for mild IBS-D — loose stools, dysentery, and bacterial imbalance. Effective for gut microbiome restoration. Includes consultation.",
+  alternates: { canonical: "/products/ibs-d/" },
 };
 
 const STEPS = [

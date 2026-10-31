@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter, Oswald, Noto_Sans_Devanagari } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -39,14 +39,16 @@ export const metadata: Metadata = {
   title: "IBS Treatment Specialist Clinic — Free Evaluation in 60s",
   description:
     "Specialist IBS care for 18+ years. 80–90% symptom reduction in ~90 days through personalised Ayurveda, diet, and modern testing. Book a free evaluation.",
-  alternates: { canonical: "/" },
+  // NO canonical here: every route declares its own `alternates.canonical`.
+  // A layout-level canonical is inherited by any page that forgets one, which
+  // made /doctors/ and every /products/ page point Google at the homepage.
   robots: { index: true, follow: true },
   verification: { google: "qMgbN1D7MVcrcsWGOrHPAqVW9u13ZYYsyU9tkCZ1j_Y" },
   openGraph: {
     title: "Stop fearing food. Start trusting your gut. — IBS Clinic",
     description:
       "India's leading specialist IBS clinic. 4.7★ Google, Thousands of patients treated, 8 cities. Book your free evaluation.",
-    url: SITE_URL,
+    // No `url` here either — an inherited og:url would point every page at "/".
     siteName: "IBS Clinic",
     locale: "en_IN",
     type: "website",
@@ -57,6 +59,10 @@ export const metadata: Metadata = {
     description:
       "India's leading specialist IBS clinic. ~90 days to significant relief.",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#81AF12",
 };
 
 const ORG_SCHEMA = {
@@ -77,11 +83,9 @@ const ORG_SCHEMA = {
     addressCountry: "IN",
   },
   medicalSpecialty: ["Gastroenterology", "Ayurveda"],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.7",
-    reviewCount: "80",
-  },
+  // No aggregateRating: a site-wide rating put every blog and FAQ page into
+  // GSC's "Review snippets" report, and self-serving organisation ratings are
+  // not eligible for review stars anyway.
 };
 
 export default function RootLayout({
@@ -119,9 +123,9 @@ export default function RootLayout({
           </noscript>
         ) : null}
 
-        {/* MedicalOrganization JSON-LD — embedded in the document, not loaded as a remote script. */}
-        <Script
-          id="org-schema"
+        {/* MedicalOrganization JSON-LD — a plain <script> so it is in the
+            server HTML. next/script injected it client-side only. */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
         />

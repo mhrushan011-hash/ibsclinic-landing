@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — IBS Clinic",
+  description:
+    "How IBS Clinic collects, uses and protects the personal and health information you share with us, in line with India's DPDP Act 2023.",
+  alternates: { canonical: "/privacy/" },
   robots: { index: true, follow: false },
 };
 

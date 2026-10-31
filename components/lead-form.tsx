@@ -281,7 +281,7 @@ export function LeadForm({
 
       <p className="text-xs text-charcoal-soft/80">
         Your details stay with our doctors. We never sell or share data.{" "}
-        <a href="/privacy" className="underline">
+        <a href="/privacy/" className="underline">
           Privacy Policy
         </a>
         .

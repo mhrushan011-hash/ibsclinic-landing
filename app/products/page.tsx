@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "IBS Treatment Combos | IBS Clinic",
   description:
     "Specialist-formulated Ayurvedic powder combos for every IBS type — IBS-M, IBS-C, IBS-D, and more. Includes consultation, diet plan, and ongoing support.",
+  alternates: { canonical: "/products/" },
 };
 
 const PRODUCTS = [
