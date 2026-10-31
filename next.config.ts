@@ -22,6 +22,16 @@ const LEGACY_IMAGES: ReadonlyArray<[month: string, name: string, ext: string, de
   ["2025/11", "Gemini_Generated_Image_8tyfwh8tyfwh8tyf", "jpg", "/figures/medicine-for-ibs/medicine-for-ibs-guide.webp"],
   ["2025/11", "Gemini_Generated_Image_e9a8xoe9a8xoe9a8", "jpg", "/figures/medicine-for-ibs/herbal-ayurvedic-medicine-for-ibs.webp"],
   ["2025/11", "ayurvedic-treatment-for-ibs", "jpg", "/figures/ibs-ayurvedic-treatment/ayurvedic-treatment-for-ibs.webp"],
+  // Redrawn replacements for the WordPress images that had errors
+  ["2025/10", "ten-worst-food-ibs", "jpg", "/figures/worst-foods-for-ibs/worst-foods-for-ibs-top-10.webp"],
+  ["2025/10", "fodmap-gut", "jpg", "/figures/worst-foods-for-ibs/how-fodmaps-trigger-ibs.webp"],
+  ["2025/10", "Gemini_Generated_Image_s5swvgs5swvgs5sw", "jpg", "/figures/worst-foods-for-ibs/ibs-trigger-foods-severity.webp"],
+  ["2025/10", "wrost-food-ibs", "jpg", "/figures/worst-foods-for-ibs/ibs-fruit-guide-high-vs-low-fodmap.webp"],
+  ["2025/10", "Gemini_Generated_Image_amppzlamppzlampp", "png", "/figures/ibd-vs-ibs/ibd-vs-ibs-differences.webp"],
+  ["2025/10", "Gemini_Generated_Image_cwynf0cwynf0cwyn", "png", "/figures/ibd-vs-ibs/ibd-vs-ibs-pain-location.webp"],
+  ["2025/10", "Gemini_Generated_Image_gh8vclgh8vclgh8v", "png", "/figures/ibd-vs-ibs/ibd-vs-ibs-treatment-pathways.webp"],
+  ["2025/10", "Gemini_Generated_Image_7l9r3u7l9r3u7l9r", "png", "/figures/ibd-vs-ibs/ibd-vs-ibs-diet.webp"],
+  ["2025/09", "ChatGPT-Image-Sep-9-2025-11_27_40-PM", "png", "/figures/what-is-ibs/ibs-treatment-options.webp"],
 ];
 
 const legacyImageRedirects = LEGACY_IMAGES.map(([month, name, ext, destination]) => ({

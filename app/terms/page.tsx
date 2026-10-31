@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,6 +16,7 @@ export default function TermsPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/terms" name="Terms of Service" crumb="Terms of service" />
       <main className="bg-white">
         <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
           <h1 className="text-h2 text-charcoal">Terms of Service</h1>

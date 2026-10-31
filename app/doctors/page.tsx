@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { personNode } from "@/lib/structured-data";
+import { PageSchema } from "@/components/page-schema";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
-import { DOCTOR_LIST } from "@/lib/doctors";
+import { DOCTOR_LIST, AUTHOR_SLUGS } from "@/lib/doctors";
 
 export const metadata: Metadata = {
   title: "Our Doctors | IBS Clinic — Specialist IBS Care",
@@ -15,6 +17,7 @@ export default function DoctorsPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/doctors" name="Our Doctors" crumb="Doctors" type="CollectionPage" extra={DOCTOR_LIST.map((d) => personNode(d, AUTHOR_SLUGS.includes(d.slug)))} />
       <main className="pb-20 md:pb-0">
       {/* HERO */}
       <section className="bg-green-tint">

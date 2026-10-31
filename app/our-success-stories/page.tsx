@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -63,6 +64,7 @@ export default function SuccessStoriesPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/our-success-stories" name="Our Success Stories" crumb="Success stories" />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">

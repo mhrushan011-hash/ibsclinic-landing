@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { IBS_CONDITION } from "@/lib/structured-data";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -124,6 +126,7 @@ export default function SciencePage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/science" name="The Science Behind IBS Treatment" crumb="Our science" type="MedicalWebPage" faqs={SCIENCE_FAQ} about={IBS_CONDITION} />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">

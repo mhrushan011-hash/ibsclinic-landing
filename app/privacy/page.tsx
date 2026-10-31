@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — IBS Clinic",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <main className="bg-white">
+        <PageSchema path="/privacy" name="Privacy Policy" crumb="Privacy policy" />
       <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
         <h1 className="text-h2 text-charcoal">Privacy Policy</h1>
         <p className="mt-2 text-sm text-charcoal-soft">

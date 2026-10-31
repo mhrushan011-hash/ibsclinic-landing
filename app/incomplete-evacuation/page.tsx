@@ -6,6 +6,9 @@ import { LeadForm } from "@/components/lead-form";
 import { GutSteps } from "@/components/gut-steps";
 import { GutTopicsGrid } from "@/components/gut-topics-grid";
 import type { Step } from "@/lib/gut-pages/types";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { JsonLd } from "@/components/json-ld";
+import { faqNode, graph, webPageNode } from "@/lib/structured-data";
 
 const TRAP_STEPS: ReadonlyArray<Step> = [
   { title: "Soft, normal stool reaches the exit", body: "You feel the urge and sit down." },
@@ -158,43 +161,35 @@ const WHY_CHOOSE: ReadonlyArray<string> = [
 ];
 
 export default function IncompleteEvacuationPage() {
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    name: "Incomplete Evacuation in IBS — Why You Don't Feel Fully Clear",
-    description: metadata.description,
-    url: `${SITE_URL}/incomplete-evacuation/`,
-    inLanguage: ["en-IN", "hi-IN"],
-    about: {
-      "@type": "MedicalCondition",
-      name: "Irritable Bowel Syndrome",
-      alternateName: ["IBS-C", "Incomplete Evacuation"],
+  const path = "/incomplete-evacuation";
+  const schema = graph(
+    {
+      ...webPageNode({
+        path,
+        name: "Incomplete Evacuation in IBS — Why You Don't Feel Fully Clear",
+        description: typeof metadata.description === "string" ? metadata.description : undefined,
+        type: "MedicalWebPage",
+        hasBreadcrumb: true,
+        about: {
+          "@type": "MedicalCondition",
+          name: "Irritable Bowel Syndrome",
+          alternateName: ["IBS-C", "Incomplete Evacuation"],
+        },
+      }),
+      inLanguage: ["en-IN", "hi-IN"],
     },
-    publisher: { "@type": "MedicalOrganization", name: "IBS Clinic" },
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQ.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+    faqNode(path, FAQ),
+  );
 
   return (
     <>
       <SimpleHeader />
+      <Breadcrumb
+        path={path}
+        items={[{ label: "Home", href: "/" }, { label: "Incomplete evacuation" }]}
+      />
       <main className="bg-white">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
+        <JsonLd data={schema} />
 
         {/* 1 — HERO */}
         <section className="bg-green-tint">

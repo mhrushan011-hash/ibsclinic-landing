@@ -26,6 +26,14 @@ const FIGURE_DIMENSIONS: Readonly<Record<string, FigureDimensions>> = {
   "/figures/ibs-home-remedies/ibs-friendly-diet-and-remedies.webp": { width: 1200, height: 1200 },
   "/figures/ibs-home-remedies/yoga-for-ibs-stress-relief.webp": { width: 1200, height: 1200 },
   "/figures/medicine-for-ibs/herbal-ayurvedic-medicine-for-ibs.webp": { width: 1200, height: 686 },
+  // Redrawn replacements (Q4 2026) for WordPress images that had errors.
+  "/figures/worst-foods-for-ibs/how-fodmaps-trigger-ibs.webp": { width: 1200, height: 675 },
+  "/figures/worst-foods-for-ibs/ibs-trigger-foods-severity.webp": { width: 1200, height: 675 },
+  "/figures/worst-foods-for-ibs/ibs-fruit-guide-high-vs-low-fodmap.webp": { width: 1200, height: 675 },
+  "/figures/ibd-vs-ibs/ibd-vs-ibs-pain-location.webp": { width: 1200, height: 675 },
+  "/figures/ibd-vs-ibs/ibd-vs-ibs-treatment-pathways.webp": { width: 1200, height: 675 },
+  "/figures/ibd-vs-ibs/ibd-vs-ibs-diet.webp": { width: 1200, height: 675 },
+  "/figures/what-is-ibs/ibs-treatment-options.webp": { width: 1200, height: 675 },
 };
 
 const FALLBACK_DIMENSIONS: FigureDimensions = { width: 1200, height: 800 };

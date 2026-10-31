@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 
 export const metadata: Metadata = {
   title: "Medical Disclaimer — IBS Clinic",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function MedicalDisclaimerPage() {
   return (
     <main className="bg-white">
+        <PageSchema path="/medical-disclaimer" name="Medical Disclaimer" crumb="Medical disclaimer" />
       <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
         <h1 className="text-h2 text-charcoal">Medical Disclaimer</h1>
 

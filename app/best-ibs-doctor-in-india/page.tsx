@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ORG_ID } from "@/lib/structured-data";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import Image from "next/image";
 import { SimpleHeader } from "@/components/simple-header";
@@ -28,6 +30,7 @@ export default function BestIbsDoctorPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/best-ibs-doctor-in-india" name="Best IBS Doctors in India" crumb="Best IBS doctors in India" about={{ "@id": ORG_ID }} />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">

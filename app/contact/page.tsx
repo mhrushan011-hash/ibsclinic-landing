@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { ORG_ID } from "@/lib/structured-data";
+import { PageSchema } from "@/components/page-schema";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PatientIntakeForm } from "@/components/patient-intake-form";
@@ -30,6 +32,7 @@ export default function ContactPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/contact" name="Contact IBS Clinic" crumb="Contact" type="ContactPage" about={{ "@id": ORG_ID }} />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">

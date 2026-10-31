@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter, Oswald, Noto_Sans_Devanagari } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { JsonLd } from "@/components/json-ld";
+import { graph, organizationNode, websiteNode } from "@/lib/structured-data";
 
 const heading = Montserrat({
   subsets: ["latin"],
@@ -65,28 +67,9 @@ export const viewport: Viewport = {
   themeColor: "#81AF12",
 };
 
-const ORG_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "MedicalOrganization",
-  name: "IBS Clinic",
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
-  telephone: "+91-750-033-4343",
-  email: "info@ibsclinic.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress:
-      "Shop No. 2, HDIL Residency Park-1, Wing A1, Opp. Star Bazaar, Narangi Bypass",
-    addressLocality: "Virar (West)",
-    addressRegion: "Maharashtra",
-    postalCode: "401303",
-    addressCountry: "IN",
-  },
-  medicalSpecialty: ["Gastroenterology", "Ayurveda"],
-  // No aggregateRating: a site-wide rating put every blog and FAQ page into
-  // GSC's "Review snippets" report, and self-serving organisation ratings are
-  // not eligible for review stars anyway.
-};
+// Organisation + WebSite on every page (defined once in lib/structured-data.ts;
+// page-level nodes reference them by @id). No aggregateRating — see that file.
+const SITE_SCHEMA = graph(organizationNode(), websiteNode());
 
 export default function RootLayout({
   children,
@@ -123,12 +106,8 @@ export default function RootLayout({
           </noscript>
         ) : null}
 
-        {/* MedicalOrganization JSON-LD — a plain <script> so it is in the
-            server HTML. next/script injected it client-side only. */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }}
-        />
+        {/* Server-rendered (next/script would inject it client-side only). */}
+        <JsonLd data={SITE_SCHEMA} />
 
         {children}
       </body>

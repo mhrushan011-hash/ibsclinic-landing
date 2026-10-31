@@ -7,6 +7,16 @@ import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "@/components/lead-form";
 import { DoctorCards } from "@/components/doctor-cards";
 import { CITY_DATA, CITY_SLUGS } from "@/lib/cities";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { JsonLd } from "@/components/json-ld";
+import {
+  absUrl,
+  cityServiceNode,
+  faqNode,
+  graph,
+  IBS_CONDITION,
+  webPageNode,
+} from "@/lib/structured-data";
 
 export const dynamicParams = false;
 
@@ -27,11 +37,12 @@ export async function generateMetadata({
   return {
     title: city.metaTitle,
     description: city.metaDescription,
-    alternates: { canonical: `/${city.slug}` },
+    alternates: { canonical: `/${city.slug}/` },
     openGraph: {
       title: city.metaTitle,
       description: city.metaDescription,
       type: "website",
+      url: `/${city.slug}/`,
     },
   };
 }
@@ -192,10 +203,30 @@ export default async function CityPage({ params }: PageProps) {
   const city = CITY_DATA[slug];
   if (!city) notFound();
 
+  const path = `/${city.slug}`;
+  const crumbLabel = `IBS Treatment in ${city.name}`;
+  // Online consultation service for this city — deliberately NOT a
+  // LocalBusiness: the only physical clinic is in Mumbai (Virar West).
+  const schema = graph(
+    webPageNode({
+      path,
+      name: city.metaTitle,
+      description: city.metaDescription,
+      type: "MedicalWebPage",
+      hasBreadcrumb: true,
+      about: IBS_CONDITION,
+      mainEntity: { "@id": `${absUrl(path)}#service` },
+    }),
+    cityServiceNode(path, city.name),
+    faqNode(path, [...city.cityFaq, ...SHARED_FAQ]),
+  );
+
   return (
     <>
       <SimpleHeader />
+      <Breadcrumb path={path} items={[{ label: "Home", href: "/" }, { label: crumbLabel }]} />
       <main className="bg-white">
+        <JsonLd data={schema} />
         {/* HERO */}
         <section className="bg-green-tint">
           <div className="container-page grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:items-center">

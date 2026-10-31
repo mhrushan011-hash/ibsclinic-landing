@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { AUTHOR_SLUGS, getDoctor } from "@/lib/doctors";
 import { getPostsByAuthor, readingTimeMins } from "@/lib/blog";
+import { JsonLd } from "@/components/json-ld";
+import { graph, personId, personNode, webPageNode } from "@/lib/structured-data";
 
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
@@ -30,7 +32,7 @@ export async function generateMetadata({
   return {
     title: `${author.name} — ${author.creds} | IBS Clinic`,
     description: `${author.name} (${author.creds}, ${author.exp}) at IBS Clinic. ${author.speciality}. Read their articles on IBS symptoms, diet, and treatment.`,
-    alternates: { canonical: `/author/${author.slug}` },
+    alternates: { canonical: `/author/${author.slug}/` },
   };
 }
 
@@ -40,18 +42,31 @@ export default async function AuthorPage({ params }: PageProps) {
   if (!author || !author.isAuthor) notFound();
 
   const posts = getPostsByAuthor(author.slug);
+  const path = `/author/${author.slug}`;
+  const schema = graph(
+    webPageNode({
+      path,
+      name: `${author.name} — ${author.creds}`,
+      type: "ProfilePage",
+      hasBreadcrumb: true,
+      mainEntity: { "@id": personId(author.slug) },
+    }),
+    personNode(author, true),
+  );
 
   return (
     <>
       <SimpleHeader />
       <Breadcrumb
+        path={path}
         items={[
           { label: "Home", href: "/" },
-          { label: "Blog", href: "/blogs" },
+          { label: "Doctors", href: "/doctors" },
           { label: author.name },
         ]}
       />
       <main className="bg-white">
+        <JsonLd data={schema} />
         {/* HERO */}
         <section className="bg-green-tint">
           <div className="container-page py-16 md:py-20">

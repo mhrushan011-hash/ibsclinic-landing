@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -269,6 +270,7 @@ export default function FaqPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/faq" name="IBS FAQ" crumb="FAQ" />
       <main className="bg-white">
         <script
           type="application/ld+json"

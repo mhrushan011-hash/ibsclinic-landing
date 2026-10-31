@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Script from "next/script";
+import { HOME_FAQ } from "@/lib/home-faq";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/header";
@@ -164,36 +164,8 @@ const TESTIMONIALS: ReadonlyArray<{ quote: string; name: string; meta: string }>
   },
 ];
 
-const FAQ: ReadonlyArray<{ q: string; a: string }> = [
-  {
-    q: "Is IBS curable?",
-    a: "There's no overnight cure for IBS, but most patients reach durable, symptom-free living through a personalised plan. Our 90-day programme is designed exactly around that.",
-  },
-  {
-    q: "How is your treatment different from generic Ayurveda?",
-    a: "We're a specialist clinic — IBS only, not general gastric or wellness. Plans are tailored to your IBS subtype (IBS-D, IBS-C, IBS-M), supported by modern testing where useful, and tracked weekly.",
-  },
-  {
-    q: "How long does it take to feel better?",
-    a: "Most patients feel meaningful change in 4–8 weeks and 80–90% symptom reduction by ~90 days. Some take longer — we plan for your case, not an average.",
-  },
-  {
-    q: "Do I need to come to Mumbai?",
-    a: "No. Our patients across Hyderabad, Kolkata, Chennai, Ahmedabad, Pune, Delhi, Bangalore and Kerala consult by video or phone. Medicines reach you wherever you are in India.",
-  },
-  {
-    q: "What does it cost?",
-    a: "The free evaluation has zero cost. Treatment cost depends on your plan duration and shipping. Your doctor will discuss this transparently before you commit.",
-  },
-  {
-    q: "What happens during the free 15-minute evaluation?",
-    a: "A senior doctor reviews your symptoms, history, and prior treatments. You'll leave the call with a clear opinion on whether IBS Clinic is right for you — no pressure to enrol.",
-  },
-  {
-    q: "Is my data private?",
-    a: "Yes. Your details are seen only by our medical team. We comply with India's DPDP Act 2023 — see our Privacy Policy.",
-  },
-];
+// FAQ data lives in lib/home-faq.ts (the server page also emits it as FAQPage JSON-LD).
+const FAQ = HOME_FAQ;
 
 export function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -208,23 +180,6 @@ export function HomePage() {
       <Header onBookClick={() => openModal("header")} />
 
       <main className="pb-20 md:pb-0">
-        {/* FAQ schema (server-renderable through the client boundary) */}
-        <Script
-          id="faq-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: FAQ.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
-              })),
-            }),
-          }}
-        />
-
         {/* HERO */}
         <section className="bg-white">
           <div className="container-page grid gap-12 py-12 md:grid-cols-12 md:py-20 lg:py-24">

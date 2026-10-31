@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { itemListNode } from "@/lib/structured-data";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -21,6 +23,7 @@ export default function BlogHubPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/blogs" name="IBS Blog" crumb="Blog" type="CollectionPage" extra={[itemListNode("/blogs", getAllPosts().map((p) => ({ name: p.title, path: `/blogs/${p.slug}` })))]} />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">

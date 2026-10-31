@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { COMBOS } from "@/lib/products";
+import { itemListNode } from "@/lib/structured-data";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 
@@ -81,6 +84,7 @@ export default function ProductsPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/products" name="IBS Treatment Combos" crumb="Combos" type="CollectionPage" extra={[itemListNode("/products", COMBOS.map((c) => ({ name: c.name, path: `/products/${c.slug}` })))]} />
       <main className="pb-20 md:pb-0">
       {/* HERO */}
       <section className="bg-green-tint">

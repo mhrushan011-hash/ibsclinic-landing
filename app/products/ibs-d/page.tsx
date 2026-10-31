@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
+import { ComboSchema } from "@/components/combo-schema";
 
 export const metadata: Metadata = {
   title: "IBS-D Treatment: IBS Diarrheal Plus + IBS Diapro | IBS Clinic",
@@ -33,16 +34,7 @@ export default function IbsDPage() {
     <>
       <SimpleHeader />
       <main className="pb-20 md:pb-0">
-      {/* BREADCRUMB */}
-      <div className="border-b border-gray-border bg-white">
-        <div className="container-page py-3 text-sm text-charcoal-soft">
-          <Link href="/" className="hover:text-green">Home</Link>
-          <span className="mx-2 opacity-50">›</span>
-          <Link href="/products" className="hover:text-green">Products</Link>
-          <span className="mx-2 opacity-50">›</span>
-          <span className="text-charcoal">IBS-D Combo</span>
-        </div>
-      </div>
+      <ComboSchema slug="ibs-d" />
 
       {/* HERO */}
       <section className="bg-green-tint">

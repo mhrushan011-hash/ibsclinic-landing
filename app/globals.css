@@ -21,6 +21,15 @@
     @apply font-heading text-charcoal;
   }
 
+  /* Headings inside dark, white-text containers (CTA cards, footer, trust
+     strip) inherit the container's colour. Without this the rule above painted
+     them charcoal on a charcoal background, making them invisible.
+     Same specificity as `h2`, declared later, so it wins over the base rule
+     but still loses to any explicit text-* utility on the heading itself. */
+  :where(.text-white) :is(h1, h2, h3, h4) {
+    color: inherit;
+  }
+
   a {
     @apply text-green underline-offset-2;
   }

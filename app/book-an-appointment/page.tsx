@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "@/components/lead-form";
@@ -60,6 +61,7 @@ export default function BookAnAppointmentPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/book-an-appointment" name="Book Your Free IBS Evaluation" crumb="Book an appointment" />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
@@ -105,6 +106,7 @@ export default function WhyChooseUsPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/why-choose-us" name="Why Choose IBS Clinic" crumb="Why choose us" />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">
@@ -235,7 +237,8 @@ export default function WhyChooseUsPage() {
             <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {DIAGNOSTIC.map((d) => (
                 <li key={d.title} className="rounded-[16px] bg-gray-light p-5">
-                  <h4 className="font-heading text-base text-green">{d.title}</h4>
+                  {/* charcoal, not brand green: green on gray-light is 2.4:1 (unreadable) */}
+                  <h4 className="font-heading text-base text-charcoal">{d.title}</h4>
                   <p className="mt-2 text-sm text-charcoal-soft">{d.body}</p>
                 </li>
               ))}

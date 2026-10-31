@@ -14,8 +14,18 @@ import {
   formatDate,
 } from "@/lib/blog";
 import { getDoctor } from "@/lib/doctors";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
+import { JsonLd } from "@/components/json-ld";
+import {
+  absUrl,
+  assetUrl,
+  faqNode,
+  graph,
+  IBS_CONDITION,
+  ORG_ID,
+  personId,
+  personNode,
+  webPageNode,
+} from "@/lib/structured-data";
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
 
@@ -71,54 +81,48 @@ export default async function BlogPostPage({ params }: PageProps) {
   const dateModified = post.dateModified ?? post.datePublished;
   const wasUpdated = dateModified !== post.datePublished;
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.metaDescription,
-    image: post.heroImage
-      ? {
-          "@type": "ImageObject",
-          url: `${SITE_URL}${post.heroImage.src}`,
-          width: post.heroImage.width,
-          height: post.heroImage.height,
-        }
-      : undefined,
-    author: author
-      ? {
-          "@type": "Person",
-          name: author.name,
-          jobTitle: author.creds,
-          url: `${SITE_URL}/author/${author.slug}/`,
-        }
-      : undefined,
-    publisher: {
-      "@type": "Organization",
-      name: "IBS Clinic",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+  const path = `/blogs/${post.slug}`;
+  const postSchema = graph(
+    webPageNode({
+      path,
+      name: post.metaTitle,
+      description: post.metaDescription,
+      type: "WebPage",
+      hasBreadcrumb: true,
+      dateModified,
+      primaryImage: post.heroImage?.src,
+    }),
+    {
+      "@type": "BlogPosting",
+      "@id": `${absUrl(path)}#article`,
+      headline: post.title,
+      description: post.metaDescription,
+      image: post.heroImage
+        ? {
+            "@type": "ImageObject",
+            url: assetUrl(post.heroImage.src),
+            width: post.heroImage.width,
+            height: post.heroImage.height,
+          }
+        : undefined,
+      author: author ? { "@id": personId(author.slug) } : undefined,
+      publisher: { "@id": ORG_ID },
+      datePublished: post.datePublished,
+      dateModified,
+      inLanguage: "en-IN",
+      articleSection: post.category,
+      mainEntityOfPage: { "@id": absUrl(path) },
+      about: IBS_CONDITION,
     },
-    datePublished: post.datePublished,
-    dateModified,
-    mainEntityOfPage: `${SITE_URL}/blogs/${post.slug}/`,
-  };
-
-  const faqSchema =
-    post.faq && post.faq.length > 0
-      ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: post.faq.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }
-      : null;
+    author ? personNode(author, true) : null,
+    faqNode(path, post.faq ?? []),
+  );
 
   return (
     <>
       <SimpleHeader />
       <Breadcrumb
+        path={path}
         items={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blogs" },
@@ -126,16 +130,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         ]}
       />
       <main className="bg-white">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-        />
-        {faqSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-          />
-        )}
+        <JsonLd data={postSchema} />
 
         {/* HERO */}
         <section className="bg-green-tint">

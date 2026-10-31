@@ -11,8 +11,8 @@ import { GutTopicsGrid } from "@/components/gut-topics-grid";
 import { DOCTORS } from "@/lib/doctors";
 import { GUT_REFERENCES } from "@/lib/gut-pages/references";
 import type { Block, GutPageData } from "@/lib/gut-pages/types";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ibsclinic.com";
+import { JsonLd } from "@/components/json-ld";
+import { faqNode, graph, IBS_CONDITION, personId, personNode, webPageNode } from "@/lib/structured-data";
 const PHONE_DISPLAY = "+91 750 033 4343";
 const PHONE_TEL = "+917500334343";
 const WA = "https://wa.me/917500334343";
@@ -148,36 +148,34 @@ function BlockSection({ block, tone }: { block: Block; tone: string }) {
 
 export function GutPage({ page }: { page: GutPageData }) {
   const author = DOCTORS.kamal;
-  const url = `${SITE_URL}/${page.slug}/`;
+  const path = `/${page.slug}`;
 
-  const webPageSchema = {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    name: page.metaTitle,
-    description: page.metaDescription,
-    url,
-    inLanguage: ["en-IN", "hi-IN"],
-    dateModified: isoDate(page.updated),
-    author: { "@type": "Person", name: author.name, jobTitle: "Founder, IBS Clinic" },
-    publisher: { "@type": "MedicalOrganization", name: "IBS Clinic" },
-  };
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: page.faq.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
+  const schema = graph(
+    {
+      ...webPageNode({
+        path,
+        name: page.metaTitle,
+        description: page.metaDescription,
+        type: "MedicalWebPage",
+        hasBreadcrumb: true,
+        dateModified: isoDate(page.updated),
+      }),
+      inLanguage: ["en-IN", "hi-IN"],
+      author: { "@id": personId(author.slug) },
+      audience: { "@type": "PeopleAudience", healthCondition: IBS_CONDITION },
+    },
+    personNode(author, true),
+    faqNode(path, page.faq),
+  );
 
   return (
     <>
       <SimpleHeader />
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Gut health" }, { label: page.kicker }]} />
+      {/* No "Gut health" middle crumb: there is no hub URL for it, and a
+          BreadcrumbList item without a URL is invalid for Google. */}
+      <Breadcrumb path={path} items={[{ label: "Home", href: "/" }, { label: page.kicker }]} />
       <main className="gut-main bg-white">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        <JsonLd data={schema} />
 
         <section className="bg-green-tint">
           <div className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-12">

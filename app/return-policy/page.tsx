@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -15,6 +16,7 @@ export default function ReturnPolicyPage() {
   return (
     <>
       <SimpleHeader />
+      <PageSchema path="/return-policy" name="Return & Refund Policy" crumb="Return & refund policy" />
       <main className="bg-white">
         <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
           <h1 className="text-h2 text-charcoal">Return &amp; Refund Policy</h1>
