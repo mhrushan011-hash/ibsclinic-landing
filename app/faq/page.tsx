@@ -43,7 +43,7 @@ const FAQ_GROUPS: ReadonlyArray<FaqGroup> = [
       },
       {
         q: "Do I need to come to Mumbai?",
-        a: "No. Our patients across Hyderabad, Kolkata, Chennai, Ahmedabad, Pune, Delhi, Bangalore and Kerala consult by video or phone. Medicines reach you wherever you are in India.",
+        a: "No. Our patients across Delhi, Bangalore, Hyderabad, Pune, Kolkata, Chennai, Ahmedabad, Kerala, Lucknow, Jaipur, Indore, Nagpur and Chandigarh consult by video or phone. Medicines reach you wherever you are in India.",
       },
       {
         q: "What does it cost?",

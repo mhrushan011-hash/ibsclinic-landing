@@ -3,7 +3,7 @@ import type { CityFaq } from "@/lib/cities";
 /**
  * Genuinely local content for each city page (Q4 2026 recovery): local food
  * habits and low-FODMAP swaps, lifestyle factors, and how online care works
- * from that city. Keeps the 8 city pages from being near-duplicates.
+ * from that city. Keeps the 13 city pages from being near-duplicates.
  *
  * Rules: no local address or clinic claims (the only physical clinic is in
  * Virar West, Mumbai); no city-specific patient numbers; FODMAP statements
@@ -161,6 +161,92 @@ export const CITY_LOCAL: Readonly<Record<string, CityLocal>> = {
     faq: [
       { q: "Can a stomach infection cause IBS?", a: "Yes. Post-infectious IBS is well documented — a meta-analysis found that more than 1 in 10 people develop IBS after infectious gastroenteritis. Gut infections are more common in Kerala's monsoon months." },
       { q: "How does an online IBS consultation work for patients in Kerala?", a: ONLINE_STEPS },
+    ],
+  },
+  // --- Sprint 5 (Q4 2026): the 5 rebuilt cities.
+  "ibs-treatment-in-lucknow": {
+    title: "IBS Care for Lucknow Patients: Awadhi Food, Late Dinners and Online Care",
+    intro: [
+      "Lucknow's food is rich and slow-cooked: biryani, nihari with kulcha or sheermal, kebabs, korma, and a breakfast of khasta kachori with aloo sabzi. Much of it combines maida or wheat, onion, garlic, cream and ghee — a heavy FODMAP and fat load for an IBS gut, often eaten late in the evening. Malai makhan, kulfi and milky chai add lactose on top.",
+      "Most Lucknow patients don't need to give up Awadhi food. What helps is simpler everyday meals, smaller portions of the rich dishes, and an earlier dinner, so the bowel is not working hardest overnight.",
+    ],
+    swaps: [
+      { food: "Khasta kachori with aloo sabzi for breakfast", swap: "Poha or vegetable upma made without onion" },
+      { food: "Nihari with kulcha or sheermal", swap: "Mutton or chicken shorba with plain rice; nihari occasionally, in a small bowl" },
+      { food: "Rich korma or biryani with fried onions, late at night", swap: "Chicken or paneer tikka with jeera rice, eaten earlier" },
+      { food: "Malai makhan, kulfi or milky chai", swap: "A small serving occasionally; lactose-free milk in chai" },
+    ],
+    faq: [
+      { q: "Which Lucknow foods commonly trigger IBS?", a: "Kachori-sabzi, nihari with kulcha or sheermal, rich kormas and biryani with fried onions, and milky sweets like malai makhan and kulfi are frequent triggers because they combine wheat or maida, onion, garlic, fat and lactose." },
+      { q: "How does an online IBS consultation work for Lucknow patients?", a: ONLINE_STEPS },
+    ],
+  },
+  "ibs-treatment-in-jaipur": {
+    title: "IBS Care for Jaipur Patients: Rajasthani Food, Dry Heat and Online Care",
+    intro: [
+      "Rajasthani food is built for a desert climate: ghee-rich dal baati churma, gatte ki sabzi made from besan in a curd gravy, pyaaz kachori and mirchi vada. Wheat, besan, onion and plenty of ghee together are hard on an IBS gut, and very spicy dishes often worsen IBS-D.",
+      "Jaipur's dry heat matters too. Many patients drink less water than they need, especially in summer, which makes stools harder and IBS-C worse. Bajra and makki rotis, rice, and moong dal in small portions are useful everyday options.",
+    ],
+    swaps: [
+      { food: "Dal baati churma", swap: "One baati with a small katori of moong dal; skip the extra ghee" },
+      { food: "Pyaaz kachori or mirchi vada", swap: "Poha with peanuts and lemon" },
+      { food: "Gatte ki sabzi (besan in curd gravy)", swap: "Ker sangri or a dry vegetable sabzi with bajra roti" },
+      { food: "Lassi, several glasses in summer", swap: "Water through the day; chaas in a small glass if tolerated" },
+    ],
+    faq: [
+      { q: "Which Jaipur foods commonly trigger IBS?", a: "Dal baati churma, pyaaz kachori, mirchi vada, besan-based gatte and large glasses of lassi are common triggers because they combine wheat, besan, onion, fat and lactose. Too little water in the dry heat also worsens constipation." },
+      { q: "How does an online IBS consultation work for Jaipur patients?", a: ONLINE_STEPS },
+    ],
+  },
+  "ibs-treatment-in-indore": {
+    title: "IBS Care for Indore Patients: Poha, Namkeen, Sarafa and Online Care",
+    intro: [
+      "Indore starts the day with poha, and that is good news: plain poha is rice-based and usually well tolerated. The trouble is what comes with it and after it — a thick layer of sev, jalebi, namkeen through the day, and late-night snacking at Sarafa or Chappan Dukan on kachori, dahi vada and garadu. Sev and most namkeen are made from besan, and fried snacks late at night are a common reason for morning urgency.",
+      "Indori shikanji is another hidden trigger: unlike lemon water elsewhere, it is a thick, sweet milk drink, so it adds lactose and sugar.",
+    ],
+    swaps: [
+      { food: "Poha topped with lots of sev, plus jalebi", swap: "Poha with peanuts and pomegranate, a light sprinkle of sev" },
+      { food: "Namkeen and sev through the day", swap: "A small bowl of roasted peanuts" },
+      { food: "Late-night kachori or dahi vada at Sarafa", swap: "Sabudana khichdi in a small portion, earlier in the evening" },
+      { food: "Indori shikanji (milk-based)", swap: "Nimbu pani with a pinch of salt and roasted jeera" },
+    ],
+    faq: [
+      { q: "Is poha good for IBS?", a: "Plain poha is made from flattened rice and is usually well tolerated. Go easy on the sev, onion and jalebi that often come with it in Indore, and add peanuts for protein." },
+      { q: "How does an online IBS consultation work for Indore patients?", a: ONLINE_STEPS },
+    ],
+  },
+  "ibs-treatment-in-nagpur": {
+    title: "IBS Care for Nagpur Patients: Saoji Spice, Summer Heat and Online Care",
+    intro: [
+      "Nagpur is known for Saoji food — mutton and chicken curries cooked with lots of oil, dry chilli, garlic and onion — and for tarri poha served with a spicy chana gravy. Very spicy, oily, garlic-heavy meals are a common trigger for IBS-D and for burning after meals.",
+      "Nagpur's summers are among the hottest in India, and dehydration makes constipation worse. The city's oranges are a good choice: a medium orange is low in FODMAPs and adds fluid and fibre.",
+    ],
+    swaps: [
+      { food: "Saoji mutton or chicken curry", swap: "A milder tomato-ginger curry with rice; Saoji occasionally, in a small portion" },
+      { food: "Tarri poha with chana gravy", swap: "Plain poha with peanuts and lemon" },
+      { food: "Zunka or patodi made from besan", swap: "A dry vegetable sabzi with jowar bhakri" },
+      { food: "Cold fizzy drinks in the heat", swap: "Water, nimbu pani, or one Nagpur orange" },
+    ],
+    faq: [
+      { q: "Is spicy Saoji food bad for IBS?", a: "For many people with IBS, especially IBS-D, very spicy, oily and garlic-heavy dishes like Saoji curries trigger cramps, urgency or burning. You don't have to give them up completely; keep them occasional and in small portions." },
+      { q: "How does an online IBS consultation work for Nagpur patients?", a: ONLINE_STEPS },
+    ],
+  },
+  "ibs-treatment-in-chandigarh": {
+    title: "IBS Care for Chandigarh Patients: Punjabi Food, Lassi and Online Care",
+    intro: [
+      "Punjabi home food has one handy IBS-friendly staple: makki di roti, made from maize flour, which is low in FODMAPs and a good change from wheat. Its usual partner, sarson da saag, is often cooked with plenty of garlic, and the white butter on top adds fat. Other common triggers we see in the tricity are chole kulche, stuffed parathas with butter, creamy butter chicken and large glasses of lassi.",
+      "Chandigarh's open roads, gardens and Sukhna Lake make a daily walk easy, and regular movement helps IBS. A 20 to 30 minute walk on most days is part of many of our patients' plans.",
+    ],
+    swaps: [
+      { food: "Aloo or gobhi paratha with white butter", swap: "Makki di roti or a plain roti with a dry sabzi" },
+      { food: "Sarson da saag made with lots of garlic", swap: "Saag cooked in garlic-infused oil, with the garlic pieces removed" },
+      { food: "Chole kulche or rajma-chawal", swap: "Rice with a moong dal tadka or chicken curry" },
+      { food: "A tall glass of lassi", swap: "Chaas in a small glass, or lactose-free curd" },
+    ],
+    faq: [
+      { q: "Is makki di roti good for IBS?", a: "Maize flour is low in FODMAPs, so makki di roti is a useful alternative to wheat roti for many people with IBS. Keep the white butter light and watch how much garlic goes into the saag." },
+      { q: "How does an online IBS consultation work for Chandigarh patients?", a: ONLINE_STEPS },
     ],
   },
 };

@@ -1,34 +1,258 @@
 import type { BlogPost } from "../types";
 
+/**
+ * Q4 2026 refresh (Sprint 4.7). Removed: "75-85% improvement in 3-6 months",
+ * the misattributed "2014 Journal of Ayurveda and Integrative Medicine study",
+ * "50-90% have anxiety", "meditation cuts cortisol 23%", the one-sided
+ * Ayurveda-vs-Western table, self-directed Vamana/Virechana, nightly Triphala,
+ * licorice-in-milk and aloe-juice dosing. Added (research gap): peppermint
+ * oil, soluble fibre/isabgol, probiotics, drinks — all per R9 (ACG 2021) and
+ * R11 (Monash). Ayurveda content is framed as tradition + clinic experience,
+ * not as trial-proven.
+ */
 export const post: BlogPost = {
-  "slug": "ibs-ayurvedic-treatment",
-  "title": "IBS Ayurvedic Treatment: Natural Relief with Proven Results",
-  "metaTitle": "IBS Ayurvedic Treatment: Natural Remedies, Diet & Healing | IBS Clinic",
-  "metaDescription": "Looking for natural relief from IBS? Explore effective IBS Ayurvedic treatments, powerful herbs, gut-healing diets, and daily routines that help.",
-  "excerpt": "How Ayurveda treats IBS at the root through dosha balancing, Agni restoration, herbs, diet, and lifestyle, with a 75-85% improvement rate in 3-6 months.",
-  "authorSlug": "dr-nishikant-dwivedi",
-  "category": "Ayurveda",
-  "datePublished": "2025-11-28",
-  "dateModified": "2026-11-01",
-  "faq": [
+  slug: "ibs-ayurvedic-treatment",
+  title: "IBS Ayurvedic Treatment: Herbs, Diet and Daily Routine That Help",
+  metaTitle: "Ayurvedic & Herbal Treatment for IBS: Herbs, Diet, Routine | IBS Clinic",
+  metaDescription:
+    "How Ayurveda approaches IBS (Grahani): herbs like ginger, fennel and peppermint, isabgol, diet, daily routine and yoga, what the evidence says, and safety tips.",
+  excerpt:
+    "How Ayurveda understands IBS as Grahani, which herbs and remedies help, what the evidence says, and how to combine Ayurveda safely with modern care.",
+  authorSlug: "dr-nishikant-dwivedi",
+  category: "Ayurveda",
+  datePublished: "2025-11-28",
+  dateModified: "2026-11-01",
+  faq: [
     {
-      "q": "I've been taking antispasmodics for 2 years – can I switch to Ayurveda suddenly or do I need to taper off?",
-      "a": "Never stop medications abruptly. Work with both your gastroenterologist and Ayurvedic practitioner to create a tapering schedule. Typically, begin Ayurvedic treatment while continuing current medications. As symptoms improve over 2-3 months, gradually reduce pharmaceutical doses under medical supervision. The goal is a safe, comfortable transition without symptom rebound."
+      q: "Which Ayurvedic medicine is best for IBS?",
+      a: "There is no single best medicine for everyone. An Ayurvedic doctor chooses herbs by your IBS type: for loose motions, astringent herbs such as bilva (bael) and kutaja are traditional choices; for constipation and gas, gentler herbs such as haritaki and hing-based churnas. The right choice depends on your pattern, other health conditions and medicines.",
     },
     {
-      "q": "My IBS gets worse during my period – is there a connection and what can Ayurveda do differently?",
-      "a": "Yes, hormonal fluctuations directly impact gut motility. Progesterone slows intestinal movement (causing constipation), while prostaglandins increase contractions (causing diarrhea during menstruation). Ayurveda addresses this through:\n\n- Shatavari for hormone balance\n- Dashamoola to reduce menstrual cramping and intestinal spasms\n- Cycle-specific diet adjustments (warming foods during period)\n- Abhyanga with warm sesame oil starting 3 days before period\n\nThe best ayurvedic treatment for IBS in India clinics now offer specialized women's digestive health protocols addressing this overlap."
+      q: "What is the Ayurvedic treatment for IBS with diarrhoea?",
+      a: "Ayurveda treats IBS-D by strengthening digestion and calming the bowel: light, warm, cooked meals such as khichdi and curd rice, buttermilk if tolerated, and herbs such as bilva, kutaja and musta chosen by a doctor. Very spicy, fried and fermented foods are reduced. Persistent diarrhoea needs tests first.",
     },
     {
-      "q": "Can I eat out at restaurants while following Ayurvedic IBS treatment, or do I have to cook everything at home?",
-      "a": "You can eat out with mindful choices. Select restaurants offering fresh, simply prepared food. Guidelines:\n\n- Choose freshly cooked, warm foods over buffets\n- Request light spicing (\"less oil, less spice\")\n- Order grilled/steamed over fried\n- Bring digestive herbs (fennel seeds) to chew after\n- Avoid experimenting with new cuisines during active treatment\n- Indian restaurants often accommodate Ayurvedic requests\n\nSocial eating is important for mental health – don't isolate yourself. Plan ahead and communicate your needs."
-    }
+      q: "What can I drink to calm IBS?",
+      a: "Warm water through the day, ginger tea, fennel (saunf) water and peppermint tea are gentle choices for many people. Chaas in a small glass suits some people with IBS-D. Limit coffee, strong tea, fizzy drinks, alcohol and sugary juices, which often make symptoms worse.",
+    },
+    {
+      q: "Is Ayurveda effective for IBS?",
+      a: "Large trials of Ayurvedic formulas for IBS are limited, so results can't be promised. In our clinic's experience, many patients improve when Ayurvedic medicines are combined with diet changes, a fixed routine and stress care, and when treatment is matched to their IBS type.",
+    },
+    {
+      q: "Can I take Ayurvedic medicine with my IBS tablets?",
+      a: "Often yes, but tell both doctors everything you take. Don't stop prescribed medicines suddenly. Some herbs interact with blood thinners, diabetes and blood pressure medicines, so get advice before combining them.",
+    },
+    {
+      q: "Is triphala good for IBS?",
+      a: "Triphala is a mild laxative, so it may help some people with IBS-C, but it can worsen loose motions and cramps in IBS-D. Taking it every night for months can build a habit. Use it only on a doctor's advice and for a set period.",
+    },
+    {
+      q: "Can IBS be cured permanently with Ayurveda?",
+      a: "No treatment can promise a permanent cure for IBS. Many people get long periods with few or no symptoms when they find their triggers, keep a steady routine and get the right treatment. Flares can return with stress, illness or diet changes, and usually settle faster once you know your plan.",
+    },
+    {
+      q: "Why does my IBS get worse during my period?",
+      a: "Hormone changes around a period affect the gut. Many women notice more loose motions, cramps or bloating just before and during their period. Warm, simple meals, enough water, gentle movement and a heat pad help many. Tell your doctor if the pattern is strong, so your plan can account for it.",
+    },
   ],
-  "bodyMarkdown": "## TL;DR – Key Takeaways\n\n- Ayurveda treats IBS root cause through dosha balancing and Agni (digestive fire) restoration, not just symptom management\n- 75-85% improvement rate achievable in 3-6 months with proper ayurvedic IBS treatment protocols\n- Personalized approach based on your unique dosha imbalance (Vata, Pitta, or Kapha predominance)\n- Best results combine customized herbal formulations, dietary modifications, and lifestyle changes tailored to your constitution\n\n## What is Irritable Bowel Syndrome (IBS)? An Ayurvedic Perspective\n\n### Understanding IBS in Modern Medicine\n\nIrritable Bowel Syndrome affects 10-15% of the global population, causing abdominal pain, bloating, irregular bowel movements, and significant quality-of-life disruption. Modern medicine classifies IBS as a functional disorder with no structural abnormalities, making conventional treatment challenging.\n\nCommon IBS symptoms include:\n\n- Cramping and abdominal pain relieved by bowel movements\n- Alternating diarrhea and constipation\n- Excessive gas and bloating\n- Mucus in stool\n- Urgent bowel movements\n\n### IBS as 'Grahani Roga' in Ayurveda\n\nAyurveda identifies IBS as Grahani Roga, a disorder of the small intestine (grahani) where digestive enzymes are secreted. The term \"grahani\" means \"to hold\" – referring to the organ's function of retaining food until proper digestion occurs.\n\nWhen Agni (digestive fire) weakens, food isn't properly broken down. This creates Ama (toxic undigested material) that accumulates in the gastrointestinal tract, triggering IBS symptoms.\n\n### The Role of Doshas in IBS Development\n\nIBS primarily involves Vata dosha vitiation (air and ether elements), which governs all movement in the body, including intestinal peristalsis.\n\nDosha patterns in IBS:\n\n- Vata-type IBS: Constipation-predominant, gas, bloating, anxiety\n- Pitta-type IBS: Diarrhea-predominant, burning sensation, inflammation\n- Kapha-type IBS: Heaviness, mucus in stool, sluggish digestion\n- Tridoshic IBS: Mixed symptoms requiring comprehensive treatment\n\n## How is Ayurveda Good for IBS? The Science Behind Natural Healing\n\n### Why Ayurvedic Treatment Works Where Others Fail\n\nAyurveda addresses the root cause rather than masking symptoms. A 2014 study published in the Journal of Ayurveda and Integrative Medicine demonstrated significant improvement in IBS patients following Ayurvedic protocols compared to conventional treatments.\n\nThe holistic approach considers your unique constitution, lifestyle, stress levels, and dietary habits. This personalization explains why ayurvedic IBS treatment achieves lasting results.\n\n### Root Cause vs Symptom Management Approach\n\nConventional IBS treatment uses antispasmodics, antidiarrheals, and antidepressants to control symptoms. While helpful short-term, these don't address why your digestive system malfunctions.\n\nAyurvedic treatment targets:\n\n- Restoring digestive fire (Agni deepana)\n- Eliminating accumulated toxins (Ama pachana)\n- Balancing aggravated doshas\n- Strengthening intestinal integrity\n- Calming the nervous system's impact on gut function\n\n### Agni (Digestive Fire) and Its Impact on IBS\n\nMandagni (weak digestive fire) is the primary culprit in IBS development. When Agni weakens due to irregular eating, stress, or inappropriate food combinations, your body can't efficiently convert food into nutrients.\n\nThis incomplete digestion produces Ama, which blocks the microcirculatory channels (srotas), further compromising nutrient absorption and waste elimination. Restoring Agni is the cornerstone of ayurvedic IBS treatment principles.\n\n### Real Patient Success Story – IBS Ayurvedic Treatment Case Study\n\n**Patient Profile and Presenting Symptoms**\n\nMr. Anurag Kumar (New Delhi) suffered 15-20 years of chronic IBS with persistent bloating, 2-4 daily soft stools, intermittent stomach pain, and acidity. Previous allopathic, homeopathic, and Ayurvedic treatments provided only temporary relief.\n\n**Ayurvedic Assessment and Diagnosis**\n\nVata-Pitta predominant constitution with Manda-Tikshna Agni (fluctuating digestive fire). Significant Ama accumulation affecting gut-brain axis communication.\n\n**Customized Treatment Protocol**\n\nDiapro powder for digestive fire enhancement, Diarrheal Plus powder for dosha balancing. Dietary changes included warm, cooked foods with small frequent meals. Lifestyle modifications incorporated yoga and pranayama.\n\n**Progress Timeline**\n\n- Month 1: 60% symptom reduction\n- Month 3: 80% improvement, stabilized to 2 daily bowel movements\n- Month 6: Occasional discomfort only\n- Month 8: Treatment completed, normal diet resumed\n\n**Current Status**\n\nFour years post-treatment with sustained symptom-free status. No ongoing treatment required, demonstrating constitutional approach effectiveness over symptom suppression.\n\n## Best Ayurvedic Treatment for IBS: Comprehensive Protocol\n\n### Panchakarma Detoxification for IBS\n\nPanchakarma (five purification actions) removes deep-seated toxins and resets your digestive system. For IBS, specific procedures include:\n\n**Virechana (therapeutic purgation):** Eliminates excess Pitta and Ama from the intestinal tract. Most effective for IBS-D (diarrhea-predominant).\n\n**Basti (medicated enema):** The primary treatment for Vata disorders. Herbal oils and decoctions administered rectally calm Vata, reduce inflammation, and restore healthy gut motility.\n\n**Abhyanga (oil massage):** Warm sesame oil massage calms nervous system dysregulation, a major IBS trigger.\n\n### Herbal Formulations – The Best Ayurvedic Treatment for IBS\n\n**Triphala:** The cornerstone of digestive health, this three-fruit formula gently detoxifies while supporting healthy elimination. Take 1-2 teaspoons in warm water before bed.\n\n**Chitrakadi Vati:** Kindles digestive fire and improves enzyme secretion. Particularly effective for Vata-type constipation and bloating.\n\n**Bilwadi Churna:** Absorbs excess moisture in the intestines, making it ideal for IBS-D (diarrhea-predominant cases).\n\n**Kutajarishta:** Fermented herbal preparation that soothes intestinal inflammation and regulates bowel movements.\n\n**Hingwashtak Churna:** Carminative formula that eliminates gas, reduces bloating, and improves nutrient absorption.\n\n### Personalized Treatment Based on Dosha Imbalance\n\n#### Vata-Type IBS Treatment\n\n**Symptoms:** Constipation, gas, variable bowel habits, anxiety, dry stools\n\n**Protocol:**\n\n- Warm, moist, grounding foods\n- Sesame oil for cooking and abhyanga\n- Ashwagandha for nervous system support\n- Regular meal times (critical for Vata balance)\n- Basti therapy as primary Panchakarma\n\n#### Pitta-Type IBS Treatment\n\n**Symptoms:** Diarrhea, burning sensation, inflammation, irritability\n\n**Protocol:**\n\n- Cooling, soothing foods\n- Aloe vera juice (2 oz twice daily)\n- Guduchi and shatavari for inflammation\n- Avoid spicy, sour, and fermented foods\n- Virechana therapy when appropriate\n\n#### Kapha-Type IBS Treatment\n\n**Symptoms:** Heavy digestion, mucus in stool, lethargy, congestion\n\n**Protocol:**\n\n- Light, warm, spicy foods\n- Trikatu (three pungents) to stimulate Agni\n- Regular exercise essential\n- Avoid dairy, cold foods, excessive sweets\n- Vamana (therapeutic emesis) in severe cases\n\n## Ayurvedic Diet for IBS: Foods That Heal Your Gut\n\n### IBS-Friendly Foods According to Ayurveda\n\n**Grains:** Well-cooked basmati rice, quinoa, oats (avoid wheat initially)\n\n**Proteins:** Mung dal, red lentils, easily digestible pulses (avoid heavy beans)\n\n**Vegetables:** Cooked vegetables (avoid raw), zucchini, bottle gourd, pumpkin, leafy greens\n\n**Fruits:** Ripe bananas, cooked apples, pomegranate, papaya (avoid citrus during flares)\n\n**Spices:** Ginger, cumin, coriander, fennel, turmeric (natural anti-inflammatories)\n\n**Fats:** Ghee (clarified butter) – 1-2 teaspoons per meal supports nutrient absorption and Vata balance\n\n### Foods to Avoid in IBS Management\n\n**Completely eliminate:**\n\n- Refined sugar and artificial sweeteners\n- Processed foods with additives\n- Caffeine and carbonated beverages\n- Alcohol\n- Raw salads and cold foods (especially for Vata types)\n- Deep-fried foods\n\n**Reduce significantly:**\n\n- Dairy products (except ghee and occasional buttermilk)\n- Cruciferous vegetables (broccoli, cauliflower, cabbage)\n- Nightshades if inflammation present\n- Incompatible food combinations\n\n### Meal Timing and Food Combinations for Better Digestion\n\n**Follow these principles:**\n\n- Eat at the same times daily (regulates digestive enzyme secretion)\n- Largest meal at lunch when Agni is strongest (12-1 PM)\n- Dinner by 7 PM, at least 3 hours before bed\n- Never eat when stressed or upset (shuts down digestive function)\n- Avoid snacking between meals (allows complete digestion)\n\n**Food combination rules:**\n\n- Don't mix fruit with meals (eat alone or before meals)\n- Avoid combining milk with sour, salty, or fermented foods\n- Don't mix cooked and raw foods in one meal\n- Protein and starch combinations should be minimal\n\n## Ayurvedic Herbs for IBS: Nature's Digestive Healers\n\n### Top 5 Ayurvedic Herbs for IBS Relief\n\n**1. Licorice Root (Yashtimadhu)**\n\n- Soothes intestinal inflammation\n- Protects mucosal lining\n- Balances excess Pitta\n- Dosage: 1/4 tsp powder in warm milk before bed\n\n**2. Peppermint (Pudina)**\n\n- Relaxes intestinal smooth muscle\n- Reduces cramping and spasms\n- Improves bile flow\n- Dosage: Fresh [peppermint tea](/blogs/ibs-home-remedies/) after meals\n\n**3. Ginger (Shunthi)**\n\n- Kindles digestive fire\n- Reduces gas and bloating\n- Anti-inflammatory properties\n- Dosage: Fresh ginger tea 20 minutes before meals\n\n**4. Fennel (Shatapushpa)**\n\n- Carminative (relieves gas)\n- Reduces intestinal spasms\n- Supports healthy gut bacteria\n- Dosage: 1 tsp seeds chewed after meals or as tea\n\n**5. Haritaki (Terminalia chebula)**\n\n- Regulates bowel movements\n- Gentle detoxification\n- Rejuvenates intestinal tissue\n- Dosage: 1/2 tsp powder with warm water at bedtime\n\n### How to Use These Herbs Safely and Effectively\n\n**General guidelines:**\n\n- Start with small doses and increase gradually\n- Take herbs consistently for minimum 6-8 weeks for results\n- Best absorbed when taken with appropriate anupana (carrier): warm water, honey, ghee, or milk\n- Consult qualified Ayurvedic practitioner for personalized formulations\n- Quality matters – source organic, authentic herbs from reputable suppliers\n\n**Caution:** Avoid self-medicating if pregnant, nursing, or taking medications. Some herbs interact with blood thinners, diabetes medications, and immunosuppressants.\n\n## Lifestyle Changes for Long-Term IBS Management\n\n### Stress Management Through Yoga and Meditation\n\nGut-brain axis dysfunction is a major IBS contributor. Studies show 50-90% of IBS patients have comorbid anxiety or depression. Ayurveda addresses this through:\n\n**Pranayama (breathing exercises):**\n\n- Nadi Shodhana (alternate nostril breathing) – balances nervous system\n- Bhramari (bee breath) – calms mind and reduces stress\n- Practice 10-15 minutes daily, preferably morning\n\n**Meditation practices:**\n\n- 20 minutes daily meditation reduces cortisol by 23%\n- Mantra meditation (Om chanting) stimulates vagus nerve\n- Body scan meditation increases interoceptive awareness\n\n**Yoga asanas for IBS:**\n\n- Paschimottanasana (seated forward bend) – massages intestines\n- Pawanmuktasana (wind-relieving pose) – releases trapped gas\n- Supta Matsyendrasana (supine twist) – improves digestion\n- Avoid inversions and intense abdominal compression during flares\n\n### Sleep Hygiene and Digestive Health\n\nPoor sleep disrupts gut motility and increases inflammation. **Ayurvedic sleep protocols:**\n\n- Sleep by 10 PM (Kapha time promotes deep rest)\n- Wake by 6 AM (before Kapha accumulation causes sluggishness)\n- Avoid screens 1 hour before bed (blue light disrupts melatonin)\n- Abhyanga with warm oil 30 minutes before shower calms Vata\n- Drink warm milk with nutmeg before bed (natural sedative)\n\n### Daily Routine (Dinacharya) for IBS Patients\n\n**Morning routine (6-8 AM):**\n\n- Evacuate bowels naturally (don't strain)\n- Drink warm water with lemon (stimulates peristalsis)\n- Oil pulling with sesame oil (removes oral toxins)\n- Light breakfast after tongue cleaning\n\n**Midday routine:**\n\n- Largest meal between 12-1 PM\n- 10-minute walk after lunch (aids digestion)\n- Avoid sleep immediately after eating\n\n**Evening routine:**\n\n- Light dinner by 7 PM\n- Herbal tea (ginger or fennel)\n- Gentle stretching or slow walk\n- Wind down activities 1-2 hours before bed\n\n## Is There Any Ayurvedic Treatment for IBS? Comparing Treatment Options\n\n### Ayurveda vs Western Medicine for IBS\n\n| Aspect | Ayurvedic Treatment | Western Medicine |\n|--------|-------------------|------------------|\n| Approach | Addresses root cause and constitution | Manages symptoms |\n| Timeline | 3-6 months for significant improvement | Ongoing medication needed |\n| Side Effects | Minimal when properly prescribed | Common (constipation, dependency, drowsiness) |\n| Personalization | Highly individualized based on dosha | Standardized protocols |\n| Long-term Outcome | Sustainable improvement, reduced flares | Symptom control, no cure |\n| Cost | Moderate initial investment | Ongoing medication costs |\n\n### Can Both Approaches Be Combined?\n\nYes, integrative treatment is often ideal, especially during transition. Inform both practitioners about all treatments you're receiving.\n\n**Considerations:**\n\n- Antispasmodics and Ayurvedic herbs can work synergistically\n- Taper conventional medications gradually under medical supervision\n- Ayurvedic treatment may reduce need for pharmaceuticals over time\n- Some combinations (e.g., blood thinners + turmeric) require monitoring\n\n### Success Rates and Treatment Duration\n\n**Realistic expectations for ayurvedic IBS treatment:**\n\n- **Month 1:** Initial detox symptoms possible, 20-30% symptom reduction\n- **Month 2-3:** Noticeable improvement in frequency and severity (40-60% reduction)\n- **Month 4-6:** Significant relief for most patients (70-85% improvement)\n- **Beyond 6 months:** Maintenance phase with occasional tune-ups\n\n**Success rates vary based on:**\n\n- Chronicity of condition (recent onset responds faster)\n- Treatment compliance (diet and lifestyle changes critical)\n- Stress management implementation\n- Quality of herbs and practitioner expertise\n\n## Best Ayurvedic Treatment for IBS in India: Finding the Right Care\n\n### What to Look for in an Ayurvedic IBS Specialist\n\n**Qualifications:**\n\n- BAMS (Bachelor of Ayurvedic Medicine and Surgery) degree minimum\n- Additional specialization in Kayachikitsa (internal medicine)\n- Experience treating digestive disorders (ask about IBS patient volume)\n- Registered with state Ayurvedic council\n\n**Treatment approach:**\n\n- Conducts thorough pulse diagnosis (Nadi Pariksha)\n- Takes detailed dietary and lifestyle history\n- Explains your dosha imbalance clearly\n- Provides written treatment plan with timelines\n- Offers follow-up consultations (essential for adjustments)\n\n**Red flags:**\n\n- Promises instant cure or unrealistic timelines\n- Prescribes same formula to all IBS patients\n- No dietary or lifestyle guidance (herbs alone won't work)\n- Unclear about herb sources or quality\n- Pushes expensive supplements without explanation\n\n### Red Flags: When to Consult a Doctor Immediately\n\n**Seek emergency care for:**\n\n- Severe abdominal pain that worsens progressively\n- Blood in stool (bright red or tarry black)\n- Unintentional weight loss (>10 lbs in 3 months)\n- Fever with IBS symptoms\n- Symptoms that began after age 50\n- Family history of colon cancer, IBD, or celiac disease\n- Severe dehydration from diarrhea\n- Complete inability to pass gas or stool\n\nThese symptoms may indicate conditions beyond IBS requiring immediate medical evaluation.\n\n## Expected Timeline for Results\n\n### Phase 1 (Weeks 1-4): Detoxification and Agni Restoration\n\n- Possible temporary worsening (healing crisis)\n- Increased bowel movements during detox\n- Energy fluctuations\n- Stay hydrated and follow dietary guidelines strictly\n\n### Phase 2 (Months 2-3): Active Healing\n\n- Reduction in pain intensity and frequency\n- More predictable bowel patterns\n- Decreased bloating and gas\n- Improved energy and mental clarity\n\n### Phase 3 (Months 4-6): Stabilization\n\n- Significant symptom relief\n- Greater food tolerance\n- Reduced stress reactivity\n- Transition to maintenance protocol\n\n### Maintenance Phase (Ongoing)\n\n- Seasonal tune-ups (especially during dosha-aggravating seasons)\n- Continued lifestyle practices\n- Periodic consultations for prevention\n\n## Common Questions About Living with IBS – Ayurvedic Answers\n\n### I've been taking antispasmodics for 2 years – can I switch to Ayurveda suddenly or do I need to taper off?\n\nNever stop medications abruptly. Work with both your gastroenterologist and Ayurvedic practitioner to create a tapering schedule. Typically, begin Ayurvedic treatment while continuing current medications. As symptoms improve over 2-3 months, gradually reduce pharmaceutical doses under medical supervision. The goal is a safe, comfortable transition without symptom rebound.\n\n### My IBS gets worse during my period – is there a connection and what can Ayurveda do differently?\n\nYes, hormonal fluctuations directly impact gut motility. Progesterone slows intestinal movement (causing constipation), while prostaglandins increase contractions (causing diarrhea during menstruation). Ayurveda addresses this through:\n\n- Shatavari for hormone balance\n- Dashamoola to reduce menstrual cramping and intestinal spasms\n- Cycle-specific diet adjustments (warming foods during period)\n- Abhyanga with warm sesame oil starting 3 days before period\n\nThe best ayurvedic treatment for IBS in India clinics now offer specialized women's digestive health protocols addressing this overlap.\n\n### Can I eat out at restaurants while following Ayurvedic IBS treatment, or do I have to cook everything at home?\n\nYou can eat out with mindful choices. Select restaurants offering fresh, simply prepared food. **Guidelines:**\n\n- Choose freshly cooked, warm foods over buffets\n- Request light spicing (\"less oil, less spice\")\n- Order grilled/steamed over fried\n- Bring digestive herbs (fennel seeds) to chew after\n- Avoid experimenting with new cuisines during active treatment\n- Indian restaurants often accommodate Ayurvedic requests\n\nSocial eating is important for mental health – don't isolate yourself. Plan ahead and communicate your needs.",
-  "heroImage": {
-    "src": "/figures/ibs-ayurvedic-treatment/ayurvedic-treatment-for-ibs.webp",
-    "alt": "Ayurvedic treatment for IBS: triphala, cumin, fennel, licorice and ashwagandha",
-    "width": 1200,
-    "height": 800
-  }
+  bodyMarkdown: `## Quick answers
+
+- In Ayurveda, IBS is closest to **Grahani**, a disorder of weak or unsteady digestion (**Agni**) that disturbs the bowel.
+- Ayurvedic care for IBS combines **herbs chosen by your IBS type, diet, a fixed daily routine, and calming the mind**.
+- Some simple remedies have good modern evidence too: **peppermint oil** and **soluble fibre such as isabgol** are recommended in the [American College of Gastroenterology guideline](https://pubmed.ncbi.nlm.nih.gov/33315591/).
+- Large trials of Ayurvedic formulas for IBS are limited. Choose a qualified doctor, not self-prescribed churnas.
+- **Blood in the stool, weight loss, fever or night-time diarrhoea are not IBS.** Get these checked before any treatment.
+
+## How Ayurveda understands IBS
+
+### IBS in modern medicine
+
+[Irritable bowel syndrome](/blogs/what-is-ibs/) affects around [1 in 9 people worldwide](https://pubmed.ncbi.nlm.nih.gov/22426087/). It causes belly pain linked to bowel movements, bloating, and constipation, loose motions or both. Tests look normal because IBS is a problem of how the gut moves and how sensitive it is, often driven by the gut-brain connection, not damage to the bowel.
+
+### IBS as Grahani in Ayurveda
+
+Ayurveda describes **Grahani** as the part of the gut that holds food until it is digested. When **Agni**, the digestive fire, is weak or unsteady (*mandagni* or *vishamagni*), food is not processed well. Ayurveda calls the half-digested residue **Ama** and links it to heaviness, gas, coated tongue and irregular stools, which are the symptoms people with IBS describe.
+
+### The doshas in IBS
+
+Ayurveda groups IBS patterns by dosha. They line up loosely with the modern [types of IBS](/blogs/types-of-ibs/):
+
+| Ayurvedic pattern | Typical symptoms | Closest modern type |
+|---|---|---|
+| Vata | Gas, bloating, hard or variable stools, anxiety | IBS-C or IBS-M |
+| Pitta | Loose, urgent stools, burning, irritability | IBS-D |
+| Kapha | Heaviness, mucus in stool, sluggish digestion | Often mixed |
+| Mixed (tridoshic) | Changing symptoms | IBS-M |
+
+Vata, which governs movement, is involved in almost every IBS pattern, which is why regular routine and calming the nervous system are central to Ayurvedic care.
+
+## What Ayurvedic treatment for IBS involves
+
+A good Ayurvedic plan for IBS has four parts. Herbs alone rarely work without the other three.
+
+1. **Strengthen digestion (Agni deepana) and clear Ama (Ama pachana)** with warm, simple food, spices such as ginger and cumin, and herbs chosen for your pattern.
+2. **Settle the bowel** with herbs matched to constipation, loose motions or both.
+3. **Fix the routine:** fixed meal times, sleep and toilet habits.
+4. **Calm the mind:** stress management, pranayama and yoga, because the gut and brain are closely linked.
+
+### Ayurvedic herbs used for IBS
+
+These are traditional herbs Ayurvedic doctors use for IBS. Evidence from modern trials is limited for most of them, so they should be chosen and dosed by a qualified doctor.
+
+| Herb or formula | Traditionally used for | Notes |
+|---|---|---|
+| Bilva (bael) | Loose motions, mucus | Astringent; a classic choice for IBS-D |
+| Kutaja | Diarrhoea, urgency | Used in IBS-D and after gut infections |
+| Musta | Loose motions, poor digestion | Often combined with bilva |
+| Shunthi (dry ginger) | Gas, nausea, poor appetite | Also a kitchen remedy |
+| Shatapushpa / saunf (fennel) | Gas, cramps | Gentle; fennel water after meals |
+| Hingvashtak churna | Gas, bloating | Contains hing; suits Vata-type bloating |
+| Haritaki | Constipation | Gentle laxative for IBS-C; not for IBS-D |
+| Triphala | Constipation | Laxative; avoid in IBS-D, avoid long nightly use |
+| Ashwagandha, brahmi | Stress, poor sleep | Support for the gut-brain side |
+
+**Safety first:** buy only from licensed manufacturers, avoid unlabelled or "instant cure" churnas, and tell your doctor about all medicines. Herbs such as licorice (yashtimadhu) can raise blood pressure, and some herbs interact with blood thinners or diabetes medicines. Pregnant or breastfeeding women should not self-medicate.
+
+### What about Panchakarma?
+
+Panchakarma procedures such as **Basti** (medicated enema) and **Virechana** (therapeutic purgation) are part of classical Ayurveda. They must be done only under a qualified Ayurvedic physician after a full assessment, never at home. Purgation can make IBS-D worse and is not right for everyone. Gentle therapies such as **Abhyanga** (warm oil massage) are a safe way to relax the nervous system.
+
+## Herbal and natural remedies with modern evidence
+
+Some natural remedies are supported by modern research and fit well with Ayurvedic care:
+
+- **Peppermint oil:** the [ACG 2021 guideline](https://pubmed.ncbi.nlm.nih.gov/33315591/) recommends peppermint oil capsules for overall IBS symptoms. It relaxes gut muscle and eases cramps. It can worsen heartburn in some people.
+- **Soluble fibre (isabgol / psyllium husk):** the same guideline recommends soluble fibre for IBS. Start with half to one teaspoon in water once a day and increase slowly, with plenty of fluid. Insoluble fibre such as wheat bran often worsens bloating.
+- **Probiotics:** the guideline does **not** recommend probiotics for overall IBS symptoms, because the evidence is mixed. Some people feel better on a particular strain; if one does nothing after four weeks, stop it.
+- **Low-FODMAP diet:** the [Monash University low-FODMAP diet](https://www.monashfodmap.com/ibs-central/i-have-ibs/starting-the-low-fodmap-diet/) helps many people with IBS when done in steps with a dietitian. Many Indian staples, such as rice, poha, idli and moong dal in small portions, fit well.
+- **Gut-directed hypnotherapy and CBT:** recommended by the ACG for IBS, and they work on the same gut-brain link Ayurveda calls the mind's effect on digestion.
+
+## What to drink for IBS
+
+- **Warm water** sipped through the day, especially in the morning
+- **Ginger tea:** a few slices of fresh ginger simmered in water
+- **Fennel (saunf) water:** a teaspoon of fennel seeds steeped in hot water after meals
+- **Peppermint or pudina tea** for cramps, unless you have heartburn
+- **Chaas (buttermilk)** in a small glass with roasted jeera, if dairy suits you; a traditional favourite for IBS-D
+- **Jeera water** for gas and bloating
+
+Limit coffee, strong tea, fizzy drinks, alcohol, sugary juices and "sugar-free" drinks with sorbitol, which often trigger symptoms. See more [home remedies for IBS](/blogs/ibs-home-remedies/).
+
+## Ayurvedic diet for IBS
+
+Ayurveda favours warm, freshly cooked, simple food eaten at regular times. This overlaps well with a modern IBS diet.
+
+**Usually well tolerated:**
+
+- Rice, poha, khichdi made with moong dal, oats in small portions, millets such as jowar
+- Moong dal and masoor dal in moderate portions
+- Cooked vegetables: lauki, tori, pumpkin, carrot, spinach, green beans
+- Fruit such as papaya, firm banana, orange, pomegranate and kiwi in normal portions
+- Ginger, cumin, coriander, fennel, turmeric, a pinch of hing
+- A little ghee with meals, if it suits you
+- Curd or chaas if dairy suits you
+
+**Common triggers to reduce:**
+
+- Wheat-heavy meals, especially maida and stuffed parathas
+- Onion and garlic in large amounts
+- Rajma, chole, whole urad and other heavy pulses
+- Milk and milk sweets, if lactose is a trigger
+- Fried, very spicy and very oily food
+- Raw salads during a flare, especially with gas and bloating
+- Apples, pears, mango and watermelon in large amounts
+- Coffee, alcohol and fizzy drinks
+
+For full food lists and a 7-day Indian meal plan, see our [IBS diet plan](/blogs/ibs-diet-plan/) and the [worst foods for IBS](/blogs/worst-foods-for-ibs/).
+
+### When and how to eat
+
+- Eat at the same times every day, so the gut can settle into a rhythm
+- Make lunch your main meal and keep dinner light, ideally two to three hours before bed
+- Eat slowly, sitting down, without screens
+- Avoid frequent grazing; three meals and one small snack suit most people
+- Don't eat in a hurry or while very upset; take a few slow breaths first
+
+## Daily routine (Dinacharya) for IBS
+
+A steady routine is one of the most useful parts of Ayurvedic care, because an irregular day upsets an already sensitive gut.
+
+**Morning:** wake at a fixed time, drink a glass of warm water, and sit on the toilet at the same time each day without straining. A good [toilet posture](/toilet-posture-for-constipation/) helps if you have constipation.
+
+**Daytime:** main meal at lunch, a 10 to 15 minute walk after meals, and steady water intake.
+
+**Evening:** light, early dinner, ginger or fennel tea, gentle stretching, and screens off an hour before bed.
+
+**Sleep:** aim for seven to eight hours at regular times. Poor sleep is a common trigger for next-day flares.
+
+## Yoga and pranayama for IBS
+
+The gut-brain link is central to IBS, and calming practices help many people.
+
+- **Pranayama:** *anulom vilom* (alternate nostril breathing) and *bhramari* (humming bee breath), 10 minutes a day
+- **Gentle asanas:** *pawanmuktasana* (wind-relieving pose), *supta matsyendrasana* (lying twist), *balasana* (child's pose) and *vajrasana* after meals
+- **Avoid** strong abdominal pressure or intense inversions during a flare
+- **Regular activity:** a brisk walk on most days helps IBS symptoms; see [IBS home remedies](/blogs/ibs-home-remedies/)
+
+## Case study from our clinic
+
+*One patient's experience. Individual results vary.*
+
+**Patient:** Mr. Anurag Kumar, New Delhi. He had IBS for 15 to 20 years, with daily bloating, two to four soft stools a day, stomach pain and acidity. Earlier allopathic, homeopathic and Ayurvedic treatments had given only short-term relief.
+
+**Assessment:** a Vata-Pitta pattern with unsteady digestion and loose motions.
+
+**Plan:** our [IBS-D combo](/products/ibs-d/) (Diapro and Diarrheal Plus powders), small warm meals at fixed times, and daily yoga and pranayama.
+
+**Progress, as reported by the patient:** in the first month his bloating and urgency eased noticeably; by three months his stools settled to about two formed motions a day; by six months he had only occasional discomfort; treatment finished at eight months and he returned to a normal diet. Four years later, he reports staying well without ongoing treatment.
+
+## Combining Ayurveda with modern care
+
+You don't have to choose one or the other. Many patients do best with an integrative plan.
+
+- **Get the diagnosis right first.** Red flags need tests, and conditions such as coeliac disease, IBD and thyroid problems can look like IBS. See [IBD vs IBS](/blogs/ibd-vs-ibs/).
+- **Tell every doctor everything you take,** including churnas and supplements.
+- **Don't stop prescribed medicines suddenly.** If symptoms improve, your doctor can reduce them step by step.
+- **Give a plan time.** Diet and routine changes usually take several weeks to show their full effect; your doctor will review and adjust.
+
+For an overview of all options, see [medicine for IBS](/blogs/medicine-for-ibs/) and our [IBS treatment guide](/blogs/ibs-treatment-guide/).
+
+## How to choose an Ayurvedic IBS doctor
+
+**Look for:**
+
+- A BAMS degree, ideally with an MD (Ayurveda) in Kayachikitsa, and registration with a state board
+- Real experience treating IBS and gut problems
+- A full history of symptoms, diet, routine, stress and past tests, not just pulse reading
+- A written plan for diet, routine and medicines, with follow-ups
+- Willingness to work with your gastroenterologist
+
+**Be careful of:**
+
+- Promises of a permanent cure or quick results
+- The same churna for every patient
+- Medicines without labels or ingredient lists
+- No diet or lifestyle advice
+
+## When to see a doctor first
+
+Get checked before starting any treatment if you have:
+
+- Blood in the stool or black stools
+- Weight loss without trying
+- Fever with bowel symptoms
+- Diarrhoea that wakes you at night or leaves you dehydrated
+- Severe belly pain that keeps getting worse
+- New bowel symptoms after age 50, or a family history of bowel cancer, IBD or coeliac disease
+
+## Get Ayurvedic IBS treatment from home
+
+At IBS Clinic, senior doctors combine Ayurveda with modern IBS care. We work out your IBS type and triggers, then build a plan of diet, routine, stress care and Ayurvedic medicines, with online consultations across India and medicines delivered home. [Book a free evaluation](/book-an-appointment/) or browse our [IBS combos](/products/).`,
+  heroImage: {
+    src: "/figures/ibs-ayurvedic-treatment/ayurvedic-treatment-for-ibs.webp",
+    alt: "Ayurvedic treatment for IBS: triphala, cumin, fennel, licorice and ashwagandha",
+    width: 1200,
+    height: 800,
+  },
 };

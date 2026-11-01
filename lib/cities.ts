@@ -188,6 +188,114 @@ export const CITY_DATA: Readonly<Record<string, CityPage>> = {
       },
     ],
   },
+  // --- Rebuilt Q4 2026 (Sprint 5). These 5 were live on WordPress and 404'd
+  // after the July migration. Old copy listed a made-up local address and
+  // "95% success" claims; neither is carried over.
+  "ibs-treatment-in-lucknow": {
+    slug: "ibs-treatment-in-lucknow",
+    name: "Lucknow",
+    h1: "IBS Treatment in Lucknow — Start with a Free Doctor Consultation",
+    metaTitle: "IBS Treatment in Lucknow | Start with Free Doctor Consultation",
+    metaDescription:
+      "IBS treatment in Lucknow by online consultation with senior IBS doctors — Ayurveda-led care, diet plans for Awadhi food, and medicines delivered home.",
+    heroIntro:
+      "Get IBS treatment in Lucknow without long waits or repeat clinic trips. Senior IBS doctors review your history online, find your IBS type and triggers, and build a plan around your routine and Awadhi food habits, with medicines delivered to your door.",
+    ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Lucknow",
+    cityFaq: [
+      {
+        q: "Do you have an IBS clinic in Lucknow?",
+        a: "Our only physical clinic is in Virar West, Mumbai. Lucknow patients are treated through online video or phone consultations with the same senior doctors, and medicines are couriered to any Lucknow address.",
+      },
+      {
+        q: "When should I see an IBS doctor in Lucknow?",
+        a: "See a doctor if bloating, belly pain, or constipation and loose motions keep coming back for more than a few weeks, or affect work and sleep. See a doctor urgently for blood in the stool, weight loss without trying, or fever.",
+      },
+    ],
+  },
+  "ibs-treatment-in-jaipur": {
+    slug: "ibs-treatment-in-jaipur",
+    name: "Jaipur",
+    h1: "Online IBS Treatment in Jaipur — Free Consultation with Specialists",
+    metaTitle: "Online IBS Treatment in Jaipur | Free Consultation Offer",
+    metaDescription:
+      "Online IBS treatment in Jaipur with senior IBS doctors — Ayurveda-led care, diet plans for Rajasthani food, and medicines delivered home.",
+    heroIntro:
+      "Get IBS treatment in Jaipur from home. Our senior IBS doctors consult by video or phone, match your plan to your IBS type, and adapt your diet to Rajasthani food and Jaipur's dry heat, with medicines delivered to your door.",
+    ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Jaipur",
+    cityFaq: [
+      {
+        q: "Can I get IBS treatment in Jaipur without visiting a clinic?",
+        a: "Yes. Consultation, follow-ups and diet coaching all happen online, and medicines ship to your Jaipur address. Our only physical clinic is in Virar West, Mumbai.",
+      },
+      {
+        q: "What is the best medicine for IBS?",
+        a: "There is no single best medicine. It depends on your IBS type: constipation, loose motions or both. Your doctor matches Ayurvedic medicines, diet and lifestyle steps to your pattern.",
+      },
+    ],
+  },
+  "ibs-treatment-in-indore": {
+    slug: "ibs-treatment-in-indore",
+    name: "Indore",
+    h1: "IBS Treatment in Indore — Trusted Specialists, Free Consultation",
+    metaTitle: "IBS Treatment in Indore | Trusted Specialist & Free Consultation",
+    metaDescription:
+      "IBS treatment in Indore by online consultation with senior IBS doctors — Ayurveda-led care, diet plans for Malwa food, and medicines delivered home.",
+    heroIntro:
+      "Get IBS treatment in Indore that fits Indori life. Senior IBS doctors consult online, work out your IBS type and triggers, and give you a written plan for diet, routine and Ayurvedic medicines, delivered to your door.",
+    ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Indore",
+    cityFaq: [
+      {
+        q: "Do you have an IBS clinic in Indore?",
+        a: "Our only physical clinic is in Virar West, Mumbai. Indore patients consult the same senior doctors by video or phone, and medicines are couriered to any Indore address.",
+      },
+      {
+        q: "How can I relieve IBS symptoms naturally?",
+        a: "Regular meal times, slow eating, enough water, daily walking and managing stress help most people. Spotting your own food triggers with a short food and symptom diary matters too.",
+      },
+    ],
+  },
+  "ibs-treatment-in-nagpur": {
+    slug: "ibs-treatment-in-nagpur",
+    name: "Nagpur",
+    h1: "IBS Treatment in Nagpur — Talk to an IBS Specialist Online",
+    metaTitle: "IBS Treatment in Nagpur | Talk to an IBS Specialist Online",
+    metaDescription:
+      "No clinic visits needed: online IBS treatment in Nagpur with senior IBS doctors, Ayurveda-led care, diet plans for Vidarbha food, and medicines delivered home.",
+    heroIntro:
+      "Get IBS treatment in Nagpur with no clinic visits. Senior IBS doctors consult online, look at your symptoms, reports and routine, and build a plan that works with Vidarbha food and Nagpur's hot summers, with medicines delivered home.",
+    ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Nagpur",
+    cityFaq: [
+      {
+        q: "Can I get IBS treatment in Nagpur online?",
+        a: "Yes. Consultation, follow-ups and diet coaching happen by video or phone, and medicines ship to your Nagpur address. Our only physical clinic is in Virar West, Mumbai.",
+      },
+      {
+        q: "How can I prevent IBS flare-ups?",
+        a: "Eat at regular times, keep portions moderate, drink enough water, stay active and manage stress. Keeping a short food and symptom diary helps you and your doctor spot your own triggers.",
+      },
+    ],
+  },
+  "ibs-treatment-in-chandigarh": {
+    slug: "ibs-treatment-in-chandigarh",
+    name: "Chandigarh",
+    h1: "IBS Treatment in Chandigarh — Free Consultation with IBS Specialists",
+    metaTitle: "IBS Treatment in Chandigarh | Free Consultation Today",
+    metaDescription:
+      "IBS treatment in Chandigarh, Mohali and Panchkula by online consultation — Ayurveda-led care, diet plans for Punjabi food, and medicines delivered home.",
+    heroIntro:
+      "Get IBS treatment in Chandigarh, Mohali and Panchkula from senior IBS doctors online. We find your IBS type and triggers, adapt your diet to Punjabi home food, and track your progress with regular follow-ups, with medicines delivered home.",
+    ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Chandigarh",
+    cityFaq: [
+      {
+        q: "How do I find a good IBS doctor in Chandigarh?",
+        a: "Look for a doctor who treats IBS regularly, works out your IBS type before prescribing, and gives you a diet and follow-up plan, not just tablets. Our senior IBS doctors consult Chandigarh patients online; the only physical clinic is in Virar West, Mumbai.",
+      },
+      {
+        q: "What are the early warning signs of IBS?",
+        a: "Belly pain or cramps that ease after passing stool, bloating, gas, and a change in how often or how hard your stools are. See a doctor quickly for blood in the stool or weight loss without trying.",
+      },
+    ],
+  },
 } as const;
 
 export const CITY_SLUGS: ReadonlyArray<string> = Object.keys(CITY_DATA);

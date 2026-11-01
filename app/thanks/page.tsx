@@ -1,5 +1,7 @@
 import Script from "next/script";
 import type { Metadata } from "next";
+import { SimpleHeader } from "@/components/simple-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "We've got it — IBS Clinic",
@@ -16,7 +18,9 @@ export default function ThanksPage() {
   const adsLabel = process.env.NEXT_PUBLIC_ADS_CONVERSION_LABEL;
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+    <SimpleHeader />
+    <main className="min-h-[70vh] bg-white">
       <div className="container-page mx-auto max-w-3xl py-20 text-center">
         <h1 className="text-h1 text-charcoal">
           We&apos;ve got it. A doctor will call you within 30 minutes.
@@ -75,5 +79,7 @@ export default function ThanksPage() {
         />
       ) : null}
     </main>
+    <SiteFooter />
+    </>
   );
 }

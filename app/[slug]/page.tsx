@@ -8,6 +8,7 @@ import { LeadForm } from "@/components/lead-form";
 import { DoctorCards } from "@/components/doctor-cards";
 import { CITY_DATA, CITY_SLUGS } from "@/lib/cities";
 import { getCityLocal } from "@/lib/city-local";
+import { GUIDE_LINKS } from "@/lib/nav";
 import { ArticleBody } from "@/components/article-body";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { JsonLd } from "@/components/json-ld";
@@ -180,6 +181,17 @@ const CASES: ReadonlyArray<CaseStudy> = [
       "Regular bowel movements, balanced hormones, significant improvement in energy and mood.",
   },
 ];
+
+/** Guides linked from every city page (diet plan + worst foods are linked in the local section). */
+const CITY_GUIDE_SLUGS: ReadonlyArray<string> = [
+  "/blogs/what-is-ibs/",
+  "/blogs/ibs-symptoms/",
+  "/blogs/types-of-ibs/",
+  "/blogs/ibs-home-remedies/",
+  "/blogs/medicine-for-ibs/",
+  "/blogs/ibs-ayurvedic-treatment/",
+];
+const CITY_GUIDES = GUIDE_LINKS.filter((g) => CITY_GUIDE_SLUGS.includes(g.href));
 
 const SHARED_FAQ: ReadonlyArray<{ q: string; a: string }> = [
   {
@@ -376,6 +388,25 @@ export default async function CityPage({ params }: PageProps) {
             </p>
           </section>
         ) : null}
+
+        {/* GUIDES — contextual links into the IBS basics + treatment cluster */}
+        <section className="city-guides bg-green-tint">
+          <div className="container-page py-14 md:py-16">
+            <h2 className="city-guides__title font-heading text-h3 text-charcoal">
+              Understand your IBS before your consultation
+            </h2>
+            <ul className="city-guides__list mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {CITY_GUIDES.map((g) => (
+                <li key={g.href}>
+                  <Link href={g.href} className="gut-card">
+                    <span className="gut-card__title">{g.label}</span>
+                    <span className="gut-card__blurb">{g.hint}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         {/* WHY CHOOSE */}
         <section className="container-page py-16 md:py-20">

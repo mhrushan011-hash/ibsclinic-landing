@@ -4,6 +4,7 @@ import { PageSchema } from "@/components/page-schema";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
+import { SiteFooter } from "@/components/site-footer";
 import { DOCTOR_LIST, AUTHOR_SLUGS } from "@/lib/doctors";
 
 export const metadata: Metadata = {
@@ -97,6 +98,7 @@ export default function DoctorsPage() {
         </div>
       </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

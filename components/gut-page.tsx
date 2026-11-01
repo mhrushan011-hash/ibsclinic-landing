@@ -104,7 +104,11 @@ function BlockSection({ block, tone }: { block: Block; tone: string }) {
                 </li>
               ))}
             </ul>
-            {block.outro && <p className="mt-8 max-w-prose text-charcoal-soft">{block.outro}</p>}
+            {block.outro && (
+              <p className="mt-8 max-w-prose text-charcoal-soft">
+                <InlineText text={block.outro} />
+              </p>
+            )}
           </div>
         </section>
       );
@@ -128,7 +132,11 @@ function BlockSection({ block, tone }: { block: Block; tone: string }) {
                 </div>
               ))}
             </div>
-            {block.outro && <p className="mt-8 max-w-prose text-charcoal-soft">{block.outro}</p>}
+            {block.outro && (
+              <p className="mt-8 max-w-prose text-charcoal-soft">
+                <InlineText text={block.outro} />
+              </p>
+            )}
           </div>
         </section>
       );

@@ -5,6 +5,7 @@ import { IBS_DIET } from "./ibs-diet";
 import { GAS_AND_BLOATING } from "./gas-and-bloating";
 import { METABOLIC_HEALTH } from "./ibs-and-metabolic-health";
 import { LAXATIVE_DEPENDENCY } from "./laxative-dependency";
+import { GASTROCOLIC_REFLEX } from "./gastrocolic-reflex-dysfunction";
 
 export const GUT_PAGES: ReadonlyArray<GutPageData> = [
   PELVIC_FLOOR,
@@ -13,4 +14,5 @@ export const GUT_PAGES: ReadonlyArray<GutPageData> = [
   GAS_AND_BLOATING,
   METABOLIC_HEALTH,
   LAXATIVE_DEPENDENCY,
+  GASTROCOLIC_REFLEX,
 ];

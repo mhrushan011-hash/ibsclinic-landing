@@ -4,6 +4,7 @@ import { itemListNode } from "@/lib/structured-data";
 import { PageSchema } from "@/components/page-schema";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "IBS Treatment Combos | IBS Clinic",
@@ -152,13 +153,14 @@ export default function ProductsPage() {
             symptoms and recommend the right plan before the call.
           </p>
           <div className="mt-8">
-            <Link href="/" className="btn-primary">
+            <Link href="/book-an-appointment/" className="btn-primary">
               Book Your Free IBS Evaluation
             </Link>
           </div>
         </div>
       </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

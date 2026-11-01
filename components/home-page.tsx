@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { HOME_FAQ } from "@/lib/home-faq";
+import { CITY_DATA, CITY_SLUGS } from "@/lib/cities";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/header";
@@ -31,14 +32,7 @@ const WA = "https://wa.me/917500334343";
 const CITIES: ReadonlyArray<{ name: string; href: string | null }> = [
   // Mumbai = HQ; no dedicated city landing page yet, render as label only.
   { name: "Mumbai", href: null },
-  { name: "Delhi", href: "/ibs-treatment-in-delhi" },
-  { name: "Bangalore", href: "/ibs-treatment-in-bangalore" },
-  { name: "Hyderabad", href: "/ibs-treatment-in-hyderabad" },
-  { name: "Pune", href: "/ibs-treatment-in-pune" },
-  { name: "Kolkata", href: "/ibs-treatment-in-kolkata" },
-  { name: "Chennai", href: "/ibs-treatment-in-chennai" },
-  { name: "Ahmedabad", href: "/ibs-treatment-in-ahmedabad" },
-  { name: "Kerala", href: "/ibs-treatment-in-kerala" },
+  ...Object.values(CITY_DATA).map((c) => ({ name: c.name, href: `/${c.slug}/` })),
 ];
 
 type Mark = true | false | "partial";
@@ -185,7 +179,7 @@ export function HomePage() {
           <div className="container-page grid gap-12 py-12 md:grid-cols-12 md:py-20 lg:py-24">
             <div className="md:col-span-7">
               <p className="mb-4 inline-flex flex-wrap items-center gap-2 text-sm font-medium text-green">
-                Specialist IBS Clinic · 18+ years · 4.7★ Google · 8 cities
+                Specialist IBS Clinic · 18+ years · 4.7★ Google · {CITY_SLUGS.length} cities
               </p>
               <h1 className="text-h1 text-charcoal">
                 Stop fearing food.{" "}
@@ -670,7 +664,7 @@ export function HomePage() {
           </div>
         </section>
 
-        <SiteFooter />
+        <SiteFooter mobileBar={false} />
       </main>
 
       <FloatingCta onBookClick={() => openModal("sticky")} />

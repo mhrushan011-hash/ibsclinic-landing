@@ -1,4 +1,4 @@
-/** The 7 linked "gut mechanics" pages. One list feeds the homepage grid, the footer and every on-page "read next" card. */
+/** The 8 linked "gut mechanics" pages. One list feeds the homepage grid, the footer and every on-page "read next" card. */
 export interface GutTopic {
   slug: string;
   href: string;
@@ -14,6 +14,12 @@ export const GUT_TOPICS = [
     href: "/incomplete-evacuation/",
     title: "Never feeling fully clear",
     blurb: "Your stool looks normal, but the bowel never feels finished.",
+  },
+  {
+    slug: "gastrocolic-reflex-dysfunction",
+    href: "/gastrocolic-reflex-dysfunction/",
+    title: "Toilet urge after every meal",
+    blurb: "You eat, rush to go, pass a little and still feel unfinished.",
   },
   {
     slug: "pelvic-floor-dysfunction",

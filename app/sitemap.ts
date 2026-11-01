@@ -27,6 +27,7 @@ interface PageEntry {
 const MIGRATION_DATE = "2026-07-09"; // WordPress -> Next.js cutover
 const GUT_PAGES_DATE = "2026-10-11"; // gut-health pages launch + homepage grid
 const PRODUCTS_LIVE_DATE = "2026-07-15"; // combo pages back live, city bios unified
+const RECOVERY_DATE = "2026-11-01"; // Q4 recovery: 13 city pages, gastrocolic page restored
 
 const CORE_PAGES: ReadonlyArray<PageEntry> = [
   { path: "", changeFrequency: "weekly", priority: 1.0, lastModified: GUT_PAGES_DATE },
@@ -46,7 +47,7 @@ const CORE_PAGES: ReadonlyArray<PageEntry> = [
       path: t.slug,
       changeFrequency: "monthly",
       priority: 0.8,
-      lastModified: GUT_PAGES_DATE,
+      lastModified: t.slug === "gastrocolic-reflex-dysfunction" ? RECOVERY_DATE : GUT_PAGES_DATE,
     }),
   ),
   { path: "blogs", changeFrequency: "weekly", priority: 0.7, lastModified: "2026-07-21" },
@@ -75,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const cityPages: MetadataRoute.Sitemap = CITY_SLUGS.map((slug) => ({
     url: abs(slug),
-    lastModified: PRODUCTS_LIVE_DATE,
+    lastModified: RECOVERY_DATE,
     changeFrequency: "monthly",
     priority: 0.8,
   }));

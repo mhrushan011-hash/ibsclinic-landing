@@ -54,4 +54,13 @@ export const GUT_REFERENCES = {
     citation: "Assessment of Gastrointestinal Autonomic Dysfunction. Journal of Clinical Medicine, 2021;10(7):1392.",
     url: "https://www.mdpi.com/2077-0383/10/7/1392",
   },
+  R25: {
+    citation: "Physiology, Gastrocolic Reflex. StatPearls, NCBI Bookshelf (NBK549888).",
+    url: "https://www.ncbi.nlm.nih.gov/books/NBK549888/",
+  },
+  R26: {
+    citation:
+      "Simrén M, Abrahamsson H, Björnsson ES. An exaggerated sensory component of the gastrocolonic response in patients with irritable bowel syndrome. Gut, 2001;48(1):20.",
+    url: "https://pubmed.ncbi.nlm.nih.gov/11115818/",
+  },
 } as const satisfies Readonly<Record<string, Reference>>;

@@ -21,8 +21,7 @@ export default function ReturnPolicyPage() {
         <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
           <h1 className="text-h2 text-charcoal">Return &amp; Refund Policy</h1>
           <p className="mt-2 text-sm text-charcoal-soft">
-            Draft — pending final review by legal counsel before publishing.
-            Last updated: 2026-05-18.
+            Last updated: 1 November 2026.
           </p>
 
           <p className="mt-6">

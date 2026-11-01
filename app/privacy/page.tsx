@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageSchema } from "@/components/page-schema";
+import { SimpleHeader } from "@/components/simple-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — IBS Clinic",
@@ -11,13 +13,15 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
+    <>
+    <SimpleHeader />
     <main className="bg-white">
         <PageSchema path="/privacy" name="Privacy Policy" crumb="Privacy policy" />
       <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
         <h1 className="text-h2 text-charcoal">Privacy Policy</h1>
         <p className="mt-2 text-sm text-charcoal-soft">
-          Placeholder draft — review by legal counsel before publishing. Built to align with
-          India&apos;s Digital Personal Data Protection (DPDP) Act 2023.
+          Last updated: 1 November 2026. Built to align with India&apos;s Digital Personal Data
+          Protection (DPDP) Act 2023.
         </p>
 
         <h2 className="mt-10 font-heading text-h3 text-charcoal">What we collect</h2>
@@ -53,11 +57,20 @@ export default function PrivacyPage() {
 
         <h2 className="mt-8 font-heading text-h3 text-charcoal">Grievance Officer</h2>
         <p className="mt-3">
-          [Name] · grievance@ibsclinic.com · +91 750 033 4343
+          Dr. Kamal K Khajuria ·{" "}
+          <a href="mailto:info@ibsclinic.com" className="underline">
+            info@ibsclinic.com
+          </a>{" "}
+          ·{" "}
+          <a href="tel:+917500334343" className="underline">
+            +91 750 033 4343
+          </a>
         </p>
 
         <p className="mt-10 text-sm text-charcoal-soft">Last updated: 2026-05-10</p>
       </article>
     </main>
+    <SiteFooter />
+    </>
   );
 }

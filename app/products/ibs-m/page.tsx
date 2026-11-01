@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SimpleHeader } from "@/components/simple-header";
+import { SiteFooter } from "@/components/site-footer";
 import { ComboSchema } from "@/components/combo-schema";
 
 export const metadata: Metadata = {
@@ -176,6 +177,7 @@ export default function IbsMPage() {
         </div>
       </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

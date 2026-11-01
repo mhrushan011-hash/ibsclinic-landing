@@ -93,6 +93,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       { source: "/ibs-treatment-in-delhi-2", destination: "/ibs-treatment-in-delhi/", permanent: true },
+      // Slug variants without "in-" for the 5 cities rebuilt in Q4 Sprint 5.
+      ...["lucknow", "jaipur", "indore", "nagpur", "chandigarh"].map((city) => ({
+        source: `/ibs-treatment-${city}`,
+        destination: `/ibs-treatment-in-${city}/`,
+        permanent: true,
+      })),
 
       // Old WordPress test / empty pages still crawled by Google (404 before).
       { source: "/home", destination: "/", permanent: true },
@@ -102,13 +108,7 @@ const nextConfig: NextConfig = {
 
       // Info / condition pages
       { source: "/about-us-2", destination: "/about/", permanent: true },
-      // TEMPORARY: the gastrocolic page is being restored as its own live page
-      // (Q4 recovery, Sprint 4). Remove this redirect when that page ships.
-      {
-        source: "/gastrocolic-reflex-dysfunction",
-        destination: "/incomplete-evacuation/",
-        permanent: true,
-      },
+      // /gastrocolic-reflex-dysfunction/ is a live page again (Q4 Sprint 4.7).
       // PRODUCTS ARE LIVE (combo pages only — lead-gen, no cart yet; the
       // WooCommerce checkout returns later). The /products/** pages render
       // normally, so there is NO blanket /products redirect. The legacy

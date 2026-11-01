@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageSchema } from "@/components/page-schema";
+import { SimpleHeader } from "@/components/simple-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Medical Disclaimer — IBS Clinic",
@@ -11,6 +13,8 @@ export const metadata: Metadata = {
 
 export default function MedicalDisclaimerPage() {
   return (
+    <>
+    <SimpleHeader />
     <main className="bg-white">
         <PageSchema path="/medical-disclaimer" name="Medical Disclaimer" crumb="Medical disclaimer" />
       <article className="container-page mx-auto max-w-prose py-16 leading-relaxed">
@@ -57,5 +61,7 @@ export default function MedicalDisclaimerPage() {
         <p className="mt-10 text-sm text-charcoal-soft">Last updated: 2026-05-10</p>
       </article>
     </main>
+    <SiteFooter />
+    </>
   );
 }

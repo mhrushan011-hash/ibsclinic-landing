@@ -1,46 +1,55 @@
 "use client";
 
+import Link from "next/link";
 import { pushEvent } from "@/lib/analytics";
+import { BOOK_HREF, PHONE_TEL, WHATSAPP_URL } from "@/lib/nav";
 
-const PHONE = "+917500334343";
-const WA = "https://wa.me/917500334343";
-
+/**
+ * Mobile-only Call / WhatsApp / Book bar. Rendered sitewide by SiteFooter
+ * (Q4 Sprint 6); the homepage passes `onBookClick` to open its lead modal,
+ * every other page links to the booking page.
+ */
 interface FloatingCtaProps {
-  onBookClick: () => void;
+  onBookClick?: () => void;
 }
 
 export function FloatingCta({ onBookClick }: FloatingCtaProps) {
+  const bookClass = "flex items-center justify-center bg-green py-3 text-sm font-semibold text-white no-underline";
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gray-border bg-white/95 backdrop-blur md:hidden">
+    <div className="mobile-bar md:hidden">
       <div className="grid grid-cols-3 divide-x divide-gray-border">
         <a
-          href={`tel:${PHONE}`}
-          className="flex items-center justify-center gap-1 py-3 text-sm font-medium text-charcoal no-underline"
+          href={`tel:${PHONE_TEL}`}
+          className="mobile-bar__item"
           onClick={() => pushEvent({ event: "phone_click", source: "sticky" })}
         >
-          📞 Call
+          <span aria-hidden="true">📞</span> Call
         </a>
         <a
-          href={WA}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-1 py-3 text-sm font-medium text-charcoal no-underline"
-          onClick={() =>
-            pushEvent({ event: "whatsapp_click", source: "sticky" })
-          }
+          className="mobile-bar__item"
+          onClick={() => pushEvent({ event: "whatsapp_click", source: "sticky" })}
         >
-          💬 WhatsApp
+          <span aria-hidden="true">💬</span> WhatsApp
         </a>
-        <button
-          type="button"
-          onClick={() => {
-            pushEvent({ event: "sticky_cta_click" });
-            onBookClick();
-          }}
-          className="flex items-center justify-center bg-green py-3 text-sm font-semibold text-white"
-        >
-          Book free eval
-        </button>
+        {onBookClick ? (
+          <button
+            type="button"
+            onClick={() => {
+              pushEvent({ event: "sticky_cta_click" });
+              onBookClick();
+            }}
+            className={bookClass}
+          >
+            Book free eval
+          </button>
+        ) : (
+          <Link href={BOOK_HREF} className={bookClass} onClick={() => pushEvent({ event: "sticky_cta_click" })}>
+            Book free eval
+          </Link>
+        )}
       </div>
     </div>
   );

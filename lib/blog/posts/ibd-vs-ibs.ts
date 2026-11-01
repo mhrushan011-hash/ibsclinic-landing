@@ -1,21 +1,203 @@
 import type { BlogPost } from "../types";
 
+/**
+ * Q4 2026 refresh (Sprint 4.7). Removed unsourced or misquoted figures
+ * ("70% of IBS starts after food poisoning", "75% improve on low-FODMAP",
+ * "depression in 50-60%", "30-50% overlap", "IBS never bleeds / never needs
+ * surgery" absolutes) and US-only units. Sources: CDC (IBD numbers), R21
+ * (IBS prevalence), PubMed 28069350 (post-infectious IBS), PubMed 33010814
+ * (IBS-type symptoms in IBD), R9 ACG 2021 (calprotectin, treatments),
+ * R11 Monash (low-FODMAP).
+ */
 export const post: BlogPost = {
-  "slug": "ibd-vs-ibs",
-  "title": "IBD vs IBS: Understanding the Critical Differences That Affect Your Treatment",
-  "metaTitle": "IBD vs IBS: Differences, Symptoms & Treatment | IBS Clinic",
-  "metaDescription": "Check out IBD vs IBS — learn the key differences in symptoms, causes, and treatments. Understand which condition you may be facing and how to manage it.",
-  "excerpt": "IBD causes visible intestinal inflammation and damage; IBS is a functional disorder with no structural changes. Learn the symptoms, diagnosis, and treatment differences.",
-  "authorSlug": "dr-nishikant-dwivedi",
-  "category": "IBS Basics",
-  "datePublished": "2025-10-12",
-  "dateModified": "2026-11-01",
-  "faq": [],
-  "bodyMarkdown": "## TL;DR: Quick Answers You Need\n\n- **IBD (Inflammatory Bowel Disease)** causes visible intestinal damage and inflammation, while **IBS (Irritable Bowel Syndrome)** is a functional disorder with no structural changes\n- **Key difference**: IBD shows up on scans and biopsies; IBS doesn't\n- **IBS cannot turn into IBD** – they are separate conditions, though you can have both\n- **IBS affects 25-45 million Americans**; IBD affects 2.4-3.1 million\n- **Treatment differs drastically**: IBD requires anti-inflammatory medications; IBS responds to dietary changes and symptom management\n- **Red flag**: Bloody stools, unexplained weight loss, and fever signal IBD, not IBS – see a gastroenterologist immediately\n\nAre you experiencing persistent abdominal pain and wondering whether you're dealing with IBS or something more serious like IBD? The confusion between **IBD vs IBS** isn't just frustrating—it can delay your path to the right treatment for months. While these conditions share overlapping symptoms like cramping and urgent bowel movements, understanding the **ibd vs ibs difference** is critical because one involves visible intestinal damage requiring aggressive medical intervention, while the other is a functional disorder managed primarily through lifestyle modifications.\n\nThis guide will explain the differences between IBD and IBS **symptoms**. It will also cover how to diagnose these conditions. Lastly, it will help you know when to get immediate care from a gastroenterologist.\n\n## What Makes IBD and IBS Fundamentally Different?\n\nThe most important distinction in the **ibd vs ibs** debate lies in what's happening inside your intestines. This difference determines everything from your diagnostic journey to your treatment plan and long-term prognosis.\n\n### IBD: Structural Damage You Can See\n\n**Inflammatory Bowel Disease (IBD)** refers to conditions that cause long-lasting inflammation. This inflammation can damage your digestive system. The two main types are **Crohn's disease** and ulcerative colitis (UC).\n\nCrohn's disease can affect any part of your GI tract, from mouth to anus. UC specifically targets the colon and rectum. When gastroenterologists do a colonoscopy on IBD patients, they find ulcers, bleeding, and inflamed tissue. These are signs of the disease.\n\nAccording to the [Centers for Disease Control and Prevention](https://www.cdc.gov/inflammatory-bowel-disease/php/facts-stats/), up to 3.1 million U.S. adults have been diagnosed with IBD. This is what doctors call a **structural disease**, meaning your immune system mistakenly attacks your intestinal lining, causing progressive damage if left untreated.\n\n### IBS: Functional Disorder Without Visible Damage\n\n**Irritable Bowel Syndrome (IBS)** affects how your intestines function, not their physical structure. Patients experience very real symptoms—abdominal pain, bloating, diarrhea, or constipation—but when doctors examine their intestines through colonoscopy or imaging, everything looks normal. There are no ulcers, no inflammation markers in blood tests, and no visible tissue damage.\n\nExperts classify IBS as a **functional disorder**, affecting an estimated 25-45 million Americans. Research from Cedars-Sinai shows that \"up to 70% of IBS cases start after severe food poisoning,\" disrupting gut-brain communication but not causing structural changes.\n\n## IBD vs IBS Symptoms: How to Recognize What You're Experiencing\n\nUnderstanding the **ibd vs ibs symptoms difference** can help you communicate more effectively with your doctor and recognize red flags that require urgent attention.\n\n![Diagram comparing typical pain location in ulcerative colitis (left lower abdomen), IBS (general lower abdomen) and Crohn's disease (lower right abdomen)](/figures/ibd-vs-ibs/ibd-vs-ibs-pain-location.webp)\n\n### Symptom Comparison Table\n\n| Symptom | IBS | IBD (Crohn's/UC) |\n|---------|-----|------------------|\n| Abdominal pain | ✓ Lower abdomen, improves after bowel movement | ✓ Lower right (Crohn's) or left side (UC), may worsen |\n| Diarrhea | ✓ Often alternating with constipation | ✓ Persistent, may contain blood |\n| Constipation | ✓ Common | ✗ Rare |\n| Bloody stools | ✗ Never | ✓ Common (red flag) |\n| Weight loss | ✗ Typically absent | ✓ Unintentional, significant |\n| Fever | ✗ Not a symptom | ✓ During flare-ups |\n| Fatigue | ✓ From symptom burden | ✓ From inflammation and anemia |\n| Bloating/Gas | ✓ Very common | ✓ Can occur |\n| Urgency | ✓ Frequent | ✓ Severe, immediate |\n| Joint pain | ✗ Rare | ✓ Extra-intestinal symptom |\n| Skin issues | ✗ Not related | ✓ Rashes, sores during flares |\n\n### Red Flag Symptoms That Signal IBD\n\nThe following symptoms indicate **IBD, not IBS**, and require immediate gastroenterology evaluation:\n\n- **Blood in stool** (bright red or dark, tarry stools)\n- **Unintentional weight loss** exceeding 10 pounds\n- **Persistent fever** above 100.4°F\n- **Severe nighttime diarrhea** that wakes you from sleep\n- **Anemia** detected on blood tests\n- **Mouth ulcers** or skin lesions\n- **Eye inflammation** (uveitis or episcleritis)\n\n### Pain Location: Where You Feel It Matters\n\n**IBD vs IBS pain** patterns offer diagnostic clues. IPS pain typically centers in the lower abdomen and often improves after a bowel movement. Crohn's disease usually causes pain in the lower right abdomen. In contrast, ulcerative colitis leads to discomfort on the left side.\n\nHowever, IBD can also cause joint pain, rectal pain, and eye discomfort. These extra-intestinal symptoms are not seen with IBS.\n\n## Can IBS Turn Into IBD?\n\nOne of the most common concerns patients express is: **\"Can IBS turn into IBD?\"** The short answer is **no**—IBS cannot transform into IBD. These are distinctly different conditions with separate underlying mechanisms.\n\nIBS is a functional disorder involving gut-brain communication problems, food sensitivities, and altered motility. IBD is an autoimmune inflammatory condition with genetic and environmental triggers. Having IBS does not increase your risk of developing IBD.\n\n### Can You Have Both IBS and IBD?\n\nYes, and research suggests this occurs more frequently than previously recognized. Approximately 30-50% of IBD patients in remission experience IBS-like symptoms—a phenomenon called **IBS-IBD overlap syndrome**. These patients have controlled intestinal inflammation (confirmed through colonoscopy) but continue experiencing abdominal pain, bloating, and altered bowel habits characteristic of IBS.\n\nIf you have IBD and experience persistent symptoms despite normal inflammatory markers, discuss IBS-IBD overlap with your gastroenterologist. You may benefit from combining anti-inflammatory IBD medications with IBS management strategies like dietary modifications and stress reduction.\n\n## IBD vs IBS Diagnosis: What Tests to Expect\n\nThe **ibd vs ibs diagnosis** process differs dramatically, and understanding what to expect can reduce anxiety during medical evaluations.\n\n### The Rome Criteria for IBS Diagnosis\n\nDoctors diagnose IBS primarily by ruling out other conditions and applying the **Rome IV criteria**. You may have IBS if you've experienced recurrent abdominal pain at least one day per week for the past three months, with symptoms starting at least six months ago, and your pain relates to:\n\n- Bowel movements (improvement or worsening)\n- Changes in stool frequency\n- Changes in stool appearance\n\nYour doctor will order blood tests, stool tests, and maybe a colonoscopy. These tests will check for IBD, celiac disease, and colon cancer.\n\nThey are not meant to confirm IBS. Instead, they help make sure nothing else is causing your symptoms. A new **blood test** from **Cedars-Sinai** can find specific antibodies linked to post-infectious IBS. This test gives a clearer diagnosis for some patients.\n\n### Endoscopy, Biopsy, and Blood Tests for IBD\n\n**IBD diagnosis requires objective evidence** of intestinal inflammation. Your gastroenterologist will perform:\n\n- **Colonoscopy with biopsy**: Direct visualization of your colon allows doctors to see ulcers, bleeding, and inflammation while collecting tissue samples\n- **Blood tests**: Checking for anemia, elevated inflammatory markers (C-reactive protein, erythrocyte sedimentation rate), and specific antibodies\n- **Stool studies**: Detecting calprotectin (a protein indicating intestinal inflammation) and ruling out infections\n- **CT or MRI imaging**: Evaluating the extent of disease, particularly for Crohn's disease affecting the small intestine\n\nThe diagnosis process for IBD typically takes weeks to months as doctors systematically rule out infections, compile test results, and differentiate between Crohn's disease and ulcerative colitis.\n\n## IBD vs IBS Treatment: Why Your Diagnosis Determines Your Care Plan\n\nThe **ibd vs ibs treatment** approaches differ fundamentally because the underlying disease mechanisms are completely different. Using the wrong treatment strategy can leave you suffering unnecessarily.\n\n![Flowchart of IBS treatment with diet, lifestyle and symptom medicines compared with IBD treatment with anti-inflammatory drugs, biologics and sometimes surgery](/figures/ibd-vs-ibs/ibd-vs-ibs-treatment-pathways.webp)\n\n### IBS Treatment: Managing Symptoms Through Diet and Lifestyle\n\nIBS treatment focuses on symptom control without medications that alter your immune system. About one-third of IBS patients respond to a single course of the antibiotic **rifaximin**, which targets bacterial overgrowth. Other treatment options include:\n\n- **Antispasmodics** (dicyclomine, hyoscyamine) for cramping\n- **Laxatives** for IBS with constipation (IBS-C)\n- **Anti-diarrheal medications** (loperamide) for IBS with diarrhea (IBS-D)\n- **Low-dose antidepressants** to modulate gut-brain signaling\n- **Psychological therapies** including cognitive-behavioral therapy and gut-directed hypnotherapy\n\n### IBD Treatment: Controlling Inflammation\n\nIBD treatment aims to induce and maintain remission by suppressing the inflammatory immune response. Your gastroenterologist may prescribe:\n\n- **Aminosalicylates (5-ASA)**: Anti-inflammatory drugs for mild-moderate disease\n- **Corticosteroids**: Fast-acting inflammation control for flare-ups (not for long-term use)\n- **Immunomodulators** (azathioprine, methotrexate): Suppress immune system activity\n- **Biologic therapies**: Target-specific inflammatory proteins (TNF-alpha inhibitors, integrin blockers)\n- **JAK inhibitors**: Newer oral medications blocking inflammatory pathways\n- **Surgery**: Removing damaged intestinal sections when medications fail\n\n### Treatment Comparison at a Glance\n\n| Aspect | IBS Treatment | IBD Treatment |\n|--------|---------------|---------------|\n| Primary goal | Symptom relief | Reduce inflammation, prevent damage |\n| Medications | Symptom-specific (antispasmodics, anti-diarrheals) | Immunosuppressants, biologics, steroids |\n| Diet role | Central to management | Supportive, not primary treatment |\n| Surgery need | Never required | Sometimes necessary (strictures, fistulas) |\n| Remission goal | Symptom control | Mucosal healing, inflammation resolution |\n\n## IBD vs IBS Diet: Tailoring Your Nutrition Strategy\n\nThe **ibd vs ibs diet** approach must match your specific condition, as dietary strategies that help IBS may worsen IBD during flares, and vice versa.\n\n![Diet comparison: low-FODMAP foods for IBS versus gentle low-residue foods for IBD flares](/figures/ibd-vs-ibs/ibd-vs-ibs-diet.webp)\n\n### Low-FODMAP for IBS\n\nResearch shows approximately 75% of IBS patients experience symptom improvement on a **low-FODMAP diet**, which eliminates fermentable carbohydrates that trigger gas, bloating, and diarrhea. High-FODMAP foods to limit include:\n\n- Wheat, rye, and high-lactose dairy\n- Onions, garlic, and legumes\n- Apples, pears, and stone fruits\n- Artificial sweeteners (sorbitol, mannitol)\n\nWork with a registered dietitian to implement a three-phase approach: elimination (2-6 weeks), reintroduction (testing tolerance), and personalization.\n\n### Anti-Inflammatory Eating for IBD\n\nDuring IBD flares, your intestines may not tolerate high-fiber foods. Focus on easily digestible options like white rice, well-cooked vegetables without skins, lean proteins, and refined grains.\n\nOnce in remission, focus on anti-inflammatory foods. Include omega-3 fatty acids like salmon and sardines. Add antioxidants such as berries and leafy greens. Don't forget gut-friendly probiotics.\n\n## IBD vs IBS: Which Is Worse? Understanding Long-Term Implications\n\nPatients frequently ask **\"IBS vs IBD which is worse?\"** While both conditions significantly impact quality of life, their complications differ in severity and urgency.\n\n### IBS Complications and Quality of Life\n\nIBS rarely causes serious medical complications but profoundly affects daily functioning. Patients report:\n\n- Missing work or school due to unpredictable symptoms\n- Social isolation from fear of embarrassing episodes\n- Depression and anxiety (affecting 50-60% of IBS patients)\n- Reduced sexual intimacy\n- Chronic constipation leading to hemorrhoids\n\nIBS does not damage your intestines, increase colon cancer risk, or require surgery. With proper management, most patients achieve good symptom control and quality of life.\n\n### IBD Complications Requiring Immediate Attention\n\nUntreated or poorly controlled IBD can lead to life-threatening complications:\n\n- **Intestinal perforation**: Holes in the intestinal wall requiring emergency surgery\n- **Toxic megacolon**: Dangerous colon dilation causing sepsis\n- **Strictures**: Intestinal narrowing causing blockages\n- **Fistulas**: Abnormal connections between organs\n- **Malnutrition and anemia**: From chronic bleeding and malabsorption\n- **Increased colon cancer risk**: After 8-10 years of extensive colitis\n\nIBD requires lifelong monitoring, regular colonoscopies, and aggressive treatment to prevent these complications. The condition can be life-altering and, in severe cases, life-threatening.\n\n## When to See a Gastroenterologist: Red Flags You Shouldn't Ignore\n\nSchedule an appointment with a gastroenterologist immediately if you experience:\n\n- **Blood in your stool** (any amount, any color)\n- **Unintentional weight loss** exceeding 5% of body weight\n- **Persistent diarrhea** lasting more than 4 weeks\n- **Severe abdominal pain** that wakes you at night\n- **Fever** accompanying digestive symptoms\n- **Anemia** detected on routine blood work\n- **Family history of IBD** or colon cancer with new symptoms\n- **Symptoms after age 50** without previous GI issues\n\nEarly diagnosis of IBD can prevent irreversible intestinal damage. Even if you \"just have IBS,\" proper diagnosis ensures you're not dismissing a more serious condition.\n\n## Conclusion\n\nUnderstanding the **ibd vs ibs difference** empowers you to advocate for appropriate diagnostic testing and treatment. While IBS causes frustrating functional symptoms manageable through diet, stress reduction, and targeted medications, IBD represents an immune-mediated inflammatory disease requiring aggressive medical intervention to prevent permanent intestinal damage. If you're experiencing persistent digestive symptoms—especially red flags like bloody stools, unexplained weight loss, or fever—don't wait for symptoms to worsen.\n\n**Schedule a consultation with a board-certified gastroenterologist today** at your local GI clinic to receive a definitive diagnosis through comprehensive testing including colonoscopy and inflammatory markers. Early intervention can mean the difference between managing symptoms and preventing life-altering complications.",
-  "heroImage": {
-    "src": "/figures/ibd-vs-ibs/ibd-vs-ibs-differences.webp",
-    "alt": "IBS vs IBD comparison: IBS is a functional disorder with no visible gut damage, while IBD causes inflammation and ulcers and needs colonoscopy to diagnose",
-    "width": 1200,
-    "height": 675
-  }
+  slug: "ibd-vs-ibs",
+  title: "IBD vs IBS: Key Differences in Symptoms, Tests and Treatment",
+  metaTitle: "IBD vs IBS: Differences, Symptoms, Tests & Treatment | IBS Clinic",
+  metaDescription:
+    "IBD vs IBS explained: how inflammation differs from a sensitive gut, red-flag symptoms, the tests that tell them apart, diet and treatment for each.",
+  excerpt:
+    "IBD inflames and damages the bowel; IBS changes how the bowel works without damage. Learn the symptoms, red flags, tests and treatment for each.",
+  authorSlug: "dr-nishikant-dwivedi",
+  category: "IBS Basics",
+  datePublished: "2025-10-12",
+  dateModified: "2026-11-01",
+  faq: [
+    {
+      q: "What is the main difference between IBD and IBS?",
+      a: "IBD (Crohn's disease and ulcerative colitis) is inflammation that damages the bowel lining and shows up on colonoscopy, biopsy and blood or stool tests. IBS changes how the bowel works and how sensitive it is, but the bowel looks normal on tests.",
+    },
+    {
+      q: "How do I tell if I have IBS or IBD?",
+      a: "You can't tell for sure from symptoms alone. Blood in the stool, weight loss, fever, night-time diarrhoea and anaemia point toward IBD and need tests. A doctor uses blood tests, a stool calprotectin test and, if needed, a colonoscopy to tell them apart.",
+    },
+    {
+      q: "Can IBS turn into IBD?",
+      a: "No. IBS does not turn into IBD. They are different conditions. But a person can have both, and IBS-type symptoms are common in people whose IBD is in remission.",
+    },
+    {
+      q: "Which is more serious, IBD or IBS?",
+      a: "IBD is more serious medically, because untreated inflammation can cause complications such as strictures, fistulas and a higher bowel cancer risk with long-standing colitis. IBS does not damage the bowel or raise cancer risk, but it can badly affect daily life.",
+    },
+    {
+      q: "Can IBD be misdiagnosed as IBS?",
+      a: "It can happen, especially early on, because both cause pain and diarrhoea. That is why red flags such as bleeding, weight loss or a raised calprotectin need further tests before IBS is confirmed.",
+    },
+    {
+      q: "What are the first signs of IBD?",
+      a: "Common early signs are diarrhoea lasting weeks, blood or mucus in the stool, belly pain, tiredness, weight loss and sometimes fever, mouth ulcers or joint pain.",
+    },
+    {
+      q: "Is a low-FODMAP diet good for IBD?",
+      a: "The low-FODMAP diet is designed for IBS. Some people with IBD in remission who still have IBS-type symptoms find it helps, but during an IBD flare follow your gastroenterologist's and dietitian's advice.",
+    },
+  ],
+  bodyMarkdown: `## Quick answers
+
+- **IBD (inflammatory bowel disease)** means Crohn's disease or ulcerative colitis. The immune system inflames the bowel lining, which causes ulcers and damage that show up on tests.
+- **IBS (irritable bowel syndrome)** changes how the bowel moves and how sensitive it is. The bowel looks normal on colonoscopy, biopsy and blood tests.
+- **IBS does not turn into IBD**, but you can have both.
+- **Blood in the stool, weight loss, fever, night-time diarrhoea or anaemia** are not IBS symptoms. Get them checked.
+- **Treatment is different:** IBD needs medicines that control inflammation; IBS is treated with diet, gut-brain and symptom care.
+
+IBD and IBS sound alike and share symptoms like belly pain, cramps and urgent trips to the toilet. But they are very different conditions, and the difference decides which tests you need and which treatment will work. This guide explains both in plain words, shows the red flags to watch for, and tells you when to see a doctor.
+
+## What is IBD?
+
+**Inflammatory bowel disease (IBD)** is a long-term condition in which the immune system attacks the lining of the gut and keeps it inflamed. There are two main types:
+
+- **Crohn's disease** can affect any part of the gut, from the mouth to the anus, most often the end of the small intestine. Inflammation can go through the full thickness of the bowel wall.
+- **Ulcerative colitis (UC)** affects only the large bowel (colon) and rectum, and only its inner lining.
+
+On colonoscopy, doctors can see ulcers, bleeding and inflamed tissue, and a biopsy confirms it. According to the [Centers for Disease Control and Prevention](https://www.cdc.gov/inflammatory-bowel-disease/php/facts-stats/), up to 3.1 million adults in the United States have been diagnosed with IBD.
+
+## What is IBS?
+
+**Irritable bowel syndrome (IBS)** is a disorder of gut-brain interaction. The bowel moves too fast or too slowly, and its nerves are more sensitive, so normal gas and movement are felt as pain. The symptoms are very real, but colonoscopy, biopsy and blood tests look normal. There are no ulcers and no inflammation.
+
+IBS is far more common than IBD. Studies put it at around [1 in 9 people worldwide](https://pubmed.ncbi.nlm.nih.gov/22426087/). A bout of gut infection can trigger it: [more than 1 in 10 people](https://pubmed.ncbi.nlm.nih.gov/28069350/) develop IBS after infectious gastroenteritis. Read more in [what is IBS](/blogs/what-is-ibs/) and the [types of IBS](/blogs/types-of-ibs/).
+
+## IBD vs IBS symptoms
+
+Both can cause pain, bloating and diarrhoea. The difference is in the signs that come **with** them.
+
+| Symptom | IBS | IBD (Crohn's or UC) |
+|---|---|---|
+| Belly pain | Common; often eases after passing stool | Common; Crohn's often lower right, UC often lower left |
+| Diarrhoea | Common, often alternating with constipation | Persistent, can wake you at night |
+| Constipation | Common (IBS-C) | Less common |
+| Blood in stool | Not caused by IBS | Common, especially in UC |
+| Weight loss | Not caused by IBS | Common |
+| Fever | No | Can occur in flares |
+| Tiredness | Common | Common, often with anaemia |
+| Bloating and gas | Very common | Can occur |
+| Joint pain, mouth ulcers, skin or eye problems | No | Can occur |
+
+![Diagram comparing typical pain location in ulcerative colitis (left lower abdomen), IBS (general lower abdomen) and Crohn's disease (lower right abdomen)](/figures/ibd-vs-ibs/ibd-vs-ibs-pain-location.webp)
+
+### Red flags that need tests
+
+These are not symptoms of IBS. See a doctor promptly if you have:
+
+- Blood in the stool, or black, tarry stools
+- Weight loss without trying
+- Fever along with bowel symptoms
+- Diarrhoea that wakes you at night
+- Anaemia on a blood test
+- Mouth ulcers, joint pain or red, painful eyes with bowel symptoms
+- A family history of IBD or bowel cancer
+- New bowel symptoms after age 50
+
+Piles and fissures are a common cause of bright red blood on the tissue, in people with or without IBS. Even so, blood should always be checked rather than assumed.
+
+## Can IBS turn into IBD?
+
+No. IBS does not turn into IBD, and having IBS does not raise your risk of getting IBD. They have different causes: IBS involves gut-brain signalling, gut sensitivity and motility; IBD is immune-driven inflammation linked to genes and environment.
+
+### Can you have both?
+
+Yes. A large analysis found that about [1 in 3 people with IBD in remission](https://pubmed.ncbi.nlm.nih.gov/33010814/) still have IBS-type symptoms, such as pain, bloating and changed bowel habits, even when tests show the inflammation is controlled. If that sounds like you, ask your gastroenterologist about IBS care alongside your IBD treatment.
+
+## How doctors tell IBD and IBS apart
+
+### Diagnosing IBS
+
+IBS is diagnosed from your symptoms using the **Rome IV criteria**: belly pain on at least one day a week for the last three months, linked to bowel movements or to a change in how often you go or what your stool looks like, with symptoms that started at least six months ago.
+
+Doctors also do a few simple tests to rule out other conditions, especially if you have diarrhoea. The [American College of Gastroenterology](https://pubmed.ncbi.nlm.nih.gov/33315591/) recommends a blood test for coeliac disease and a stool **calprotectin** test, which picks up bowel inflammation and helps rule out IBD. A colonoscopy is needed only if there are red flags or tests are abnormal.
+
+### Diagnosing IBD
+
+IBD needs proof of inflammation:
+
+- **Colonoscopy with biopsy**, the key test: the doctor sees the lining and takes tiny samples
+- **Blood tests** for anaemia and inflammation markers such as CRP and ESR
+- **Stool tests** for calprotectin and to rule out infection
+- **CT or MRI scans**, especially for Crohn's disease in the small intestine
+
+## IBD vs IBS treatment
+
+![Flowchart of IBS treatment with diet, lifestyle and symptom medicines compared with IBD treatment with anti-inflammatory drugs, biologics and sometimes surgery](/figures/ibd-vs-ibs/ibd-vs-ibs-treatment-pathways.webp)
+
+### Treating IBS
+
+IBS treatment aims to calm symptoms and the sensitive gut, matched to your IBS type:
+
+- Diet changes, including a guided low-FODMAP diet and soluble fibre
+- Regular meals, physical activity and better sleep
+- Gut-brain therapies such as gut-directed CBT or hypnotherapy, and stress care
+- Medicines for the main symptom: antispasmodics for cramps, treatment for constipation or diarrhoea, and low-dose medicines that calm gut nerves
+- At IBS Clinic, Ayurvedic medicines matched to your IBS type, alongside diet and lifestyle care
+
+See [medicine for IBS](/blogs/medicine-for-ibs/) for a full guide.
+
+### Treating IBD
+
+IBD treatment aims to switch off inflammation and keep it off. A gastroenterologist may use:
+
+- **5-ASA medicines** (such as mesalamine) for mild to moderate ulcerative colitis
+- **Steroids** for short-term control of flares
+- **Immunomodulators** such as azathioprine
+- **Biologics and newer tablets** that block specific inflammation pathways
+- **Surgery** for complications such as strictures or fistulas, or when medicines do not work
+
+IBD needs care from a gastroenterologist. Herbal or Ayurvedic medicines should never replace prescribed IBD treatment.
+
+| | IBS | IBD |
+|---|---|---|
+| Main goal | Calm symptoms and gut sensitivity | Control inflammation and heal the lining |
+| Medicines | Symptom-based | Anti-inflammatory and immune-targeted |
+| Role of diet | Central | Supportive |
+| Surgery | Not a treatment for IBS | Sometimes needed for complications |
+
+## IBD vs IBS diet
+
+![Diet comparison: low-FODMAP foods for IBS versus gentle low-residue foods for IBD flares](/figures/ibd-vs-ibs/ibd-vs-ibs-diet.webp)
+
+### Diet for IBS
+
+The [low-FODMAP diet](https://www.monashfodmap.com/ibs-central/i-have-ibs/starting-the-low-fodmap-diet/) is the best-studied diet for IBS. It is done in three steps with a trained dietitian: reduce high-FODMAP foods for 2 to 6 weeks, bring them back one group at a time, then build your own long-term diet. Common Indian triggers are wheat, onion, garlic, rajma, chole and milk. See our [IBS diet plan](/blogs/ibs-diet-plan/) and the [worst foods for IBS](/blogs/worst-foods-for-ibs/).
+
+### Diet for IBD
+
+During a flare, many people with IBD feel better on soft, easy-to-digest food: white rice, khichdi, curd rice if dairy suits you, eggs, soft-cooked vegetables without skins, and fish or chicken. High-fibre foods, raw salads, nuts and seeds, very spicy or fried food, and alcohol are common flare-time foods to limit. Eggs are usually fine.
+
+In remission, most people can return to a varied, balanced diet, including fruit, vegetables and whole grains. If you have a stricture, your doctor may advise a low-fibre diet long term. Diet supports IBD treatment; it does not replace it.
+
+## Which is worse?
+
+**IBS** does not damage the bowel, does not raise bowel cancer risk and does not need surgery, but it can affect work, travel, sleep, mood and relationships. With the right plan, most people get good control.
+
+**IBD** can cause serious complications if it is not controlled: strictures (narrowing), fistulas, abscesses, anaemia, malnutrition, and a higher risk of bowel cancer after many years of colitis. It needs regular check-ups and long-term treatment.
+
+## When to see a doctor
+
+See a gastroenterologist if you have any red flag above, or if bowel symptoms are new, getting worse, or affecting your daily life. Getting the right diagnosis early prevents IBD damage and stops IBS from being blamed on the wrong cause.
+
+If tests have ruled out IBD and other conditions and you've been told you have IBS, [book a free evaluation](/book-an-appointment/) with our IBS doctors. We consult online across India, find your IBS type and triggers, and build a plan for diet, routine and Ayurvedic care, with medicines delivered home.`,
+  heroImage: {
+    src: "/figures/ibd-vs-ibs/ibd-vs-ibs-differences.webp",
+    alt: "IBS vs IBD comparison: IBS is a functional disorder with no visible gut damage, while IBD causes inflammation and ulcers and needs colonoscopy to diagnose",
+    width: 1200,
+    height: 675,
+  },
 };
