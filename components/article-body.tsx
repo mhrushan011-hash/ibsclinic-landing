@@ -45,6 +45,15 @@ const FALLBACK_DIMENSIONS: FigureDimensions = { width: 1200, height: 800 };
  * title — `![alt](/src "caption")` — becomes the caption line.
  */
 const MARKDOWN_COMPONENTS: Components = {
+  // Wide tables (e.g. a 5-column meal plan) scroll inside their own box on
+  // phones instead of pushing the whole page wider than the screen.
+  table({ children }) {
+    return (
+      <div className="article-table -mx-1 my-8 overflow-x-auto px-1">
+        <table className="article-table__table my-0 min-w-full">{children}</table>
+      </div>
+    );
+  },
   img({ src, alt, title }) {
     if (typeof src !== "string" || src.length === 0) return null;
 
