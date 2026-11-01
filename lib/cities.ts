@@ -26,14 +26,14 @@ export const CITY_DATA: Readonly<Record<string, CityPage>> = {
     h1: "Get Relief with IBS Treatment in Kerala — Book Free Consultation",
     metaTitle: "Get Relief with IBS Treatment in Kerala | Book Free Consultation",
     metaDescription:
-      "Specialist IBS treatment in Kerala — Ayurveda-led care, advanced diagnostics, and gut-brain therapy. 15+ years, 5000+ patients, 95% success rate.",
+      "Specialist IBS treatment in Kerala by online consultation — Ayurveda-led care, diet plans for Kerala food, and medicines delivered home. Book a free evaluation.",
     heroIntro:
       "Book effective IBS treatment in Kerala today. Personalised care, advanced diagnostics, and holistic approaches to restore gut health are all part of our expert IBS treatment in Kerala. Our specialist team offers the best Ayurvedic treatment for IBS in Kerala.",
     ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Kerala",
     cityFaq: [
       {
         q: "Is Ayurvedic treatment effective for IBS in Kerala?",
-        a: "Yes. Kerala has a rich tradition of Ayurvedic medicine that has proven effective for digestive disorders like IBS. Our clinic combines traditional Kerala Ayurvedic principles with modern medical approaches for optimal results.",
+        a: "Yes. Kerala has a rich tradition of Ayurvedic medicine, long used for digestive disorders like IBS. Our clinic combines traditional Kerala Ayurvedic principles with modern medical approaches for optimal results.",
       },
       {
         q: "Can I get IBS treatment in Kerala via telehealth?",
@@ -47,14 +47,14 @@ export const CITY_DATA: Readonly<Record<string, CityPage>> = {
     h1: "Easy IBS Treatment in Bangalore — Book Specialists Near You",
     metaTitle: "Easy IBS Treatment in Bangalore | Book Specialists Near You",
     metaDescription:
-      "Expert IBS treatment in Bangalore with personalised care, advanced diagnostics, and a holistic approach to restore gut health. 95% success rate.",
+      "Specialist IBS treatment in Bangalore by online consultation — Ayurveda-led care, diet plans for South Indian food, and medicines delivered home.",
     heroIntro:
       "We offer expert IBS treatment in Bangalore with personalised care, advanced diagnostics, and a holistic approach to restore gut health. Identifying symptoms early helps our specialists build the most effective long-term plan.",
     ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Bangalore",
     cityFaq: [
       {
         q: "Where can I get the best IBS treatment in Bangalore?",
-        a: "IBS Clinic offers some of the best IBS treatment for Bangalore patients — through experienced gastroenterologists and Ayurveda doctors, telehealth consultations, and a structured 8-step protocol with home delivery of all medication.",
+        a: "IBS Clinic offers some of the best IBS treatment for Bangalore patients — through experienced Ayurvedic IBS specialists, telehealth consultations, and a structured 8-step protocol with home delivery of all medication.",
       },
       {
         q: "When should I see an IBS doctor in Bangalore?",
@@ -86,8 +86,8 @@ export const CITY_DATA: Readonly<Record<string, CityPage>> = {
   "ibs-treatment-in-pune": {
     slug: "ibs-treatment-in-pune",
     name: "Pune",
-    h1: "Best IBS Treatment in Pune — Personalised Care for Gut Health",
-    metaTitle: "Best IBS Treatment in Pune | Personalised Care for Gut Health",
+    h1: "Specialist IBS Treatment in Pune — Personalised Care for Gut Health",
+    metaTitle: "Specialist IBS Treatment in Pune | Personalised Care for Gut Health",
     metaDescription:
       "Personalised IBS treatment in Pune from senior IBS specialists. Ayurveda-led care, low-FODMAP coaching, and telemedicine support.",
     heroIntro:
@@ -107,10 +107,10 @@ export const CITY_DATA: Readonly<Record<string, CityPage>> = {
   "ibs-treatment-in-ahmedabad": {
     slug: "ibs-treatment-in-ahmedabad",
     name: "Ahmedabad",
-    h1: "Proven IBS Treatment in Ahmedabad — Free Consultation Today",
-    metaTitle: "Proven IBS Treatment in Ahmedabad | Free Consultation Today",
+    h1: "Specialist IBS Treatment in Ahmedabad — Free Consultation Today",
+    metaTitle: "Specialist IBS Treatment in Ahmedabad | Free Consultation Today",
     metaDescription:
-      "Proven IBS treatment in Ahmedabad with Ayurveda-led care, gut-brain therapy, and dietary coaching tailored to Gujarati food and lifestyle patterns.",
+      "Specialist IBS treatment in Ahmedabad with Ayurveda-led care, gut-brain therapy, and dietary coaching tailored to Gujarati food and lifestyle patterns.",
     heroIntro:
       "Proven IBS treatment in Ahmedabad — personalised care, advanced diagnostics, and Ayurveda-led protocols. Our specialists tailor diet and lifestyle recommendations to local food patterns for better adherence.",
     ctaTagline: "Get Free Consultation With IBS Treatment Specialists in Ahmedabad",
@@ -121,15 +121,15 @@ export const CITY_DATA: Readonly<Record<string, CityPage>> = {
       },
       {
         q: "Can I get IBS medicine delivered in Ahmedabad?",
-        a: "Yes. All Ayurvedic powders prescribed by our doctors ship to any Ahmedabad pincode within 3–5 business days.",
+        a: "Yes. All Ayurvedic powders prescribed by our doctors ship to any Ahmedabad pincode, usually within a few working days, with tracking shared by our team.",
       },
     ],
   },
   "ibs-treatment-in-chennai": {
     slug: "ibs-treatment-in-chennai",
     name: "Chennai",
-    h1: "Best Doctor for IBS Treatment in Chennai — Get Free Consultation",
-    metaTitle: "Best Doctor for IBS Treatment in Chennai | Get Free Consultation",
+    h1: "IBS Treatment in Chennai — Consult a Specialist Doctor for Free",
+    metaTitle: "IBS Treatment in Chennai | Consult a Specialist Doctor Free",
     metaDescription:
       "Consult senior IBS doctors for IBS treatment in Chennai — Ayurveda-led care, modern diagnostics, gut-brain therapy, and telehealth follow-ups.",
     heroIntro:

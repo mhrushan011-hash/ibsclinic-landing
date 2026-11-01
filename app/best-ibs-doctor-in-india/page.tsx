@@ -7,13 +7,13 @@ import { SimpleHeader } from "@/components/simple-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ArticleBody } from "@/components/article-body";
 import { DOCTOR_LIST } from "@/lib/doctors";
-import { BEST_DOCTOR_BODY } from "@/lib/best-doctor-content";
+import { BEST_DOCTOR_BODY, BEST_DOCTOR_FAQ } from "@/lib/best-doctor-content";
 
 export const metadata: Metadata = {
-  title: "Best IBS Doctors in India — Free Consultation | IBS Clinic",
+  title: "Best IBS Doctor in India? How to Choose + Meet Our Specialists | IBS Clinic",
   description:
-    "Meet India's best IBS doctors and specialists at IBS Clinic. Expert Ayurvedic physicians with decades of experience treating IBS and digestive disorders. Get a free consultation.",
-  alternates: { canonical: "/best-ibs-doctor-in-india" },
+    "How to choose the right IBS doctor in India, when you need a gastroenterologist, and meet IBS Clinic's specialist team. Online consultations and a free evaluation.",
+  alternates: { canonical: "/best-ibs-doctor-in-india/" },
 };
 
 const PHONE_DISPLAY = "+91 750 033 4343";
@@ -30,7 +30,7 @@ export default function BestIbsDoctorPage() {
   return (
     <>
       <SimpleHeader />
-      <PageSchema path="/best-ibs-doctor-in-india" name="Best IBS Doctors in India" crumb="Best IBS doctors in India" about={{ "@id": ORG_ID }} />
+      <PageSchema path="/best-ibs-doctor-in-india" name="Best IBS Doctor in India: How to Choose" crumb="Best IBS doctors in India" about={{ "@id": ORG_ID }} faqs={BEST_DOCTOR_FAQ} />
       <main className="bg-white">
         {/* HERO */}
         <section className="bg-green-tint">
@@ -39,7 +39,7 @@ export default function BestIbsDoctorPage() {
               Best IBS doctor in India
             </p>
             <h1 className="mt-3 font-heading text-h1 text-charcoal">
-              Meet the best IBS doctors in India
+              Looking for the best IBS doctor in India? Meet our IBS specialists
             </h1>
             <p className="mt-6 max-w-3xl text-lead text-charcoal-soft">
               Specialist IBS care that blends classical Ayurvedic science with
@@ -135,6 +135,28 @@ export default function BestIbsDoctorPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* FAQ — same items feed the FAQPage schema via <PageSchema faqs> */}
+        <section className="best-doctor-faq container-page py-14 md:py-16">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-heading text-h2 text-charcoal">
+              Choosing an IBS doctor: common questions
+            </h2>
+            <div className="mt-6 divide-y divide-gray-border rounded-[16px] border border-gray-border bg-white">
+              {BEST_DOCTOR_FAQ.map((f) => (
+                <details key={f.q} className="best-doctor-faq__item group p-6">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4">
+                    <span className="font-heading font-semibold text-charcoal">{f.q}</span>
+                    <span className="text-2xl leading-none text-green transition-transform group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-charcoal-soft">{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 

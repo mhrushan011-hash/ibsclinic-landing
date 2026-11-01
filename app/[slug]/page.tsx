@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { LeadForm } from "@/components/lead-form";
 import { DoctorCards } from "@/components/doctor-cards";
 import { CITY_DATA, CITY_SLUGS } from "@/lib/cities";
+import { getCityLocal } from "@/lib/city-local";
+import { ArticleBody } from "@/components/article-body";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -205,6 +207,9 @@ export default async function CityPage({ params }: PageProps) {
 
   const path = `/${city.slug}`;
   const crumbLabel = `IBS Treatment in ${city.name}`;
+  const local = getCityLocal(city.slug);
+  // One list feeds both the visible FAQ section and the FAQPage schema.
+  const faqs = [...city.cityFaq, ...(local?.faq ?? []), ...SHARED_FAQ];
   // Online consultation service for this city — deliberately NOT a
   // LocalBusiness: the only physical clinic is in Mumbai (Virar West).
   const schema = graph(
@@ -218,7 +223,7 @@ export default async function CityPage({ params }: PageProps) {
       mainEntity: { "@id": `${absUrl(path)}#service` },
     }),
     cityServiceNode(path, city.name),
-    faqNode(path, [...city.cityFaq, ...SHARED_FAQ]),
+    faqNode(path, faqs),
   );
 
   return (
@@ -242,10 +247,12 @@ export default async function CityPage({ params }: PageProps) {
               </p>
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                 {[
-                  "15+ Years Experience",
-                  "5+ Languages",
-                  "95% Success Rate",
-                  "5000+ Patients",
+                  // Aligned with the homepage's published claims (no "95% success"
+                  // rate — above the brand claim ceiling and unsourced).
+                  "18+ Years of IBS Care",
+                  "Thousands of Patients",
+                  "Online Consultations Across India",
+                  "Medicines Delivered Home",
                 ].map((item) => (
                   <li
                     key={item}
@@ -333,6 +340,42 @@ export default async function CityPage({ params }: PageProps) {
             </ul>
           </div>
         </section>
+
+        {/* LOCAL — city-specific food, lifestyle and online care */}
+        {local ? (
+          <section className="city-local container-page py-16 md:py-20">
+            <h2 className="city-local__title font-heading text-h2 text-charcoal">{local.title}</h2>
+            <div className="city-local__intro mt-4 max-w-3xl">
+              <ArticleBody markdown={local.intro.join("\n\n")} />
+            </div>
+            <h3 className="city-local__swaps-title mt-10 font-heading text-h3 text-charcoal">
+              Local food swaps that help IBS
+            </h3>
+            <div className="city-local__table mt-4 max-w-3xl overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-gray-border">
+                    <th className="py-3 pr-4 font-heading text-charcoal">Instead of</th>
+                    <th className="py-3 font-heading text-charcoal">Try</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {local.swaps.map((s) => (
+                    <tr key={s.food} className="border-b border-gray-border align-top">
+                      <td className="py-3 pr-4 text-charcoal">{s.food}</td>
+                      <td className="py-3 text-charcoal-soft">{s.swap}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="city-local__more mt-6 max-w-3xl text-charcoal-soft">
+              For full food lists and a 7-day plan, see our{" "}
+              <Link href="/blogs/ibs-diet-plan/">IBS diet plan</Link> and the{" "}
+              <Link href="/blogs/worst-foods-for-ibs/">worst foods for IBS</Link>.
+            </p>
+          </section>
+        ) : null}
 
         {/* WHY CHOOSE */}
         <section className="container-page py-16 md:py-20">
@@ -450,7 +493,7 @@ export default async function CityPage({ params }: PageProps) {
               IBS treatment in {city.name} — FAQs
             </h2>
             <ul className="mt-8 space-y-4">
-              {[...city.cityFaq, ...SHARED_FAQ].map((f) => (
+              {faqs.map((f) => (
                 <li key={f.q} className="card bg-white">
                   <p className="font-heading text-lg text-charcoal">{f.q}</p>
                   <p className="mt-2 text-charcoal-soft">{f.a}</p>

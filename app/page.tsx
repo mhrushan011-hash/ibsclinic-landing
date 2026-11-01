@@ -9,6 +9,11 @@ import { faqNode, graph, ORG_ID, webPageNode } from "@/lib/structured-data";
 // no other route can inherit it. The FAQ schema is emitted here too, so it is
 // in the server HTML (it used to be injected client-side by next/script).
 export const metadata: Metadata = {
+  // Brand + location + offer: the homepage ranks #1 for "ibs clinic" and
+  // "ibs clinic mumbai", so the title should say exactly that.
+  title: "IBS Clinic Mumbai — Specialist IBS Treatment, Online Across India",
+  description:
+    "IBS Clinic: specialist IBS care in Virar (W), Mumbai and online across India. Ayurveda, diet and modern testing for IBS-C, IBS-D and IBS-M. Book a free evaluation.",
   alternates: { canonical: "/" },
 };
 
