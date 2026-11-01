@@ -79,7 +79,14 @@ export function organizationNode(): JsonLdNode {
     medicalSpecialty: ["Gastroenterology", "Ayurveda"],
     areaServed: { "@type": "Country", name: "India" },
     founder: { "@id": personId("kamal") },
-    // sameAs: add the Google Business Profile + social URLs once confirmed.
+    // Verified live 2026-11-01. Google Business Profile = knowledge-graph id /g/1tkmk_wm.
+    hasMap: "https://www.google.com/search?kgmid=/g/1tkmk_wm",
+    sameAs: [
+      "https://www.google.com/search?kgmid=/g/1tkmk_wm",
+      "https://www.facebook.com/ibsclinic",
+      "https://www.instagram.com/ibscliniic/",
+      "https://www.youtube.com/@ibsclinicofficial",
+    ],
   };
 }
 
